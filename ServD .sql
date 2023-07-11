@@ -1,6 +1,7 @@
 /*
 ServD
 Fecha de creación: 05/07/2023
+Fecha de finalización 07/07/2023
 */
 
 drop database if exists DBServD;
