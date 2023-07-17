@@ -11,7 +11,7 @@ public class Conexion {
     public Connection Conexion(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBServD?useSSL=false","root", "password"); //Cambian la contraseña :3
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBServD?useSSL=false","kinal", "admin"); 
         }catch(Exception e){
             e.printStackTrace();
         }
