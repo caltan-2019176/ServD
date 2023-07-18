@@ -7,6 +7,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <group>
             <file>file:/C:/gitHub%20repo/ServD/ServD/src/java/config/Conexion.java</file>
         </group>
@@ -31,5 +32,11 @@
 =======
         <group/>
 >>>>>>> ecoy-2019518
+=======
+        <group>
+            <file>file:/C:/GitHub/ServD/ServD/src/java/modelo/TipoServicioDAO.java</file>
+            <file>file:/C:/GitHub/ServD/ServD/src/java/modelo/TipoServicio.java</file>
+        </group>
+>>>>>>> ocastillo-2021185
     </open-files>
 </project-private>
