@@ -17,7 +17,11 @@ public class MedioTransporteDAO {
     Conexion cn = new Conexion(); 
     Connection con; 
     PreparedStatement ps; 
+<<<<<<< HEAD
     ResultSet rs; 
+=======
+    ResultSet rs;   
+>>>>>>> carmas-2019645
     int resp; 
     
     /**
@@ -29,7 +33,11 @@ public class MedioTransporteDAO {
         List<MedioTransporte> listaMedioTransporte = new ArrayList<>(); 
         try {
             con = cn.Conexion(); 
+<<<<<<< HEAD
             ps = con.prepareStatement(sql); 
+=======
+            ps = con.prepareCall(sql); 
+>>>>>>> carmas-2019645
             rs = ps.executeQuery(); 
             while (rs.next()) {
                 MedioTransporte mt = new MedioTransporte(); 
