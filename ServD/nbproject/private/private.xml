@@ -8,6 +8,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <group>
             <file>file:/C:/gitHub%20repo/ServD/ServD/src/java/config/Conexion.java</file>
         </group>
@@ -38,5 +39,12 @@
             <file>file:/C:/GitHub/ServD/ServD/src/java/modelo/TipoServicio.java</file>
         </group>
 >>>>>>> ocastillo-2021185
+=======
+        <group>
+            <file>file:/C:/Users/colin/OneDrive/Documentos/NetBeansProjects/ServD/src/java/modelo/Empleado.java</file>
+            <file>file:/C:/Users/colin/OneDrive/Documentos/NetBeansProjects/ServD/src/java/modelo/EmpleadoDAO.java</file>
+            <file>file:/C:/Users/colin/OneDrive/Documentos/NetBeansProjects/ServD/src/java/config/Conexion.java</file>
+        </group>
+>>>>>>> rcolindres-2019169
     </open-files>
 </project-private>
