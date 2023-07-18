@@ -13,29 +13,10 @@
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> carmas-2019645
-=======
->>>>>>> pbermudez-2022015
                 <root id="src.dir" name="Source Packages"/>
             </source-roots>
             <test-roots>
                 <root id="test.src.dir" name="Test Packages"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-                <root id="src.dir"/>
-            </source-roots>
-            <test-roots>
-                <root id="test.src.dir"/>
->>>>>>> rcolindres-2019169
-=======
->>>>>>> carmas-2019645
-=======
->>>>>>> pbermudez-2022015
             </test-roots>
         </data>
         <libraries xmlns="http://www.netbeans.org/ns/ant-project-libraries/1">
