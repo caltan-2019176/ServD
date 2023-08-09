@@ -16,11 +16,10 @@ public class Equipo_has_EmpleadoDAO{
     int resp;
     
     public Equipo_has_Empleado validar(int Equipo_codigoEmpleado){
-        // Vamos a instaciar un objeto de la entidad TipoServicio
+        // Vamos a instanciar Equipo_Has_Empleado
         Equipo_has_Empleado equipo_has_empleado = new Equipo_has_Empleado();
-        // Vamos a agregar una variable de tipo String para nuestra consulta SQL
         String sql = "Select * from Equipo_has_Empleado where Equipo_codigoEmpleado = ?";
-        
+        //Consulta del Sql
         try{
         con = cn.Conexion();
         ps = con.prepareCall(sql);
@@ -36,11 +35,11 @@ public class Equipo_has_EmpleadoDAO{
             e.printStackTrace();
         }
         
-        return equipo_has_empleado;// Retorna Tipo de servicio encontrado
+        return equipo_has_empleado;// Retorna Equipo_has_EmpleadoDAO 
         
     }
     
-    // Metodo Listar
+    // Metodo Listar Equipo_has_Empleado
     public List Listar(){
         String sql = "Select * from Equipo_has_Empleado";
         List<Equipo_has_Empleado> listaEquipo_has_Empleado = new ArrayList<>();
@@ -64,7 +63,7 @@ public class Equipo_has_EmpleadoDAO{
         
     }
     
-    // Metodo Agregar
+    // Metodo Agregar Equipo_has_Empleado
     public int agregar(Equipo_has_Empleado emp){
         String sql ="Insert into Equipo_has_Empleado (Equipo_codigoEmpleado, CantidadEquipo, Equipo_codigoEquipo, Empleado_codigoEmpleado) values (?,?,?,?)" ;
         try{
@@ -85,7 +84,7 @@ public class Equipo_has_EmpleadoDAO{
         return resp;
     }
     
-    // Buscar
+    // Buscar Equipo_has_Empleado
     public Equipo_has_Empleado listaEquipo_has_Empleado(int id){
     Equipo_has_Empleado ts = new Equipo_has_Empleado();
     String sql ="Select * from Equipo_has_Empleado where Empleado_codigoEmpleado = "+id;
@@ -108,7 +107,7 @@ public class Equipo_has_EmpleadoDAO{
     return ts;
     }
 
-   // Metodo Eliminar
+   // Metodo Eliminar Equipo_has_Empleado
    public void eliminar(int id){
         String sql = "delete from Equipo_has_Empleado where Equipo_codigoEmpleado = "+id;
         try{
