@@ -12,7 +12,7 @@ import java.util.List;
  * Modelo DAO de la clase Compra
  * @author Denis Abad
  */
-public class CompraDAO {
+public class CompraDao {
     Conexion cn = new Conexion();
     Connection con;
     PreparedStatement ps;
