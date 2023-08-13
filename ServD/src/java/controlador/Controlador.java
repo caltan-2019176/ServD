@@ -13,14 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Compra;
 import modelo.CompraDao;
+import modelo.MedioTransporte;
+import modelo.MedioTransporteDAO;
 
 /**
  *
  * @author colin
  */
 public class Controlador extends HttpServlet {
-    Compra compra = new Compra();
-    CompraDao compraDao = new CompraDao();
+    MedioTransporte medioTransporte = new MedioTransporte();
+    MedioTransporteDAO medioTransporteDAO = new MedioTransporteDAO();
     int codCompra;
 
     /**
@@ -38,7 +40,52 @@ public class Controlador extends HttpServlet {
         String accion = request.getParameter("accion");
         if(menu.equals("Principal")){
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        }else if (menu.equals("MedioTransporte")) {
+            switch(accion){
+                case "Listar":
+                    List listaMedioTransporte = medioTransporteDAO.listar();
+                    request.setAttribute("medioTransportes", listaMedioTransporte);
+                    break;
+                case "Agregar":
+                    
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;
+            }
+            request.getRequestDispatcher("MedioTransporte.jsp").forward(request, response);          
+        }else if(menu.equals("Empleado")){
+            request.getRequestDispatcher("Empleado.jsp").forward(request, response); 
+        }else if(menu.equals("Compra")){
+             request.getRequestDispatcher("Compra.jsp").forward(request, response); 
+        }else if(menu.equals("Empresa")){
+             request.getRequestDispatcher("Empresa.jsp").forward(request, response); 
+        }else if(menu.equals("Proveedor")){
+             request.getRequestDispatcher("Proveedor.jsp").forward(request, response); 
+        }else if(menu.equals("Equipo")){
+             request.getRequestDispatcher("Equipo.jsp").forward(request, response); 
+        }else if(menu.equals("Servicio")){
+             request.getRequestDispatcher("Servicio.jsp").forward(request, response); 
+        }else if(menu.equals("TipoServicio")){
+             request.getRequestDispatcher("TipoServicio.jsp").forward(request, response); 
+        }else if(menu.equals("TipoEmpleado")){
+             request.getRequestDispatcher("TipoEmpleado.jsp").forward(request, response); 
+        }else if(menu.equals("ServicioCompra")){
+             request.getRequestDispatcher("ServicioCompra.jsp").forward(request, response); 
+        }else if(menu.equals("ProveedorEquipo")){
+             request.getRequestDispatcher("ProveedorEquipo.jsp").forward(request, response); 
+        }else if(menu.equals("EquipoEmpleado")){
+             request.getRequestDispatcher("EquipoEmpleado.jsp").forward(request, response); 
+        }else if(menu.equals("EmpleadoServicio")){
+             request.getRequestDispatcher("EmpleadoServicio.jsp").forward(request, response); 
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

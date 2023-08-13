@@ -1,18 +1,18 @@
+
 package modelo;
 
 import config.Conexion;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Modelo DAO de la clase Compra
+ *Modelo Dao de la clase Compra
  * @author Denis Abad
  */
-public class CompraDao {
+public class CompraDAO {
     Conexion cn = new Conexion();
     Connection con;
     PreparedStatement ps;

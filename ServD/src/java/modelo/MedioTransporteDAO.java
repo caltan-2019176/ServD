@@ -36,7 +36,8 @@ public class MedioTransporteDAO {
                 mt.setCodigoTransporte(rs.getInt(1));
                 mt.setPlaca(rs.getString(2));
                 mt.setTipoVehiculo(rs.getString(3));
-                mt.setMarca(rs.getString(4));              
+                mt.setMarca(rs.getString(4)); 
+                listaMedioTransporte.add(mt);
             }
  
         } catch (Exception e) {
