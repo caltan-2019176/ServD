@@ -150,7 +150,12 @@ insert into Proveedor(nombreProveedor, direccionProveedor, telefonoProveedor) va
 insert into Proveedor(nombreProveedor, direccionProveedor, telefonoProveedor) values ('Vision Consultores S.A.', 'Zona 8 de mixco', '87654323');
 -- --Equipo-- --
 insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Herramientas', 'Diferentes herramientas para trabajo', 2000);
-insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Computadora', 'PC de muchos recursos', 5);
+insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Computadora', 'PC de muchos recursos', 300);
+insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Memoria Ram', '16 Ram', 4000);
+insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Disco Duro', '512GB', 1000);
+insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Mouse', 'Inalambrico HP', 180);
+
+
 -- --Proveedor_Has_Equipo-- --
 insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de Computadoras y sus partes', 1, 2);
 insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de diferentes herramientas y utensilios', 2, 1);

@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Equipo;
+import modelo.EquipoDAO;
 import modelo.MedioTransporte;
 import modelo.MedioTransporteDAO;
 import modelo.Servicio;
@@ -26,6 +28,8 @@ public class Controlador extends HttpServlet {
     MedioTransporteDAO medioTransporteDAO = new MedioTransporteDAO();
     Servicio servicio = new Servicio();
     ServicioDAO servicioDAO = new ServicioDAO();
+    Equipo equipo = new Equipo();
+    EquipoDAO equipoDAO = new EquipoDAO();
     int codCompra;
 
     /**
@@ -72,6 +76,24 @@ public class Controlador extends HttpServlet {
         } else if (menu.equals("Proveedor")) {
             request.getRequestDispatcher("Proveedor.jsp").forward(request, response);
         } else if (menu.equals("Equipo")) {
+            switch (accion){
+                case "Listar":
+                    List listaEquipo = equipoDAO.listar();
+                    request.setAttribute("equipos", listaEquipo);
+                    break;
+                case "Agregar":
+                    
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;
+            }
             request.getRequestDispatcher("Equipo.jsp").forward(request, response);
         } else if (menu.equals("Servicio")) {
             switch (accion) {
