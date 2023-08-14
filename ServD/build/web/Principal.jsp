@@ -23,43 +23,43 @@
                         <img src="img/logo2.png" alt="ServD" width="120" height="55">
                     </a>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="#">Empleado</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Empleado&accion=Listar" target="myFrame">Empleado</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="#">Compra</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Compra&accion=Listar" target="myFrame">Compra</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="#">Empresa</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Empresa" target="myFrame">Empresa</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="#">Proveedor</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Proveedor" target="myFrame">Proveedor</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="#">Equipo</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Equipo&accion=Listar" target="myFrame">Equipo</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="#">Servicio</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Servicio&accion=Listar" target="myFrame">Servicio</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="#">Tipo Servicio</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=TipoServicio" target="myFrame">Tipo Servicio</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="#">Tipo Empleado</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=TipoEmpleado" target="myFrame">Tipo Empleado</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="#">Medio Transporte</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=MedioTransporte&accion=Listar" target="myFrame">Medio Transporte</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="#">Servicio Compra</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Compra" target="myFrame">Servicio Compra</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="#">Proveedor Equipo</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=ProveedorEquipo" target="myFrame">Proveedor Equipo</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="#">Equipo Empleado</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=EquipoEmpleado" target="myFrame">Equipo Empleado</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="#">Empleado Servicio</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=EmpleadoServicio" target="myFrame">Empleado Servicio</a>
                     </li>
                 </ul>
             </div>
