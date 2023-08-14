@@ -23,7 +23,7 @@
                         <img src="img/logo2.png" alt="ServD" width="120" height="55">
                     </a>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Empleado" target="myFrame">Empleado</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Empleado&accion=Listar" target="myFrame">Empleado</a>
                     </li>
                     <li class="nav-item">
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Compra" target="myFrame">Compra</a>
