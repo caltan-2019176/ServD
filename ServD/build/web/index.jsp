@@ -20,7 +20,7 @@
               <div class="form-group text-center">
                     <h3>Inicia Sesión</h3>
                     <br>    
-                    <img src="img/logo.png"alt="80" width="150" />
+                    <img src="img/logo2.png"alt="150" width="220" />
                     <br>
                     <br>
                     <h6 class="card-subtitle">Bienvenidos a ServD</h6>

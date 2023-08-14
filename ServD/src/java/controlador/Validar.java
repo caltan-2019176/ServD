@@ -12,21 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.Empleado;
 import modelo.EmpleadoDAO;
 
-
 public class Validar extends HttpServlet {
     EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     Empleado empleado = new Empleado();
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter())
-        {
-            
+        try (PrintWriter out = response.getWriter()) {
+
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Validar</title>");            
+            out.println("<title>Servlet Validar</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Validar at " + request.getContextPath() + "</h1>");
@@ -62,21 +60,20 @@ public class Validar extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //capturar la petición del usuario
-    String accion = request.getParameter("accion");//nombre del boton
-    if(accion.equalsIgnoreCase("Ingresar")){
-      String user = request.getParameter("txtUser");//capturar usuario y contraseña JSP
-      String pass = request.getParameter("txtPass");
-      empleado = empleadoDAO.validar(user, pass);
-      
-      if (empleado.getUsuario() !=null) {
-        request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response); //direccionamiento a pagina
-      }else{
-        request.getRequestDispatcher("index.jsp").forward(request, response);
-      }
-      
-    }else{
-      request.getRequestDispatcher("index.jsp").forward(request, response);
-    }
+        String accion = request.getParameter("accion");//nombre del boton
+        if (accion.equalsIgnoreCase("Ingresar")) {
+            String user = request.getParameter("txtUser");//capturar usuario y contraseña JSP
+            String pass = request.getParameter("txtPass");
+            empleado = empleadoDAO.validar(user, pass);
+            if (empleado.getUsuario() != null) {
+                request.setAttribute("usuario", empleado);
+                request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response); //direccionamiento a pagina
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        } else {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
     }
 
     /**
