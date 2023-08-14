@@ -17,7 +17,7 @@ public class MedioTransporteDAO {
     Conexion cn = new Conexion(); 
     Connection con; 
     PreparedStatement ps; 
-    ResultSet rs;   
+    ResultSet rs; 
     int resp; 
     
     /**
@@ -29,14 +29,15 @@ public class MedioTransporteDAO {
         List<MedioTransporte> listaMedioTransporte = new ArrayList<>(); 
         try {
             con = cn.Conexion(); 
-            ps = con.prepareCall(sql); 
+            ps = con.prepareStatement(sql); 
             rs = ps.executeQuery(); 
             while (rs.next()) {
                 MedioTransporte mt = new MedioTransporte(); 
                 mt.setCodigoTransporte(rs.getInt(1));
                 mt.setPlaca(rs.getString(2));
                 mt.setTipoVehiculo(rs.getString(3));
-                mt.setMarca(rs.getString(4));              
+                mt.setMarca(rs.getString(4)); 
+                listaMedioTransporte.add(mt);
             }
  
         } catch (Exception e) {
