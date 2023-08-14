@@ -96,7 +96,7 @@
                     <td ><strong>Código compra</strong></td>
                     <td><strong>Costo compra</strong></td>
                     <td><strong>Descripción compra</strong></td>
-                    <td><strong>Fecha Servicio</strong></td>                   
+                    <td><strong>Fecha compra</strong></td>                   
                     <td><strong>Código empresa</strong></td>                   
                     <td><strong>Acción</strong></td>                   
                 </tr>
