@@ -143,3 +143,22 @@ create table Equipo_has_Empleado(
 		references Empleado(codigoEmpleado)
 );
 show tables;
+
+insert into TipoEmpleado(descripcionTipoEmpleado, categoria, sueldo) values ('Programador', 'Programador', 7750.65);
+
+insert into MedioTransporte(placa, tipoVehiculo, marca) values('001AAA','Sedán', 'Honda');
+
+insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Computadora', 'PC de muchos recursos', 5);
+
+
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) values
+					('parmas', '123', 'Pedro', 'Armas', '12345678', 1,1,1);
+                    
+insert into TipoServicio(tipoServicio, descripcion, precioTipoServicio)
+	values('local', 'soy yo', 1500);
+    
+ 
+insert into Servicio(lugarServicio, numeroServicio, horaServicio, fechaServicio, codigoTipoServicio)
+	values('kinal', '1234567', '15:00:00', '2023-04-04', 1);
+    
+    select * from Servicio;
