@@ -176,6 +176,9 @@ insert into MedioTransporte(placa, tipoVehiculo, marca) values ('021EEE', 'Hilux
 insert into MedioTransporte(placa, tipoVehiculo, marca) values('001AAA','Sedán', 'Honda');
 -- --Empresa-- --
 insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('Guatex', '23456789', 'Carretera al Salvador', '1');
+insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('Seur', '45628797', 'colonia landivar', '1');
+insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('Nacex', '11884447', 'Ciudad de guatemala', '1');
+insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('Fedex', '24112100', 'Atanasio Tzu', '1');
 insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('DHL', '67190276', 'Carretera al Pacifico', '1');
 -- --Compra-- --
 insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(600, 'Compra de diferentes herramientas', 
@@ -212,7 +215,7 @@ insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) va
 insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (2, 2, 5);
 
 select *from Proveedor_has_Equipo;
-
+-- select * from Empresa
 
 
 
