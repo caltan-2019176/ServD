@@ -188,9 +188,14 @@ insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) v
 	'2023-10-04', 1);
 insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(80, 'Compra de unos bombillos led rgb', 
 	'2023-10-04', 2);
+    
 -- --Servicio_has_Compra-- --
 insert into Servicio_has_Compra(descripcionDetalle, codigoServicio, codigoCompra) values('Servicio para Burguer King', 2, 2);
-insert into Servicio_has_Compra(descripcionDetalle, codigoServicio, codigoCompra) values('Servicio para Kinal, reparacion', 1, 1);
+insert into Servicio_has_Compra(descripcionDetalle, codigoServicio, codigoCompra) values('Servicio para Kinal', 1, 1);
+insert into Servicio_has_Compra(descripcionDetalle, codigoServicio, codigoCompra) values('Servicio para Pizza Hut', 1, 2);
+insert into Servicio_has_Compra(descripcionDetalle, codigoServicio, codigoCompra) values('Servicio para Portales', 2, 1);
+insert into Servicio_has_Compra(descripcionDetalle, codigoServicio, codigoCompra) values('Servicio para Metronorte', 2, 1);
+
 -- --Tipo Empleado-- --
 insert into TipoEmpleado(descripcionTipoEmpleado, categoria, sueldo) values ('Programador', 'Programador', 7750.65);
 insert into TipoEmpleado(descripcionTipoEmpleado, categoria, sueldo) values ('Conductor', 'Conductor', 3750.65);

@@ -1,7 +1,7 @@
 <%-- 
     Document   : ProveedorEquipo
     Created on : 12/08/2023, 05:29:28 PM
-    Author     : Armas
+    Author     : Carlos Cabrera
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -9,12 +9,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-        <title>Servicio</title>
+        <title>Proveedor Equipo</title>
          <style>
 
         body {
@@ -69,7 +68,7 @@
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Código Equipo</label>
-                    <input type="text" id="telefono" name="" class="form-control">
+                    <input type="text" id="" name="" class="form-control">
                 </div>
                 <div class="action-btns">
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">

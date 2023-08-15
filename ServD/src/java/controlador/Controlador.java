@@ -22,6 +22,8 @@ import modelo.MedioTransporteDAO;
 import modelo.Proveedor_has_EquipoDAO;
 import modelo.Servicio;
 import modelo.ServicioDAO;
+import modelo.Servicio_has_Compra;
+import modelo.Servicio_has_CompraDAO;
 
 /**
  *
@@ -41,6 +43,8 @@ public class Controlador extends HttpServlet {
     CompraDAO compraDAO = new CompraDAO();
     Proveedor_has_EquipoDAO proveedor_has_EquipoDAO = new Proveedor_has_EquipoDAO();
     Proveedor_has_EquipoDAO proveedor_has_EquipoDAO1 = new Proveedor_has_EquipoDAO();
+    Servicio_has_Compra servicio_has_Compra = new Servicio_has_Compra();
+    Servicio_has_CompraDAO servicio_has_CompraDAO = new Servicio_has_CompraDAO();
     int codCompra;
 
     /**
@@ -164,6 +168,24 @@ public class Controlador extends HttpServlet {
         } else if (menu.equals("TipoEmpleado")) {
             request.getRequestDispatcher("TipoEmpleado.jsp").forward(request, response);
         } else if (menu.equals("ServicioCompra")) {
+            switch (accion) {
+                case "Listar":
+                    List listaServicioCompra = servicio_has_CompraDAO.listar();
+                    request.setAttribute("servicioCompras", listaServicioCompra);
+                    break;
+                case "Agregar":
+                    
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;
+            }
             request.getRequestDispatcher("ServicioCompra.jsp").forward(request, response);
         } else if (menu.equals("ProveedorEquipo")) {
             switch (accion){
