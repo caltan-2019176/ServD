@@ -155,10 +155,15 @@ insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Memoria R
 insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Disco Duro', '512GB', 1000);
 insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Mouse', 'Inalambrico HP', 180);
 
-
 -- --Proveedor_Has_Equipo-- --
-insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de Computadoras y sus partes', 1, 2);
-insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de diferentes herramientas y utensilios', 2, 1);
+insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de Computadoras y sus partes', 1, 1);
+insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de diferentes herramientas y utensilios', 2, 2);
+insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de mantenimiento de computadoras', 1, 1);
+insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de Microsoft ', 2, 2);
+insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de Sotfware ', 1, 2);
+
+
+
 -- --Tipo Servicio-- --
 insert into tipoServicio(tipoServicio, descripcion, precioTipoServicio) values ('Reparacion', 'Reparacion de algun electrodomestico o Computadora', 350);
 insert into tipoServicio(tipoServicio, descripcion, precioTipoServicio) values ('Limpieza', 'Limpieza de algun electrodomestico o Computadora', 250);
@@ -200,4 +205,10 @@ insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServici
 -- --Equipo_has_Empleado-- --
 insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (1, 1, 3);
 insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (2, 2, 5);
+
+select *from Proveedor_has_Equipo;
+
+
+
+
 
