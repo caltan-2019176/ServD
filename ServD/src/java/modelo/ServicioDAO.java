@@ -22,25 +22,26 @@ public class ServicioDAO {
 
     public List listar() {
         String sql = "select * from Servicio";
-        List<Servicio> listaServicios = new ArrayList<>();
+        List<Servicio> listaServicio = new ArrayList<>();
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                Servicio servi = new Servicio();
-                servi.setCodigoServicio(rs.getInt(1));
-                servi.setLugarServicio(rs.getString(2));
-                servi.setNumeroServicio(rs.getString(3));
-                servi.setHoraServicio(rs.getString(4));
-                servi.setFechaServicio(rs.getDate(5));
-                servi.setCodigoTipoServicio(rs.getInt(6));
+                Servicio servicio = new Servicio();
+                servicio.setCodigoServicio(rs.getInt(1));
+                servicio.setLugarServicio(rs.getString(2));
+                servicio.setNumeroServicio(rs.getString(3));
+                servicio.setHoraServicio(rs.getString(4));
+                servicio.setFechaServicio(rs.getDate(5));
+                servicio.setCodigoTipoServicio(rs.getInt(6));
+                listaServicio.add(servicio);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return listaServicios;
+        return listaServicio;
     }
 
     public int agregar(Servicio servi) {

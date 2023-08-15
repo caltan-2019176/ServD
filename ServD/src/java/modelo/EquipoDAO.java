@@ -25,7 +25,7 @@ public class EquipoDAO {
      * @return lista de Equipo
      */
     public List listar(){
-        String sql = "select * from Equipo";
+        String sql = "select * from equipo";
         List<Equipo> listaEquipo = new ArrayList<>();
         try {
             con = cn.Conexion();
@@ -36,7 +36,8 @@ public class EquipoDAO {
                 eq.setCodigoEquipo(rs.getInt(1));
                 eq.setNombreEquipo(rs.getString(2));
                 eq.setDescripcionEquipo(rs.getString(3));
-                eq.setCantidad(rs.getInt(4));  
+                eq.setCantidad(rs.getInt(4));
+                listaEquipo.add(eq);
             }
             
         } catch (Exception e) {
