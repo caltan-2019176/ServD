@@ -32,7 +32,7 @@
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Empresa" target="myFrame">Empresa</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Proveedor" target="myFrame">Proveedor</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Proveedor&accion=Listar" target="myFrame">Proveedor</a>
                     </li>
                     <li class="nav-item">
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Equipo&accion=Listar" target="myFrame">Equipo</a>
