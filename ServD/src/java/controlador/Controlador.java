@@ -15,6 +15,8 @@ import modelo.Compra;
 import modelo.CompraDAO;
 import modelo.Empleado;
 import modelo.EmpleadoDAO;
+import modelo.Empresa;
+import modelo.EmpresaDao;
 import modelo.Equipo;
 import modelo.EquipoDAO;
 import modelo.MedioTransporte;
@@ -39,6 +41,8 @@ public class Controlador extends HttpServlet {
     ServicioDAO servicioDAO = new ServicioDAO();
     Equipo equipo = new Equipo();
     EquipoDAO equipoDAO = new EquipoDAO();
+    Empresa empresa = new Empresa();
+    EmpresaDao empresaDao = new EmpresaDao();
     Empleado empleado = new Empleado();
     EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     Compra compra = new Compra();
@@ -124,6 +128,24 @@ public class Controlador extends HttpServlet {
             }
             request.getRequestDispatcher("Compra.jsp").forward(request, response);
         } else if (menu.equals("Empresa")) {
+            switch (accion) {
+                case "Listar":
+                    List listaEmpresa = empresaDao.listar();
+                    request.setAttribute("empresas", listaEmpresa);
+                    break;
+                case "Agregar":
+
+                    break;
+                case "Editar":
+
+                    break;
+                case "Actualizar":
+
+                    break;
+                case "Eliminar":
+
+                    break;
+            }
             request.getRequestDispatcher("Empresa.jsp").forward(request, response);
         } else if (menu.equals("Proveedor")) {
             switch(accion){
@@ -160,7 +182,7 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Equipo.jsp").forward(request, response);
-        } else if (menu.equals("Servicio")) {
+        }else if (menu.equals("Servicio")) {
             switch (accion) {
                 case "Listar":
                     List listaServicio = servicioDAO.listar();
