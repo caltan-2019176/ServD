@@ -27,9 +27,9 @@ public class Equipo_has_EmpleadoDAO{
         rs = ps.executeQuery();
         while(rs.next()){
             equipo_has_empleado.setEquipo_codigoEmpleado(rs.getInt("Equipo_codigoEmpleado"));
-            equipo_has_empleado.setCantidadEquipo(rs.getString("cantidadEquipo"));
-            equipo_has_empleado.setEquipo_codigoEquipo(rs.getInt("Equipo_codigoEquipo"));
-            equipo_has_empleado.setEmpleado_codigoEmpleado(rs.getInt("Empleado_codigoEmpleado"));
+            equipo_has_empleado.setCantidadEquipo(rs.getInt("cantidadEquipo"));
+            equipo_has_empleado.setEquipo_codigoEquipo(rs.getInt("equipo_codigoEquipo"));
+            equipo_has_empleado.setEmpleado_codigoEmpleado(rs.getInt("empleado_codigoEmpleado"));
         }
         }catch(Exception e){
             e.printStackTrace();
@@ -40,8 +40,8 @@ public class Equipo_has_EmpleadoDAO{
     }
     
     // Metodo Listar Equipo_has_Empleado
-    public List Listar(){
-        String sql = "Select * from Equipo_has_Empleado";
+    public List listar(){
+        String sql = "select * from Equipo_has_Empleado";
         List<Equipo_has_Empleado> listaEquipo_has_Empleado = new ArrayList<>();
         try{
             con= cn.Conexion();
@@ -50,7 +50,7 @@ public class Equipo_has_EmpleadoDAO{
             while(rs.next()){
                 Equipo_has_Empleado es = new Equipo_has_Empleado();
                 es.setEquipo_codigoEmpleado(rs.getInt(1));
-                es.setCantidadEquipo(rs.getString(2));
+                es.setCantidadEquipo(rs.getInt(2));
                 es.setEquipo_codigoEquipo(rs.getInt(3));
                 es.setEmpleado_codigoEmpleado(rs.getInt(4));
                 listaEquipo_has_Empleado.add(es);
@@ -65,12 +65,12 @@ public class Equipo_has_EmpleadoDAO{
     
     // Metodo Agregar Equipo_has_Empleado
     public int agregar(Equipo_has_Empleado emp){
-        String sql ="Insert into Equipo_has_Empleado (Equipo_codigoEmpleado, CantidadEquipo, Equipo_codigoEquipo, Empleado_codigoEmpleado) values (?,?,?,?)" ;
+        String sql ="Insert into Equipo_has_Empleado (Equipo_codigoEmpleado, cantidadEquipo, equipo_codigoEquipo, empleado_codigoEmpleado) values (?,?,?,?)" ;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, emp.getEquipo_codigoEmpleado());
-            ps.setString(2, emp.getCantidadEquipo());
+            ps.setInt(2, emp.getCantidadEquipo());
             ps.setInt(3, emp.getEquipo_codigoEquipo());
             ps.setInt(4, emp.getEmpleado_codigoEmpleado());
             
@@ -87,14 +87,14 @@ public class Equipo_has_EmpleadoDAO{
     // Buscar Equipo_has_Empleado
     public Equipo_has_Empleado listaEquipo_has_Empleado(int id){
     Equipo_has_Empleado ts = new Equipo_has_Empleado();
-    String sql ="Select * from Equipo_has_Empleado where Empleado_codigoEmpleado = "+id;
+    String sql ="Select * from Equipo_has_Empleado where Equipo_codigoEmpleado = "+id;
     try{
         con = cn.Conexion();
         ps = con.prepareStatement(sql);
         rs = ps.executeQuery();
         while(rs.next()){
                 ts.setEquipo_codigoEmpleado(rs.getInt(1));
-                ts.setCantidadEquipo(rs.getString(2));
+                ts.setCantidadEquipo(rs.getInt(2));
                 ts.setEquipo_codigoEquipo(rs.getInt(3));
                 ts.setEmpleado_codigoEmpleado(rs.getInt(4));
         }
@@ -108,7 +108,7 @@ public class Equipo_has_EmpleadoDAO{
     }
 
    // Metodo Eliminar Equipo_has_Empleado
-   public void eliminar(int id){
+   public void Eliminar(int id){
         String sql = "delete from Equipo_has_Empleado where Equipo_codigoEmpleado = "+id;
         try{
             con = cn.Conexion();

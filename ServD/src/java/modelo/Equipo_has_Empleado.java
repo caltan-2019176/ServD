@@ -4,7 +4,7 @@ package modelo;
 public class Equipo_has_Empleado{
     
     private int Equipo_codigoEmpleado;
-    private String cantidadEquipo;
+    private int cantidadEquipo;
     private int Equipo_codigoEquipo;
     private int Empleado_codigoEmpleado;
 
@@ -13,7 +13,7 @@ public class Equipo_has_Empleado{
         
     }
 
-    public Equipo_has_Empleado(int Equipo_codigoEmpleado, String cantidadEquipo, int Equipo_codigoEquipo, int Empleado_codigoEmpleado) {
+    public Equipo_has_Empleado(int Equipo_codigoEmpleado, int cantidadEquipo, int Equipo_codigoEquipo, int Empleado_codigoEmpleado) {
         this.Equipo_codigoEmpleado = Equipo_codigoEmpleado;
         this.cantidadEquipo = cantidadEquipo;
         this.Equipo_codigoEquipo = Equipo_codigoEquipo;
@@ -28,11 +28,11 @@ public class Equipo_has_Empleado{
         this.Equipo_codigoEmpleado = Equipo_codigoEmpleado;
     }
 
-    public String getCantidadEquipo() {
+    public int getCantidadEquipo() {
         return cantidadEquipo;
     }
 
-    public void setCantidadEquipo(String cantidadEquipo) {
+    public void setCantidadEquipo(int cantidadEquipo) {
         this.cantidadEquipo = cantidadEquipo;
     }
 
@@ -51,6 +51,6 @@ public class Equipo_has_Empleado{
     public void setEmpleado_codigoEmpleado(int Empleado_codigoEmpleado) {
         this.Empleado_codigoEmpleado = Empleado_codigoEmpleado;
     }
-    
+
     
 }
