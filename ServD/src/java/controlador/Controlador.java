@@ -11,10 +11,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Compra;
+import modelo.CompraDAO;
+import modelo.Empleado;
+import modelo.EmpleadoDAO;
 import modelo.Equipo;
 import modelo.EquipoDAO;
 import modelo.MedioTransporte;
 import modelo.MedioTransporteDAO;
+import modelo.Proveedor_has_EquipoDAO;
 import modelo.Servicio;
 import modelo.ServicioDAO;
 
@@ -30,6 +35,12 @@ public class Controlador extends HttpServlet {
     ServicioDAO servicioDAO = new ServicioDAO();
     Equipo equipo = new Equipo();
     EquipoDAO equipoDAO = new EquipoDAO();
+    Empleado empleado = new Empleado();
+    EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+    Compra compra = new Compra();
+    CompraDAO compraDAO = new CompraDAO();
+    Proveedor_has_EquipoDAO proveedor_has_EquipoDAO = new Proveedor_has_EquipoDAO();
+    Proveedor_has_EquipoDAO proveedor_has_EquipoDAO1 = new Proveedor_has_EquipoDAO();
     int codCompra;
 
     /**
@@ -67,9 +78,42 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("MedioTransporte.jsp").forward(request, response);
-        } else if (menu.equals("Empleado")) {
-            request.getRequestDispatcher("Empleado.jsp").forward(request, response);
+        }else if (menu.equals("Empleado")){
+            switch(accion){
+                
+                case "Listar":
+                    List listaEmpleados = empleadoDAO.listar();
+                    request.setAttribute("empleados", listaEmpleados);
+                    break;
+                case "Agregar":
+                
+                    break;
+                case "Editar":
+                
+                    break;
+                case "Actualizar":
+                
+                    break;
+                case "Eliminar":
+                
+                    break;
+            }
+            request.getRequestDispatcher("Empleado.jsp").forward(request, response); 
         } else if (menu.equals("Compra")) {
+            switch(accion){
+                case "Listar":
+                    List listaCompras = compraDAO.listar();
+                    request.setAttribute("compras", listaCompras);
+                    break;
+                case "Agregar":
+                    break;
+                case "Editar":
+                    break;
+                case "Actualizar":
+                    break;
+                case "Eliminar":
+                    break;
+            }
             request.getRequestDispatcher("Compra.jsp").forward(request, response);
         } else if (menu.equals("Empresa")) {
             request.getRequestDispatcher("Empresa.jsp").forward(request, response);
@@ -122,6 +166,24 @@ public class Controlador extends HttpServlet {
         } else if (menu.equals("ServicioCompra")) {
             request.getRequestDispatcher("ServicioCompra.jsp").forward(request, response);
         } else if (menu.equals("ProveedorEquipo")) {
+            switch (accion){
+                case "Listar":
+                    List listaProveedorEquipo = proveedor_has_EquipoDAO.listar();
+                    request.setAttribute("proveedorEquipos", listaProveedorEquipo);
+                    break;
+                case "Agregar":
+                    
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;
+            }
             request.getRequestDispatcher("ProveedorEquipo.jsp").forward(request, response);
         } else if (menu.equals("EquipoEmpleado")) {
             request.getRequestDispatcher("EquipoEmpleado.jsp").forward(request, response);
