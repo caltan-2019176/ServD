@@ -176,6 +176,9 @@ insert into MedioTransporte(placa, tipoVehiculo, marca) values ('021EEE', 'Hilux
 insert into MedioTransporte(placa, tipoVehiculo, marca) values('001AAA','Sedán', 'Honda');
 -- --Empresa-- --
 insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('Guatex', '23456789', 'Carretera al Salvador', '1');
+insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('Seur', '45628797', 'colonia landivar', '1');
+insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('Nacex', '11884447', 'Ciudad de guatemala', '1');
+insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('Fedex', '24112100', 'Atanasio Tzu', '1');
 insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('DHL', '67190276', 'Carretera al Pacifico', '1');
 -- --Compra-- --
 insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(600, 'Compra de diferentes herramientas', 
@@ -207,13 +210,28 @@ insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, t
 -- --Empleados_has_Servicios-- --
 insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (350, 1, 1);
 insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (250, 2, 2);
+insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (440, 2, 1);
+insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (290, 1, 2);
+insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (333, 1, 1);
+
+select * from Empleado;
+select * from Servicio;
+select * from Empleados_has_Servicios;
+
+
+
 -- --Equipo_has_Empleado-- --
 insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (1, 1, 3);
-insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (2, 2, 5);
+insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (2, 2, 3);
+insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (3, 1, 2);
+insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (4, 3, 1);
+insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (5, 4, 1);
+insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (6, 2, 1);
+insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (7, 1, 1);
 
-select *from Equipo_has_Empleado;
+select *from Proveedor_has_Equipo;
+-- select * from Empresa
 
-Select * from Equipo_has_Empleado where Equipo_codigoEmpleado;
 
 
 
