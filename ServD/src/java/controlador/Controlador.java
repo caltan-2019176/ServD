@@ -47,6 +47,7 @@ public class Controlador extends HttpServlet {
     ServicioDAO servicioDAO = new ServicioDAO();
     Equipo_has_Empleado equipo_has_Empleado = new Equipo_has_Empleado();
     Equipo_has_EmpleadoDAO equipo_has_EmpleadoDAO = new Equipo_has_EmpleadoDAO();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -63,67 +64,67 @@ public class Controlador extends HttpServlet {
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
         } else if (menu.equals("Equipo")) {
-            switch (accion){
+            switch (accion) {
                 case "Listar":
                     List listaEquipo = equipoDAO.listar();
                     request.setAttribute("equipos", listaEquipo);
                     break;
                 case "Agregar":
-                    
+
                     break;
                 case "Editar":
-                    
+
                     break;
                 case "Actualizar":
-                    
+
                     break;
                 case "Eliminar":
-                    
+
                     break;
             }
             request.getRequestDispatcher("Equipo.jsp").forward(request, response);
-        }else if (menu.equals("ProveedorEquipo")) {
-            switch (accion){
+        } else if (menu.equals("ProveedorEquipo")) {
+            switch (accion) {
                 case "Listar":
                     List listaProveedorEquipo = proveedor_has_EquipoDAO.listar();
                     request.setAttribute("proveedorEquipos", listaProveedorEquipo);
                     break;
                 case "Agregar":
-                    
+
                     break;
                 case "Editar":
-                    
+
                     break;
                 case "Actualizar":
-                    
+
                     break;
                 case "Eliminar":
-                    
+
                     break;
             }
             request.getRequestDispatcher("ProveedorEquipo.jsp").forward(request, response);
-         } else if (menu.equals("ServicioCompra")) {
+        } else if (menu.equals("ServicioCompra")) {
             switch (accion) {
                 case "Listar":
                     List listaServicioCompra = servicio_has_CompraDAO.listar();
                     request.setAttribute("servicioCompras", listaServicioCompra);
                     break;
                 case "Agregar":
-                    
+
                     break;
                 case "Editar":
-                    
+
                     break;
                 case "Actualizar":
-                    
+
                     break;
                 case "Eliminar":
-                    
+
                     break;
             }
             request.getRequestDispatcher("ServicioCompra.jsp").forward(request, response);
-        }else if (menu.equals("Compra")) {
-            switch(accion){
+        } else if (menu.equals("Compra")) {
+            switch (accion) {
                 case "Listar":
                     List listaCompras = compraDAO.listar();
                     request.setAttribute("compras", listaCompras);
@@ -158,28 +159,25 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Servicio.jsp").forward(request, response);
-        }
-        
-        else if (menu.equals("EquipoEmpleado")) {
-            switch(accion){
+        } else if (menu.equals("EquipoEmpleado")) {
+            switch (accion) {
                 case "Listar":
                     List listaEquipoEmpleado = equipo_has_EmpleadoDAO.listar();
                     request.setAttribute("equipoEmpleados", listaEquipoEmpleado);
                     break;
                 case "Agregar":
-                     break;
-                 case "Editar":
-                     break;
-                 case "Actualizar":     
                     break;
-                 case "Eliminar":    
-                    break;       
+                case "Editar":
+                    break;
+                case "Actualizar":
+                    break;
+                case "Eliminar":
+                    break;
             }
-             request.getRequestDispatcher("EquipoEmpleado.jsp").forward(request, response);
-             
-             
+            request.getRequestDispatcher("EquipoEmpleado.jsp").forward(request, response);
+
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

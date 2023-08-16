@@ -1,4 +1,5 @@
 package modelo;
+/*pablo bermudez modificado el 16/08/23*/
 
 public class Equipo_has_Empleado{
     
