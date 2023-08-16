@@ -210,6 +210,16 @@ insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, t
 -- --Empleados_has_Servicios-- --
 insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (350, 1, 1);
 insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (250, 2, 2);
+insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (440, 2, 1);
+insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (290, 1, 2);
+insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (333, 1, 1);
+
+select * from Empleado;
+select * from Servicio;
+select * from Empleados_has_Servicios;
+
+
+
 -- --Equipo_has_Empleado-- --
 insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (1, 1, 3);
 insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (2, 2, 5);

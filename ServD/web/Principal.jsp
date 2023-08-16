@@ -59,7 +59,7 @@
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=EquipoEmpleado" target="myFrame">Equipo Empleado</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=EmpleadoServicio" target="myFrame">Empleado Servicio</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=EmpleadoServicio&accion=Listar" target="myFrame">Empleado Servicio</a>
                     </li>
                 </ul>
             </div>
