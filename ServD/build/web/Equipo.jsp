@@ -69,7 +69,7 @@
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Cantidad:</label>
-                    <input type="text" id="telefono" name="telefono" class="form-control">
+                    <input type="text" id="telefono" name="" class="form-control">
                 </div>
                 <div class="action-btns">
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
