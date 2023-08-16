@@ -31,8 +31,9 @@ public class Proveedor_has_EquipoDAO {
                 Proveedor_has_Equipo pe = new Proveedor_has_Equipo();
                 pe.setCodigoProveedor_has_Equipo(rs.getInt(1));
                 pe.setDescripcionProveedor(rs.getString(2));
-                pe.setCodigoProveedor_has_Equipo(rs.getInt(3));
+                pe.setCodigoProveedor(rs.getInt(3));
                 pe.setCodigoEquipo(rs.getInt(4));
+                listaProveedor_has_Equipo.add(pe);
             }
         }catch(Exception e){
             e.printStackTrace();

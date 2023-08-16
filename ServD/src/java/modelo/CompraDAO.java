@@ -1,15 +1,15 @@
+
 package modelo;
 
 import config.Conexion;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Modelo DAO de la clase Compra
+ *Modelo Dao de la clase Compra
  * @author Denis Abad
  */
 public class CompraDAO {
@@ -37,6 +37,7 @@ public class CompraDAO {
                 c.setDescripcionCompra(rs.getString(3));
                 c.setFechaCompra(rs.getDate(4));
                 c.setCodigoEmpresa(rs.getInt(5));
+                listaCompra.add(c);
             }
         } catch(Exception e){
             e.printStackTrace();

@@ -34,6 +34,7 @@ public class Servicio_has_CompraDAO {
                 sc.setDescripcionDetalle(rs.getString(2));
                 sc.setCodigoServicio(rs.getInt(3));
                 sc.setCodigoCompra(rs.getInt(4));
+                listaServicio_has_Compra.add(sc);
             }
         }catch(Exception e){
             e.printStackTrace();
