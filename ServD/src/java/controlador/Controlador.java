@@ -24,6 +24,8 @@ import modelo.MedioTransporteDAO;
 import modelo.Proveedor_has_EquipoDAO;
 import modelo.Servicio;
 import modelo.ServicioDAO;
+import modelo.Servicio_has_Compra;
+import modelo.Servicio_has_CompraDAO;
 
 /**
  *
@@ -33,7 +35,10 @@ public class Controlador extends HttpServlet {
 
     Equipo equipo = new Equipo();
     EquipoDAO equipoDAO = new EquipoDAO();
-    
+    Proveedor_has_EquipoDAO proveedor_has_EquipoDAO = new Proveedor_has_EquipoDAO();
+    Proveedor_has_EquipoDAO proveedor_has_EquipoDAO1 = new Proveedor_has_EquipoDAO();
+    Servicio_has_Compra servicio_has_Compra = new Servicio_has_Compra();
+    Servicio_has_CompraDAO servicio_has_CompraDAO = new Servicio_has_CompraDAO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -70,7 +75,47 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Equipo.jsp").forward(request, response);
-        } 
+        }else if (menu.equals("ProveedorEquipo")) {
+            switch (accion){
+                case "Listar":
+                    List listaProveedorEquipo = proveedor_has_EquipoDAO.listar();
+                    request.setAttribute("proveedorEquipos", listaProveedorEquipo);
+                    break;
+                case "Agregar":
+                    
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;
+            }
+            request.getRequestDispatcher("ProveedorEquipo.jsp").forward(request, response);
+         } else if (menu.equals("ServicioCompra")) {
+            switch (accion) {
+                case "Listar":
+                    List listaServicioCompra = servicio_has_CompraDAO.listar();
+                    request.setAttribute("servicioCompras", listaServicioCompra);
+                    break;
+                case "Agregar":
+                    
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;
+            }
+            request.getRequestDispatcher("ServicioCompra.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
