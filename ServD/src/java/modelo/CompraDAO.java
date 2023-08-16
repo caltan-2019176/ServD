@@ -37,6 +37,7 @@ public class CompraDAO {
                 c.setDescripcionCompra(rs.getString(3));
                 c.setFechaCompra(rs.getDate(4));
                 c.setCodigoEmpresa(rs.getInt(5));
+                listaCompra.add(c);
             }
         } catch(Exception e){
             e.printStackTrace();
