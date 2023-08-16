@@ -50,7 +50,7 @@
     </style>
     </head>
     <body>
- <div >
+ <div>
     <div class="card col-sm-11.5 card-form">
         <div class="card-body">
             <form action="Controlador?menu=ProveedorEquipo" method="POST">

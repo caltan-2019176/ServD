@@ -4,20 +4,20 @@ package modelo;
 public class Equipo_has_Empleado{
     
     private int Equipo_codigoEmpleado;
+    private int codigoEquipo;
+    private int codigoEmpleado;
     private int cantidadEquipo;
-    private int Equipo_codigoEquipo;
-    private int Empleado_codigoEmpleado;
 
     //Contructor vacio
     public Equipo_has_Empleado(){
         
     }
 
-    public Equipo_has_Empleado(int Equipo_codigoEmpleado, int cantidadEquipo, int Equipo_codigoEquipo, int Empleado_codigoEmpleado) {
+    public Equipo_has_Empleado(int Equipo_codigoEmpleado, int codigoEquipo, int codigoEmpleado, int cantidadEquipo) {
         this.Equipo_codigoEmpleado = Equipo_codigoEmpleado;
+        this.codigoEquipo = codigoEquipo;
+        this.codigoEmpleado = codigoEmpleado;
         this.cantidadEquipo = cantidadEquipo;
-        this.Equipo_codigoEquipo = Equipo_codigoEquipo;
-        this.Empleado_codigoEmpleado = Empleado_codigoEmpleado;
     }
 
     public int getEquipo_codigoEmpleado() {
@@ -28,6 +28,22 @@ public class Equipo_has_Empleado{
         this.Equipo_codigoEmpleado = Equipo_codigoEmpleado;
     }
 
+    public int getCodigoEquipo() {
+        return codigoEquipo;
+    }
+
+    public void setCodigoEquipo(int codigoEquipo) {
+        this.codigoEquipo = codigoEquipo;
+    }
+
+    public int getCodigoEmpleado() {
+        return codigoEmpleado;
+    }
+
+    public void setCodigoEmpleado(int codigoEmpleado) {
+        this.codigoEmpleado = codigoEmpleado;
+    }
+
     public int getCantidadEquipo() {
         return cantidadEquipo;
     }
@@ -36,21 +52,7 @@ public class Equipo_has_Empleado{
         this.cantidadEquipo = cantidadEquipo;
     }
 
-    public int getEquipo_codigoEquipo() {
-        return Equipo_codigoEquipo;
-    }
-
-    public void setEquipo_codigoEquipo(int Equipo_codigoEquipo) {
-        this.Equipo_codigoEquipo = Equipo_codigoEquipo;
-    }
-
-    public int getEmpleado_codigoEmpleado() {
-        return Empleado_codigoEmpleado;
-    }
-
-    public void setEmpleado_codigoEmpleado(int Empleado_codigoEmpleado) {
-        this.Empleado_codigoEmpleado = Empleado_codigoEmpleado;
-    }
-
+  
+    
     
 }
