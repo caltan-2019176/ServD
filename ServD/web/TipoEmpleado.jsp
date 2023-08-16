@@ -68,6 +68,7 @@
                 <div class="form-group">
                         <label class="colorLabel" for="dato">Sueldo</label>
                         <input type="text" id="nombresEmpleado" name="sueldo" class="form-control">
+                 </div>       
                 <div class="action-btns">
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
