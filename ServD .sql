@@ -143,3 +143,90 @@ create table Equipo_has_Empleado(
 		references Empleado(codigoEmpleado)
 );
 show tables;
+
+-- -------------------------------- Agregar Datos ---------------------------------------
+-- --Proveedor-- --
+insert into Proveedor(nombreProveedor, direccionProveedor, telefonoProveedor) values ('Compu Bodegas', 'Zona 10', '67543289');
+insert into Proveedor(nombreProveedor, direccionProveedor, telefonoProveedor) values ('Vision Consultores S.A.', 'Zona 8 de mixco', '87654323');
+-- --Equipo-- --
+insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Herramientas', 'Diferentes herramientas para trabajo', 2000);
+insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Computadora', 'PC de muchos recursos', 300);
+insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Memoria Ram', '16 Ram', 4000);
+insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Disco Duro', '512GB', 1000);
+insert into Equipo(nombreEquipo, descripcionEquipo, cantidad) values ('Mouse', 'Inalambrico HP', 180);
+
+-- --Proveedor_Has_Equipo-- --
+insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de Computadoras y sus partes', 1, 1);
+insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de diferentes herramientas y utensilios', 2, 2);
+insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de mantenimiento de computadoras', 1, 1);
+insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de Microsoft ', 2, 2);
+insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEquipo) values ('Distribuidora de Sotfware ', 1, 2);
+
+
+
+-- --Tipo Servicio-- --
+insert into tipoServicio(tipoServicio, descripcion, precioTipoServicio) values ('Reparacion', 'Reparacion de algun electrodomestico o Computadora', 350);
+insert into tipoServicio(tipoServicio, descripcion, precioTipoServicio) values ('Limpieza', 'Limpieza de algun electrodomestico o Computadora', 250);
+-- --Servicio-- --
+insert into Servicio(lugarServicio, numeroServicio, horaServicio, fechaServicio, codigoTipoServicio)
+	values('kinal', '1234567', '15:00:00', '2023-04-04', 1);
+insert into Servicio(lugarServicio, numeroServicio, horaServicio, fechaServicio, codigoTipoServicio) values ('Burguer King cc Miraflores', 2, '14:00:00', '2023-08-01', 2);
+-- --Medio Transporte-- --
+insert into MedioTransporte(placa, tipoVehiculo, marca) values ('021EEE', 'Hilux', 'Toyota');
+insert into MedioTransporte(placa, tipoVehiculo, marca) values('001AAA','Sedán', 'Honda');
+-- --Empresa-- --
+insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('Guatex', '23456789', 'Carretera al Salvador', '1');
+insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('Seur', '45628797', 'colonia landivar', '1');
+insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('Nacex', '11884447', 'Ciudad de guatemala', '1');
+insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('Fedex', '24112100', 'Atanasio Tzu', '1');
+insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('DHL', '67190276', 'Carretera al Pacifico', '1');
+-- --Compra-- --
+insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(600, 'Compra de diferentes herramientas', 
+	'2023-09-02', 2);
+insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(650, 'Compra de diferentes utensilios de plastico', 
+	'2023-10-04', 1);
+insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(2000, 'Compra de electronicos', 
+	'2023-10-04', 2);
+insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(200, 'Compra ropa usada', 
+	'2023-10-04', 1);
+insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(80, 'Compra de unos bombillos led rgb', 
+	'2023-10-04', 2);
+    
+-- --Servicio_has_Compra-- --
+insert into Servicio_has_Compra(descripcionDetalle, codigoServicio, codigoCompra) values('Servicio para Burguer King', 2, 2);
+insert into Servicio_has_Compra(descripcionDetalle, codigoServicio, codigoCompra) values('Servicio para Kinal', 1, 1);
+insert into Servicio_has_Compra(descripcionDetalle, codigoServicio, codigoCompra) values('Servicio para Pizza Hut', 1, 2);
+insert into Servicio_has_Compra(descripcionDetalle, codigoServicio, codigoCompra) values('Servicio para Portales', 2, 1);
+insert into Servicio_has_Compra(descripcionDetalle, codigoServicio, codigoCompra) values('Servicio para Metronorte', 2, 1);
+
+-- --Tipo Empleado-- --
+insert into TipoEmpleado(descripcionTipoEmpleado, categoria, sueldo) values ('Programador', 'Programador', 7750.65);
+insert into TipoEmpleado(descripcionTipoEmpleado, categoria, sueldo) values ('Conductor', 'Conductor', 3750.65);
+-- --Empleado-- --
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) values
+	('parmas', '123', 'Pedro', 'Armas', '12345678', 1,1,1);
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
+	values ('caltan', '123', 'Carlos', 'Altan', '87654321', 2,2,2);
+-- --Empleados_has_Servicios-- --
+insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (350, 1, 1);
+insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (250, 2, 2);
+insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (440, 2, 1);
+insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (290, 1, 2);
+insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (333, 1, 1);
+
+select * from Empleado;
+select * from Servicio;
+select * from Empleados_has_Servicios;
+
+
+
+-- --Equipo_has_Empleado-- --
+insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (1, 1, 3);
+insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (2, 2, 5);
+
+select *from Proveedor_has_Equipo;
+-- select * from Empresa
+
+
+
+
