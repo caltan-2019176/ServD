@@ -207,6 +207,12 @@ insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, t
 	('parmas', '123', 'Pedro', 'Armas', '12345678', 1,1,1);
 insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
 	values ('caltan', '123', 'Carlos', 'Altan', '87654321', 2,2,2);
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
+	values ('as', '111', 'Juan', 'Boteo', '3366552', 2,2,2);
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
+	values ('ad', '222', 'Sebatian', 'Abad', '4455886', 2,2,2);
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
+	values ('ar', '333', 'Daniel', 'Cortez', '1112255', 2,2,2);
 -- --Empleados_has_Servicios-- --
 insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (350, 1, 1);
 insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (250, 2, 2);
@@ -222,7 +228,10 @@ select * from Empleados_has_Servicios;
 
 -- --Equipo_has_Empleado-- --
 insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (1, 1, 3);
-insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (2, 2, 5);
+insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (2, 2, 3);
+insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (3, 1, 2);
+insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (4, 3, 1);
+insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (5, 4, 1);
 
 select *from Proveedor_has_Equipo;
 -- select * from Empresa

@@ -21,6 +21,8 @@ import modelo.Empresa;
 import modelo.EmpresaDao;
 import modelo.Equipo;
 import modelo.EquipoDAO;
+import modelo.Equipo_has_Empleado;
+import modelo.Equipo_has_EmpleadoDAO;
 import modelo.MedioTransporte;
 import modelo.MedioTransporteDAO;
 import modelo.Proveedor;
@@ -55,6 +57,8 @@ public class Controlador extends HttpServlet {
     Servicio_has_CompraDAO servicio_has_CompraDAO = new Servicio_has_CompraDAO();
     Proveedor proveedor = new Proveedor();
     ProveedorDAO proveedorDAO = new ProveedorDAO();
+    Equipo_has_Empleado equipo_has_empleado = new Equipo_has_Empleado();
+    Equipo_has_EmpleadoDAO equipo_has_EmpleadoDAO = new Equipo_has_EmpleadoDAO();
     Empleados_has_Servicios empleados_has_servicios = new Empleados_has_Servicios();
     Empleados_has_ServiciosDAO empleados_has_serviciosDAO = new Empleados_has_ServiciosDAO();
     int codCompra;
@@ -251,7 +255,23 @@ public class Controlador extends HttpServlet {
             }
             request.getRequestDispatcher("ProveedorEquipo.jsp").forward(request, response);
         } else if (menu.equals("EquipoEmpleado")) {
-            request.getRequestDispatcher("EquipoEmpleado.jsp").forward(request, response);
+            switch(accion){
+                case "Listar":
+                    List listaEquipoEmpleado = equipo_has_EmpleadoDAO.listar();
+                    request.setAttribute("equipoEmpleados", listaEquipoEmpleado);
+                    break;
+                case "Agregar":
+                     break;
+                 case "Editar":
+                     break;
+                 case "Actualizar":     
+                    break;
+                 case "Eliminar":    
+                    break;       
+            }
+             request.getRequestDispatcher("EquipoEmpleado.jsp").forward(request, response);
+             
+             
         } else if (menu.equals("EmpleadoServicio")) {
             switch (accion){
                 case "Listar":
