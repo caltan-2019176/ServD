@@ -38,6 +38,7 @@ public class EmpresaDao {
                 emp.setTelefonoEmpresa(rs.getString(3));
                 emp.setDireccionEmpresa(rs.getString(4));
                 emp.setEstadoEmpresa(rs.getString(5));
+                listaEmpresa.add(emp);
             }
         }catch (Exception e) {
             e.printStackTrace();
@@ -63,7 +64,7 @@ public class EmpresaDao {
     }
     
     //buscar datos
-    public Empresa listarEmpresa(int id){
+    public Empresa buscarEmpresa(int id){
         Empresa emp = new Empresa(); 
         String sql = "select * from Empresa where codigoEmpresa = "+id;
         try {
