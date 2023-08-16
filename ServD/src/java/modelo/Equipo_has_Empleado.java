@@ -1,6 +1,5 @@
 package modelo;
 
-
 public class Equipo_has_Empleado{
     
     private int Equipo_codigoEmpleado;

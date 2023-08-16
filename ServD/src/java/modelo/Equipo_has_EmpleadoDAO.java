@@ -7,47 +7,47 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+public class Equipo_has_EmpleadoDAO {
 
-public class Equipo_has_EmpleadoDAO{
     Conexion cn = new Conexion();
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
     int resp;
-    
-    public Equipo_has_Empleado validar(int Equipo_codigoEmpleado){
-        // Vamos a instaciar un objeto de la entidad equipo_has_empleado
+
+    public Equipo_has_Empleado validar(int Equipo_codigoEmpleado) {
+        // Vamos a instaciar un objeto de la entidad TipoServicio
         Equipo_has_Empleado equipo_has_empleado = new Equipo_has_Empleado();
         String sql = "Select * from Equipo_has_Empleado where Equipo_codigoEmpleado = ?";
-        
-        try{
-        con = cn.Conexion();
-        ps = con.prepareCall(sql);
-        ps.setInt(1, Equipo_codigoEmpleado);
-        rs = ps.executeQuery();
-        while(rs.next()){
-            equipo_has_empleado.setEquipo_codigoEmpleado(rs.getInt("Equipo_codigoEmpleado"));
-            equipo_has_empleado.setCantidadEquipo(rs.getInt("codigoEquipo"));
-            equipo_has_empleado.setCodigoEquipo(rs.getInt("codigoEmpleado"));
-            equipo_has_empleado.setCodigoEmpleado(rs.getInt("cantidadEquipo"));
-        }
-        }catch(Exception e){
+
+        try {
+            con = cn.Conexion();
+            ps = con.prepareCall(sql);
+            ps.setInt(1, Equipo_codigoEmpleado);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                equipo_has_empleado.setEquipo_codigoEmpleado(rs.getInt("Equipo_codigoEmpleado"));
+                equipo_has_empleado.setCantidadEquipo(rs.getInt("codigoEquipo"));
+                equipo_has_empleado.setCodigoEquipo(rs.getInt("codigoEmpleado"));
+                equipo_has_empleado.setCodigoEmpleado(rs.getInt("cantidadEquipo"));
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        return equipo_has_empleado;// Retorna Tipo de equipo_has_empleado encontrado
-        
+
+        return equipo_has_empleado;// Retorna Tipo de Equipo_has_EmpleadoDAO
+
     }
-    
-    // Metodo Listar equipo_has_empleado
-    public List listar(){
+
+    // Metodo Listar Equipo_has_EmpleadoDAO
+    public List listar() {
         String sql = "Select * from Equipo_has_Empleado";
         List<Equipo_has_Empleado> listaEquipo_has_Empleado = new ArrayList<>();
-        try{
-            con= cn.Conexion();
-            ps= con.prepareStatement(sql);
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Equipo_has_Empleado es = new Equipo_has_Empleado();
                 es.setEquipo_codigoEmpleado(rs.getInt(1));
                 es.setCodigoEquipo(rs.getInt(2));
@@ -55,60 +55,58 @@ public class Equipo_has_EmpleadoDAO{
                 es.setCantidadEquipo(rs.getInt(4));
                 listaEquipo_has_Empleado.add(es);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return listaEquipo_has_Empleado;
-        
+
     }
-    
-    // Metodo Agregar equipo_has_empleado
-    public int agregar(Equipo_has_Empleado emp){
-        String sql ="Insert into Equipo_has_Empleado (codigoEquipo, codigoEmpleado, cantidadEquipo) values (?,?,?)" ;
-        try{
+
+    // Metodo Agregar Equipo_has_EmpleadoDAO
+    public int agregar(Equipo_has_Empleado emp) {
+        String sql = "Insert into Equipo_has_Empleado (codigoEquipo, codigoEmpleado, cantidadEquipo) values (?,?,?)";
+        try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, emp.getCodigoEquipo());
             ps.setInt(2, emp.getCodigoEmpleado());
             ps.setInt(3, emp.getCantidadEquipo());
-            
+
             ps.executeUpdate();
-        
-        }catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        
+
         return resp;
     }
-    
-    // Buscar equipo_has_empleado
-    public Equipo_has_Empleado listaEquipo_has_Empleado(int id){
-    Equipo_has_Empleado ts = new Equipo_has_Empleado();
-    String sql ="Select * from Equipo_has_Empleado where Equipo_codigoEmpleado = "+id;
-    try{
-        con = cn.Conexion();
-        ps = con.prepareStatement(sql);
-        rs = ps.executeQuery();
-        while(rs.next()){
+
+    // Buscar Equipo_has_EmpleadoDAO
+    public Equipo_has_Empleado listaEquipo_has_Empleado(int id) {
+        Equipo_has_Empleado ts = new Equipo_has_Empleado();
+        String sql = "Select * from Equipo_has_Empleado where Equipo_codigoEmpleado = " + id;
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
                 ts.setCodigoEquipo(rs.getInt(2));
                 ts.setCodigoEmpleado(rs.getInt(3));
                 ts.setCantidadEquipo(rs.getInt(4));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    
-    }catch(Exception e){
-        e.printStackTrace();
-    }
-    
-    
-    return ts;
+
+        return ts;
     }
 
-        //Método que editar los datos de equipo_has_empleado
-    public int actualizar(Equipo_has_Empleado ehm){
+    //Método que editar los datos de Equipo_has_EmpleadoDAO
+    public int actualizar(Equipo_has_Empleado ehm) {
         String sql = "update Equipo_has_Empleado set Equipo_codigoEmpleado = ?, codigoEquipo = ?, codigoEmpleado = ?, cantidadEquipo = ? ";
-        try{
+        try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, ehm.getEquipo_codigoEmpleado());
@@ -116,22 +114,22 @@ public class Equipo_has_EmpleadoDAO{
             ps.setInt(3, ehm.getCodigoEmpleado());
             ps.setInt(4, ehm.getCantidadEquipo());
             ps.executeUpdate();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return resp;
     }
-    
-   // Metodo Eliminar equipo_has_empleado
-   public void eliminar(int id){
-        String sql = "delete from Equipo_has_Empleado where Equipo_codigoEmpleado = "+id;
-        try{
+
+    // Metodo Eliminar Equipo_has_EmpleadoDAO
+    public void eliminar(int id) {
+        String sql = "delete from Equipo_has_Empleado where Equipo_codigoEmpleado = " + id;
+        try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
 }

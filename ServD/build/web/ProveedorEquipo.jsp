@@ -1,8 +1,9 @@
 <%-- 
     Document   : ProveedorEquipo
-    Created on : 12/08/2023, 05:29:28 PM
-    Author     : Carlos Cabrera
+    Created on : 16-ago-2023, 12:33:12
+    Author     : Carlitos Cabrera
 --%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -110,3 +111,4 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     </body>
 </html>
+
