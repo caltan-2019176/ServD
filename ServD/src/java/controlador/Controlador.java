@@ -17,12 +17,16 @@ import modelo.Empleado;
 import modelo.EmpleadoDAO;
 import modelo.Empleados_has_Servicios;
 import modelo.Empleados_has_ServiciosDAO;
+import modelo.Empresa;
+import modelo.EmpresaDao;
 import modelo.Equipo;
 import modelo.EquipoDAO;
 import modelo.Equipo_has_Empleado;
 import modelo.Equipo_has_EmpleadoDAO;
 import modelo.MedioTransporte;
 import modelo.MedioTransporteDAO;
+import modelo.Proveedor;
+import modelo.ProveedorDAO;
 import modelo.Proveedor_has_EquipoDAO;
 import modelo.Servicio;
 import modelo.ServicioDAO;
@@ -30,6 +34,9 @@ import modelo.Servicio_has_Compra;
 import modelo.Servicio_has_CompraDAO;
 import modelo.TipoEmpleado;
 import modelo.TipoEmpleadoDAO;
+import modelo.TipoServicio;
+import modelo.TipoServicioDAO;
+
 
 /**
  *
@@ -55,6 +62,14 @@ public class Controlador extends HttpServlet {
     TipoEmpleadoDAO tipoEmpleadoDAO = new TipoEmpleadoDAO();
     Empleado empleado = new Empleado();
     EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+    Proveedor proveedor = new Proveedor();
+    ProveedorDAO proveedorDao = new ProveedorDAO();
+    Empresa empresa = new Empresa();
+    EmpresaDao empresaDao = new EmpresaDao();
+    Empleados_has_Servicios empleados_has_servicios = new Empleados_has_Servicios();
+    Empleados_has_ServiciosDAO empleados_has_serviciosDAO = new Empleados_has_ServiciosDAO();
+    TipoServicio tipoServicio = new TipoServicio();
+    TipoServicioDAO tipoServicioDAO = new TipoServicioDAO();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -243,6 +258,85 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("MedioTransporte.jsp").forward(request, response);
+            
+        }else if (menu.equals("Proveedor")) {
+            switch (accion) {
+                case "Listar":
+                    List listaProveedor = proveedorDao.listar();
+                    request.setAttribute("proveedores", listaProveedor);
+                    break;
+                case "Agregar":
+
+                    break;
+                case "Editar":
+
+                    break;
+                case "Actualizar":
+
+                    break;
+                case "Eliminar":
+
+                    break;
+            }
+            request.getRequestDispatcher("Proveedor.jsp").forward(request, response);
+            
+        }else if (menu.equals("Empresa")) {
+            switch (accion) {
+                case "Listar":
+                    List listaEmpresa = empresaDao.listar();
+                    request.setAttribute("empresas", listaEmpresa);
+                    break;
+                case "Agregar":
+
+                    break;
+                case "Editar":
+
+                    break;
+                case "Actualizar":
+
+                    break;
+                case "Eliminar":
+
+                    break;
+            }
+            request.getRequestDispatcher("Empresa.jsp").forward(request, response);
+        }else if (menu.equals("EmpleadoServicio")) {
+            switch (accion){
+                case "Listar":
+                    List listaEmpleados_has_Servicios = empleados_has_serviciosDAO.listar();
+                    request.setAttribute("empleadoServicios", listaEmpleados_has_Servicios);
+                    break;
+                case "Agregar":
+                    
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;
+            }
+            request.getRequestDispatcher("EmpleadoServicio.jsp").forward(request, response);
+        }else if (menu.equals("TipoServicio")) {
+            switch(accion){
+                case "Listar":
+                    List listaTipoServicio = tipoServicioDAO.listar();
+                    request.setAttribute("tipoServicios", listaTipoServicio);
+                    break;
+                 case "Agregar":
+                    break;
+                case "Editar":
+                    break;
+                case "Actualizar":
+                    break;
+                case "Eliminar":
+                    break;
+            }
+            request.getRequestDispatcher("TipoServicio.jsp").forward(request, response);
+            
         }
     }
 

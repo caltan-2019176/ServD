@@ -29,10 +29,10 @@
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Compra&accion=Listar" target="myFrame">Compra</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="" target="">Empresa</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Empresa&accion=Listar" target="myFrame">Empresa</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="" target="">Proveedor</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Proveedor&accion=Listar" target="myFrame">Proveedor</a>
                     </li>
                     <li class="nav-item">
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Equipo&accion=Listar" target="myFrame">Equipo</a>
@@ -41,7 +41,7 @@
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Servicio&accion=Listar" target="myFrame">Servicio</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="" target="">Tipo Servicio</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=TipoServicio&accion=Listar" target="myFrame">Tipo Servicio</a>
                     </li>
                     <li class="nav-item">
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=TipoEmpleado&accion=Listar" target="myFrame">Tipo Empleado</a>
@@ -59,7 +59,7 @@
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=EquipoEmpleado&accion=Listar" target="myFrame">Equipo Empleado</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="" target="">Empleado Servicio</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=EmpleadoServicio&accion=Listar" target="myFrame">Empleado Servicio</a>
                     </li>
                 </ul>
             </div>
