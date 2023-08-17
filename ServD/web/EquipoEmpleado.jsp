@@ -1,8 +1,9 @@
 <%-- 
     Document   : EquipoEmpleado
-    Created on : 12/08/2023, 05:29:40 PM
-    Author     : carlo
+    Created on : 16-ago-2023, 15:15:23
+    Author     : Santiago
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

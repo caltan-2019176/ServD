@@ -1,7 +1,7 @@
 <%-- 
     Document   : Compra
-    Created on : 12/08/2023, 05:25:00 PM
-    Author     : dabad
+    Created on : 16/08/2023, 01:48:52 PM
+    Author     : abads
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

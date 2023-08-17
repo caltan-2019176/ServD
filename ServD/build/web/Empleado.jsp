@@ -1,6 +1,6 @@
 <%-- 
     Document   : Empleado
-    Created on : 12/08/2023, 05:24:45 PM
+    Created on : 16/08/2023, 04:20:58 PM
     Author     : Ricardo Colindres
 --%>
 
@@ -43,12 +43,11 @@
             background-color: #ffffff;
             color: rgb(0, 0, 0);
         }
-
-
     </style>
     </head>
+    
     <body>
-<div>
+    <div>
             <div class="card col-sm-11.5 card-form">
                 
                 <div class="card-body">
@@ -94,8 +93,8 @@
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                 </div>
             </form>
+            </div>
         </div>
-    </div>
             <div class="col-sm-11.5 card-table">
                 <table class="table table-hover">
                     <thead class="thead thead-hover">

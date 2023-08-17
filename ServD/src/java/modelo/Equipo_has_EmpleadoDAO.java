@@ -1,5 +1,5 @@
 package modelo;
-
+/*pablo bermudez modificado el 16/08/23*/
 import config.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,8 +16,9 @@ public class Equipo_has_EmpleadoDAO{
     int resp;
     
     public Equipo_has_Empleado validar(int Equipo_codigoEmpleado){
-        // Vamos a instaciar un objeto de la entidad equipo_has_empleado
+        // Vamos a instaciar un objeto de la entidad TipoServicio
         Equipo_has_Empleado equipo_has_empleado = new Equipo_has_Empleado();
+        // Vamos a agregar una variable de tipo String para nuestra consulta SQL
         String sql = "Select * from Equipo_has_Empleado where Equipo_codigoEmpleado = ?";
         
         try{
@@ -30,16 +31,17 @@ public class Equipo_has_EmpleadoDAO{
             equipo_has_empleado.setCantidadEquipo(rs.getInt("codigoEquipo"));
             equipo_has_empleado.setCodigoEquipo(rs.getInt("codigoEmpleado"));
             equipo_has_empleado.setCodigoEmpleado(rs.getInt("cantidadEquipo"));
+            
         }
         }catch(Exception e){
             e.printStackTrace();
         }
         
-        return equipo_has_empleado;// Retorna Tipo de equipo_has_empleado encontrado
+        return equipo_has_empleado;// Retorna Tipo de servicio encontrado
         
     }
     
-    // Metodo Listar equipo_has_empleado
+    // Metodo Listar
     public List listar(){
         String sql = "Select * from Equipo_has_Empleado";
         List<Equipo_has_Empleado> listaEquipo_has_Empleado = new ArrayList<>();
@@ -63,7 +65,7 @@ public class Equipo_has_EmpleadoDAO{
         
     }
     
-    // Metodo Agregar equipo_has_empleado
+    // Metodo Agregar
     public int agregar(Equipo_has_Empleado emp){
         String sql ="Insert into Equipo_has_Empleado (codigoEquipo, codigoEmpleado, cantidadEquipo) values (?,?,?)" ;
         try{
@@ -83,7 +85,7 @@ public class Equipo_has_EmpleadoDAO{
         return resp;
     }
     
-    // Buscar equipo_has_empleado
+    // Buscar
     public Equipo_has_Empleado listaEquipo_has_Empleado(int id){
     Equipo_has_Empleado ts = new Equipo_has_Empleado();
     String sql ="Select * from Equipo_has_Empleado where Equipo_codigoEmpleado = "+id;
@@ -105,7 +107,7 @@ public class Equipo_has_EmpleadoDAO{
     return ts;
     }
 
-        //Método que editar los datos de equipo_has_empleado
+        //Método que editar los datos de Empleado
     public int actualizar(Equipo_has_Empleado ehm){
         String sql = "update Equipo_has_Empleado set Equipo_codigoEmpleado = ?, codigoEquipo = ?, codigoEmpleado = ?, cantidadEquipo = ? ";
         try{
@@ -122,7 +124,7 @@ public class Equipo_has_EmpleadoDAO{
         return resp;
     }
     
-   // Metodo Eliminar equipo_has_empleado
+   // Metodo Eliminar
    public void eliminar(int id){
         String sql = "delete from Equipo_has_Empleado where Equipo_codigoEmpleado = "+id;
         try{

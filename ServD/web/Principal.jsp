@@ -44,7 +44,7 @@
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=TipoServicio&accion=Listar" target="myFrame">Tipo Servicio</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=TipoEmpleado" target="myFrame">Tipo Empleado</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=TipoEmpleado&accion=Listar" target="myFrame">Tipo Empleado</a>
                     </li>
                     <li class="nav-item">
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=MedioTransporte&accion=Listar" target="myFrame">Medio Transporte</a>
@@ -70,7 +70,7 @@
                 </button>
                 <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton" style="transform: translateX(-95px)">
                     <a class="dropdown-item" href="#">
-                        Imagen
+                        <img src="img/EmpleadoProv.png" alt="60" width="60"/>
                     </a>
                     <a class="dropdown-item" href="#">${usuario.getUsuario()}</a>
                     <a class="dropdown-item" href="#">${usuario.getUsuario()}@gmail.com</a>
