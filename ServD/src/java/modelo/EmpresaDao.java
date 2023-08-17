@@ -64,7 +64,7 @@ public class EmpresaDao {
     }
     
     //buscar datos
-    public Empresa buscarEmpresa(int id){
+    public Empresa listarEmpresa(int id){
         Empresa emp = new Empresa(); 
         String sql = "select * from Empresa where codigoEmpresa = "+id;
         try {

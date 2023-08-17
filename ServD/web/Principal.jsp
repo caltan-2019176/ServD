@@ -41,10 +41,10 @@
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Servicio&accion=Listar" target="myFrame">Servicio</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=TipoServicio" target="myFrame">Tipo Servicio</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="" target="">Tipo Servicio</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=TipoEmpleado" target="myFrame">Tipo Empleado</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=TipoEmpleado&accion=Listar" target="myFrame">Tipo Empleado</a>
                     </li>
                     <li class="nav-item">
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=MedioTransporte&accion=Listar" target="myFrame">Medio Transporte</a>
@@ -56,7 +56,7 @@
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=ProveedorEquipo&accion=Listar" target="myFrame">Proveedor Equipo</a>
                     </li>
                     <li class="nav-item">
-                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=EquipoEmpleado" target="myFrame">Equipo Empleado</a>
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=EquipoEmpleado&accion=Listar" target="myFrame">Equipo Empleado</a>
                     </li>
                     <li class="nav-item">
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=EmpleadoServicio&accion=Listar" target="myFrame">Empleado Servicio</a>
@@ -70,7 +70,7 @@
                 </button>
                 <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton" style="transform: translateX(-95px)">
                     <a class="dropdown-item" href="#">
-                        Imagen
+                        <img src="img/EmpleadoProv.png" alt="60" width="60"/>
                     </a>
                     <a class="dropdown-item" href="#">${usuario.getUsuario()}</a>
                     <a class="dropdown-item" href="#">${usuario.getUsuario()}@gmail.com</a>

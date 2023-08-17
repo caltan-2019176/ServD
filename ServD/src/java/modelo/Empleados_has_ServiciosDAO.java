@@ -25,7 +25,7 @@ public class Empleados_has_ServiciosDAO {
      */
     public List listar(){
         String sql = "select * from Empleados_has_Servicios"; 
-        List<Empleados_has_Servicios> listaEmpleados_has_Servicios = new ArrayList<>(); 
+        List<Empleados_has_Servicios> listaEmplaedos_has_Servicios = new ArrayList<>(); 
         try {
             con = cn.Conexion(); 
             ps = con.prepareStatement(sql); 
@@ -35,13 +35,13 @@ public class Empleados_has_ServiciosDAO {
                 mt.setCodigoEmpleados_has_servicios(rs.getInt(1));
                 mt.setCostoServicio(rs.getDouble(2));
                 mt.setCodigoEmpleado(rs.getInt(3));
-                mt.setCodigoServicio(rs.getInt(4));
-                listaEmpleados_has_Servicios.add(mt);
+                mt.setCodigoServicio(rs.getInt(4));  
+                listaEmplaedos_has_Servicios.add(mt);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return listaEmpleados_has_Servicios; 
+        return listaEmplaedos_has_Servicios; 
     }
     
     /**
