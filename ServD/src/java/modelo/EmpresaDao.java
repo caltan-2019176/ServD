@@ -38,6 +38,7 @@ public class EmpresaDao {
                 emp.setTelefonoEmpresa(rs.getString(3));
                 emp.setDireccionEmpresa(rs.getString(4));
                 emp.setEstadoEmpresa(rs.getString(5));
+                listaEmpresa.add(emp);
             }
         }catch (Exception e) {
             e.printStackTrace();
