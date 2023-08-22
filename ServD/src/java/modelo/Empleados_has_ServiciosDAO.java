@@ -35,7 +35,8 @@ public class Empleados_has_ServiciosDAO {
                 mt.setCodigoEmpleados_has_servicios(rs.getInt(1));
                 mt.setCostoServicio(rs.getDouble(2));
                 mt.setCodigoEmpleado(rs.getInt(3));
-                mt.setCodigoServicio(rs.getInt(4));              
+                mt.setCodigoServicio(rs.getInt(4));  
+                listaEmplaedos_has_Servicios.add(mt);
             }
         } catch (Exception e) {
             e.printStackTrace();
