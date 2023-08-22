@@ -31,6 +31,7 @@ public class Equipo_has_EmpleadoDAO{
             equipo_has_empleado.setCantidadEquipo(rs.getInt("codigoEquipo"));
             equipo_has_empleado.setCodigoEquipo(rs.getInt("codigoEmpleado"));
             equipo_has_empleado.setCodigoEmpleado(rs.getInt("cantidadEquipo"));
+            
         }
         }catch(Exception e){
             e.printStackTrace();
