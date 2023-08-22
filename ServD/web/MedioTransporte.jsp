@@ -1,20 +1,18 @@
 <%-- 
-    Document   : Equipo
-    Created on : 12/08/2023, 05:25:34 PM
-    Author     : Armas
+    Document   : MedioTransporte
+    Created on : 16/08/2023, 04:35:21 PM
+    Author     : Carlos Altán
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-        <title>Servicio</title>
+        <title>MedioTransporte</title>
          <style>
 
         body {
@@ -54,22 +52,22 @@
  <div >
     <div class="card col-sm-11.5 card-form">
         <div class="card-body">
-            <form action="Controlador?menu=Equipo" method="POST">
+            <form action="Controlador?menu=MedioTransporte" method="POST">
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">Código Equipo:</label>
-                    <input type="text" value="${equipo.getCodigoEquipo()}" name="txtCodigoEquipo" class="form-control">
+                    <label class="colorLabel" for="dato">CódigoTransporte</label>
+                    <input type="text" id="codigoTransporte" name="codigoTransporte" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">Nombre Equipo:</label>
-                    <input type="text" value="${equipo.getNombreEquipo()}" name="txtNombreEquipo" class="form-control">
+                    <label class="colorLabel" for="dato">Placa</label>
+                    <input type="text" id="placa" name="placa" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">Descripción Equipo:</label>
-                    <input type="text" value="${equipo.getDescripcionEquipo()}" name="txtDescripcionEquipo" class="form-control">
+                    <label class="colorLabel" for="dato">TipoVehículo</label>
+                    <input type="text" id="tipoVehiculo" name="tipoVehiculo" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">Cantidad:</label>
-                    <input type="number" value="${equipo.getCantidad()}" name="txtCantidad" class="form-control">
+                    <label class="colorLabel" for="dato">Marca</label>
+                    <input type="text" id="marca" name="marca" class="form-control">
                 </div>
                 <div class="action-btns">
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -82,22 +80,23 @@
         <table class="table table-hover">
             <thead class="thead thead-hover">
                 <tr>
-                    <td ><strong>Código Equipo</strong></td>
-                    <td><strong>Nombre Equipo</strong></td>
-                    <td><strong>Descripción Equipo</strong></td>
-                    <td><strong>Cantidad</strong></td>
+                    <td ><strong>CódigoTransporte</strong></td>
+                    <td><strong>Placa</strong></td>
+                    <td><strong>TipoVehículo</strong></td>
+                    <td><strong>Marca</strong></td>
+                    <td><strong>Acciones</strong></td>                   
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="equipo" items="${equipos}">
+                <c:forEach var="medioTransporte" items="${medioTransportes}">
                     <tr>
-                        <td>${equipo.getCodigoEquipo()}</td>
-                        <td>${equipo.getNombreEquipo()}</td>
-                        <td>${equipo.getDescripcionEquipo()}</td>
-                        <td>${equipo.getCantidad()}</td>
+                        <td>${medioTransporte.getCodigoTransporte()}</td>
+                        <td>${medioTransporte.getPlaca()}</td>
+                        <td>${medioTransporte.getTipoVehiculo()}</td>
+                        <td>${medioTransporte.getMarca()}</td>
                         <td>
-                            <a class="btn btn-warning" href="Controlador?menu=Equipo&accion=Editar&codigoEquipo=${equipo.getCodigoEquipo()}">Editar</a>
-                            <a class="btn btn-danger" href="Controlador?menu=Equipo&accion=Eliminar&codigoEquipo=${equipo.getCodigoEquipo()}">Eliminar</a>
+                            <a class="btn btn-warning" href="">Editar</a>
+                            <a class="btn btn-danger" href="">Eliminar</a>
                         </td>
                     </tr>
                  </c:forEach>   

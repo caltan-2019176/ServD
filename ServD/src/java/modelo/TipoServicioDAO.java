@@ -41,7 +41,7 @@ public class TipoServicioDAO {
     }
     
     // Metodo Listar
-    public List Listar(){
+    public List listar(){
         String sql = "Select * from TipoServicio";
         List<TipoServicio> listaTipoServicio = new ArrayList<>();
         try{

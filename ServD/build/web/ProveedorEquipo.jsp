@@ -1,20 +1,20 @@
 <%-- 
-    Document   : Equipo
-    Created on : 12/08/2023, 05:25:34 PM
-    Author     : Armas
+    Document   : ProveedorEquipo
+    Created on : 16-ago-2023, 12:33:12
+    Author     : Carlitos Cabrera
 --%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-        <title>Servicio</title>
+        <title>Proveedor Equipo</title>
          <style>
 
         body {
@@ -54,22 +54,22 @@
  <div >
     <div class="card col-sm-11.5 card-form">
         <div class="card-body">
-            <form action="Controlador?menu=Equipo" method="POST">
+            <form action="Controlador?menu=ProveedorEquipo" method="POST">
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">Código Equipo:</label>
-                    <input type="text" value="${equipo.getCodigoEquipo()}" name="txtCodigoEquipo" class="form-control">
+                    <label class="colorLabel" for="dato">Código Proveedor_Equipo:</label>
+                    <input type="text" id="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">Nombre Equipo:</label>
-                    <input type="text" value="${equipo.getNombreEquipo()}" name="txtNombreEquipo" class="form-control">
+                    <label class="colorLabel" for="dato">Descripción Proveedor:</label>
+                    <input type="text" id="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">Descripción Equipo:</label>
-                    <input type="text" value="${equipo.getDescripcionEquipo()}" name="txtDescripcionEquipo" class="form-control">
+                    <label class="colorLabel" for="dato">Código Proveedor:</label>
+                    <input type="text" id="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">Cantidad:</label>
-                    <input type="number" value="${equipo.getCantidad()}" name="txtCantidad" class="form-control">
+                    <label class="colorLabel" for="dato">Código Equipo</label>
+                    <input type="text" id="" name="" class="form-control">
                 </div>
                 <div class="action-btns">
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -82,22 +82,22 @@
         <table class="table table-hover">
             <thead class="thead thead-hover">
                 <tr>
-                    <td ><strong>Código Equipo</strong></td>
-                    <td><strong>Nombre Equipo</strong></td>
-                    <td><strong>Descripción Equipo</strong></td>
-                    <td><strong>Cantidad</strong></td>
+                    <td ><strong>Código Proveedor_Equipo</strong></td>
+                    <td><strong>Descripción Proveedor</strong></td>
+                    <td><strong>Código Proveedor</strong></td>
+                    <td><strong>Código Equipo</strong></td>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="equipo" items="${equipos}">
+                <c:forEach var="Proequipo" items="${proveedorEquipos}">
                     <tr>
-                        <td>${equipo.getCodigoEquipo()}</td>
-                        <td>${equipo.getNombreEquipo()}</td>
-                        <td>${equipo.getDescripcionEquipo()}</td>
-                        <td>${equipo.getCantidad()}</td>
+                        <td>${Proequipo.getCodigoProveedor_has_Equipo()}</td>
+                        <td>${Proequipo.getDescripcionProveedor()}</td>
+                        <td>${Proequipo.getCodigoProveedor()}</td>
+                        <td>${Proequipo.getCodigoEquipo()}</td>
                         <td>
-                            <a class="btn btn-warning" href="Controlador?menu=Equipo&accion=Editar&codigoEquipo=${equipo.getCodigoEquipo()}">Editar</a>
-                            <a class="btn btn-danger" href="Controlador?menu=Equipo&accion=Eliminar&codigoEquipo=${equipo.getCodigoEquipo()}">Eliminar</a>
+                            <a class="btn btn-warning" href="">Editar</a>
+                            <a class="btn btn-danger" href="">Eliminar</a>
                         </td>
                     </tr>
                  </c:forEach>   
@@ -111,3 +111,4 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     </body>
 </html>
+
