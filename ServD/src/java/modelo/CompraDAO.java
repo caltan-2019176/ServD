@@ -71,14 +71,15 @@ public class CompraDAO {
      * @param id ID de la compra que se quiere listar 
      * @return retorna la compra a listar
      */
-    public Compra listarCompra(int id){
+    public Compra listarCodigoCompra(int id){
         Compra c = new Compra();
         String sql = "Select * from Compra where codigoCompra =" + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs= ps.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
+                c.setCodigoCompra(rs.getInt(1));
                 c.setCostoCompra(rs.getDouble(2));
                 c.setDescripcionCompra(rs.getString(3));
                 c.setFechaCompra(rs.getDate(4));
@@ -95,7 +96,7 @@ public class CompraDAO {
      * @param c Objeto Compra
      * @return variable resp para executeUpdate
      */
-    public int editar(Compra c){
+    public int actualizar(Compra c){
         String sql = "Update Compra set costoCompra = ?, descripcionCompra = ?, fechaCompra = ? where codigoCompra = ?";
         try {
             con = cn.Conexion();

@@ -52,41 +52,54 @@
                 
                 <div class="card-body">
                     <form action="Controlador?menu=Empleado" method="POST">
-                <div class="form-group">
-                        <label class="colorLabel" for="dato">Código Empleado</label>
-                        <input type="text" id="codigoEmpleado" name="codigoEmpleado" class="form-control">
-                </div>
+               
                 <div class="form-group">
                         <label class="colorLabel" for="dato">Usuario</label>
-                        <input type="text" id="usuario" name="usuario" class="form-control">
+                        <input type="text" id="usuario" value="${empleado.getUsuario()}" name="txtUsuario" class="form-control">
                 </div>
                 <div class="form-group">
                         <label class="colorLabel" for="dato">DPI Empleado</label>
-                        <input type="text" id="DPIEmpleado" name="DPIEmpleado" class="form-control">
+                        <input type="text" id="DPIEmpleado" value="${empleado.getDPIEmpleado()}" name="txtDPIEmpleado" class="form-control">
                 </div>
                 <div class="form-group">
                         <label class="colorLabel" for="dato">Nombres Empleado</label>
-                        <input type="text" id="nombresEmpleado" name="nombresEmpleado" class="form-control">
+                        <input type="text" id="nombresEmpleado" value="${empleado.getNombresEmpleado()}"  name="txtNombresEmpleado" class="form-control">
                 </div>
                 <div class="form-group">
                         <label class="colorLabel" for="dato">Apellidos Empleado</label>
-                        <input type="text" id="apellidosEmpleado" name="apellidosEmpleado" class="form-control">
+                        <input type="text" id="apellidosEmpleado" value="${empleado.getApellidosEmpleado()}"  name="txtApellidosEmpleado" class="form-control">
                 </div>
                 <div class="form-group">
                         <label class="colorLabel" for="dato">Teléfono Contacto</label>
-                        <input type="text" id="telefonoContacto" name="telefonoContacto" class="form-control">
+                        <input type="text" id="telefonoContacto" value="${empleado.getTelefonoContacto()}"  name="txtTelefonoContacto" class="form-control">
+                </div>
+                        
+                <div class="form-group">
+                    <label class="colorLabe1" for="dato">Código Tipo Empleado</label>
+                    <select name="cmbCodigoTipoEmpleado" class="form-control">
+                        <option disabled selected value="">Seleccione una opción </option>
+                        <c:forEach var="tipo" items="${tipos}">
+                            <option>${tipo.getCodigoTipoEmpleado()}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div class="form-group">
-                        <label class="colorLabel" for="dato">Tipo Empleado</label>
-                        <input type="text" id="codigoTipoEmpleado" name="codigoTipoEmpleado" class="form-control">
+                    <label class="colorLabel" for="dato">Código Medio Transporte</label>
+                    <select name="cmbCodigoMedioTransporte" class="form-control">
+                        <option disabled selected value="">Seleccione una opción </option>
+                        <c:forEach var="transporte" items="${transportes}">
+                            <option>${transporte.getCodigoTransporte()}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div class="form-group">
-                        <label class="colorLabel" for="dato">Medio Transporte</label>
-                        <input type="text" id="codigoTransporte" name="codigoTransporte" class="form-control">
-                </div>
-                <div class="form-group">
-                        <label class="colorLabel" for="dato">Equipo</label>
-                        <input type="text" id="codigoEquipo" name="codigoEquipo" class="form-control">
+                    <label class="colorLabel" for="dato">Código Equipo</label>
+                    <select name="cmbCodigoEquipo" class="form-control">
+                        <option disabled selected value="">Seleccione una opción </option>
+                        <c:forEach var="equipo" items="${equipos}">
+                            <option>${equipo.getCodigoEquipo()}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div class="action-btns">
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -124,8 +137,8 @@
                                 <td>${empleado.getCodigoTransporte()}</td>
                                 <td>${empleado.getCodigoEquipo()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-warning" href="Controlador?menu=Empleado&accion=Editar&codigoEmpleado=${empleado.getCodigoEmpleado()}" >Editar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=Empleado&accion=Eliminar&codigoEmpleado=${empleado.getCodigoEmpleado()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>

@@ -54,10 +54,7 @@
     <div class="card col-sm-11.5 card-form">
         <div class="card-body">
             <form action="Controlador?menu=ServicioCompra" method="POST">
-                <div class="form-group">
-                    <label class="colorLabel" for="dato">Código Servicio_Compra:</label>
-                    <input type="text" id="" name="" class="form-control">
-                </div>
+                
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Descripción Detalle:</label>
                     <input type="text" id="" name="" class="form-control">

@@ -55,10 +55,7 @@
     <div class="card col-sm-11.5 card-form">
         <div class="card-body">
             <form action="Controlador?menu=ProveedorEquipo" method="POST">
-                <div class="form-group">
-                    <label class="colorLabel" for="dato">Código Proveedor_Equipo:</label>
-                    <input type="text" id="" name="" class="form-control">
-                </div>
+                
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Descripción Proveedor:</label>
                     <input type="text" id="" name="" class="form-control">

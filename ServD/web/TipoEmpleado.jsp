@@ -49,25 +49,22 @@
     </head>
     <body>
         <div>
-            <div class="card col-sm-11.5 card-form">
+    <div class="card col-sm-11.5 card-form">
                 
                 <div class="card-body">
                     <form action="Controlador?menu=TipoEmpleado" method="POST">
-                <div class="form-group">
-                        <label class="colorLabel" for="dato">Código Tipo Empleado</label>
-                        <input type="text" id="codigoTipoEmpleado" name="codigoTipoEmpleado" class="form-control">
-                </div>
+                
                 <div class="form-group">
                         <label class="colorLabel" for="dato">Descripcion Tipo Empleado</label>
-                        <input type="text" id="usuario" name="descripcionTipoEmpleado" class="form-control">
+                        <input type="text" value="${tipoEmpleado.getDescripcionTipoEmpleado()}" name="txtDescripcionTipoEmpleado" class="form-control">
                 </div>
                 <div class="form-group">
                         <label class="colorLabel" for="dato">Categoría</label>
-                        <input type="text" id="DPIEmpleado" name="categoria" class="form-control">
+                        <input type="text" value="${tipoEmpleado.getCategoria()}" name="txtCategoria" class="form-control">
                 </div>
                 <div class="form-group">
                         <label class="colorLabel" for="dato">Sueldo</label>
-                        <input type="text" id="nombresEmpleado" name="sueldo" class="form-control">
+                        <input type="text" value="${tipoEmpleado.getSueldo()}" name="txtSueldo" class="form-control">
                  </div>       
                 <div class="action-btns">
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -76,6 +73,10 @@
             </form>
         </div>
     </div>
+
+
+
+
             <div class="col-sm-11.5 card-table">
                 <table class="table table-hover">
                     <thead class="thead thead-hover">
@@ -94,8 +95,8 @@
                                 <td>${tipoEmpleado.getCategoria()}</td>
                                 <td>${tipoEmpleado.getSueldo()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+<a class="btn btn-warning" href="Controlador?menu=TipoEmpleado&accion=Editar&codigoTipoEmpleado=${tipoEmpleado.getCodigoTipoEmpleado()}">Editar</a>
+<a class="btn btn-danger" href="Controlador?menu=TipoEmpleado&accion=Eliminar&codigoTipoEmpleado=${tipoEmpleado.getCodigoTipoEmpleado()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>
