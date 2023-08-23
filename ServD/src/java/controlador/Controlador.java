@@ -213,6 +213,8 @@ public class Controlador extends HttpServlet {
                 case "Listar":
                     List listaServicio = servicioDAO.listar();
                     request.setAttribute("servicios", listaServicio);
+                    List listaTipoServicio = tipoServicioDAO.listar();
+                    request.setAttribute("tipoServicios", listaTipoServicio);
                     break;
                 case "Agregar":
                     SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
