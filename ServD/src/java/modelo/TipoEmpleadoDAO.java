@@ -78,7 +78,7 @@ public class TipoEmpleadoDAO {
      * @return int resp(solo retorna para utilizar el executeUpdate)
      */
     public int agregar(TipoEmpleado emp){
-        String sql ="Insert into Empleado (codigoTipoEmpleado, descripcionTipoEmpleado, categoria, sueldo) values (?,?,?)" ;
+        String sql ="Insert into TipoEmpleado ( descripcionTipoEmpleado, categoria, sueldo) values (?,?,?)" ;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
