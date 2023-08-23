@@ -77,8 +77,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="colorLabel" for="dato">Código empresa</label>
-                                <input type="text" value="${compra.getCodigoEmpresa()}" name="txtCodigoEmpresa" class="form-control">
+                                <label class="colorLabel" for="dato">Codigo Empresa</label>
+                                <select name="cmbCodigoEmpresa" value="" class="form-control">
+                                <option disabled selected value="">Seleccione una opción</option>
+                                    <c:forEach var="empresa" items="${empresas}">
+                                        <option>${empresa.getCodigoEmpresa()}</option>
+                                    </c:forEach>  
+                                </select>
                             </div>
 
                             <div class="action-btns">
