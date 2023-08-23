@@ -1,7 +1,7 @@
 <%-- 
-    Document   : Empresa
-    Created on : Aug 16, 2023, 5:52:02 PM
-    Author     : carlo
+    Document   : EmpleadoServicio
+    Created on : 16/08/2023, 06:35:13 PM
+    Author     : INTEL
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <title>Empresa</title>
+        <title>Empleado Servicio</title>
         <style>
             .body {
                 background-color:  #ffffffa0;
@@ -49,26 +49,22 @@
         <div >
             <div class="card col-sm-11.5 card-form">
                 <div class="card-body">
-                    <form action="Controlador?menu=Empresa" method="POST">
+                    <form action="Controlador?menu=EmpleadoServicio" method="POST">
                         <div class="form-group">
-                            <label class="colorLabel" for="dato">Código Empresa</label>
-                            <input type="text" value="${empresa.getCodigoEmpresa()}" id="" name="txtCodigoEmpresa" class="form-control">
+                            <label class="colorLabel" for="dato">Código Empleado_Servicio</label>
+                            <input type="text" id="" name="" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label class="colorLabel" for="dato">Nombre Empresa</label>
-                            <input type="text" value="${empresa.getNombreEmpresa()}" id="" name="txtNombreEmpresa" class="form-control">
+                            <label class="colorLabel" for="dato">Costo Servicio</label>
+                            <input type="text" id="" name="" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label class="colorLabel" for="dato">Telefono Empresa</label>
-                            <input type="text" value="${empresa.getTelefonoEmpresa()}" id="" name="txtTelefonoEmpresa" class="form-control">
+                            <label class="colorLabel" for="dato">Código Empleado</label>
+                            <input type="text" id="" name="" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label class="colorLabel" for="dato">direccion Empresa</label>
-                            <input type="text" value="${empresa.getDireccionEmpresa()}" id="" name="txtDireccionEmpresa" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label class="colorLabel" for="dato">estado Empresa</label>
-                            <input type="text" value="${empresa.getEstadoEmpresa()}" id="" name="txtEstadoEmpresa" class="form-control">
+                            <label class="colorLabel" for="dato">Código Servicio</label>
+                            <input type="text" id="" name="" class="form-control">
                         </div>
                         <div class="action-btns">
                             <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -81,28 +77,25 @@
                 <table class="table table-hover">
                     <thead class="thead thead-hover">
                         <tr>
-                            <td><strong>Código Empresa</strong></td>
-                            <td><strong>Nombre Empresa</strong></td>
-                            <td><strong>Telefono Empresa</strong></td>
-                            <td><strong>direccion Empresa</strong></td>
-                            <td><strong>estado Empresa</strong></td>                                    
-                            <td><strong>Acción</strong></td>                   
+                            <td><strong>Código Empleado_Servicio</strong></td>
+                            <td><strong>Costo Servicio</strong></td>
+                            <td><strong>Código Empleado</strong></td>
+                            <td><strong>Código Servicio</strong></td>                                                   
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="empresa" items="${empresas}">
+                        <c:forEach var="empleadoServ" items="${empleadoServicios}">
                             <tr>
-                                <td>${empresa.getCodigoEmpresa()}</td>
-                                <td>${empresa.getNombreEmpresa()}</td>
-                                <td>${empresa.getTelefonoEmpresa()}</td>
-                                <td>${empresa.getDireccionEmpresa()}</td>
-                                <td>${empresa.getEstadoEmpresa()}</td>
+                                <td>${empleadoServ.getCodigoEmpleados_has_servicios()}</td>
+                                <td>${empleadoServ.getCostoServicio()}</td>
+                                <td>${empleadoServ.getCodigoEmpleado()}</td>
+                                <td>${empleadoServ.getCodigoServicio()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="Controlador?menu=Empresa&accion=Editar&codigoEmpresa=${empresa.getCodigoEmpresa()}">Editar</a>
-                                    <a class="btn btn-danger" href="Controlador?menu=Empresa&accion=Eliminar&codigoEmpresa=${empresa.getCodigoEmpresa()}">Eliminar</a>
+                                    <a class="btn btn-warning" href="">Editar</a>
+                                    <a class="btn btn-danger" href="">Eliminar</a>
                                 </td>
                             </tr>
-                        </c:forEach>   
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>

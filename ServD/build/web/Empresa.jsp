@@ -52,23 +52,23 @@
                     <form action="Controlador?menu=Empresa" method="POST">
                         <div class="form-group">
                             <label class="colorLabel" for="dato">Código Empresa</label>
-                            <input type="text" id="" name="" class="form-control">
+                            <input type="text" value="${empresa.getCodigoEmpresa()}" id="" name="txtCodigoEmpresa" class="form-control">
                         </div>
                         <div class="form-group">
                             <label class="colorLabel" for="dato">Nombre Empresa</label>
-                            <input type="text" id="" name="" class="form-control">
+                            <input type="text" value="${empresa.getNombreEmpresa()}" id="" name="txtNombreEmpresa" class="form-control">
                         </div>
                         <div class="form-group">
                             <label class="colorLabel" for="dato">Telefono Empresa</label>
-                            <input type="text" id="" name="" class="form-control">
+                            <input type="text" value="${empresa.getTelefonoEmpresa()}" id="" name="txtTelefonoEmpresa" class="form-control">
                         </div>
                         <div class="form-group">
                             <label class="colorLabel" for="dato">direccion Empresa</label>
-                            <input type="text" id="" name="" class="form-control">
+                            <input type="text" value="${empresa.getDireccionEmpresa()}" id="" name="txtDireccionEmpresa" class="form-control">
                         </div>
                         <div class="form-group">
                             <label class="colorLabel" for="dato">estado Empresa</label>
-                            <input type="text" id="" name="" class="form-control">
+                            <input type="text" value="${empresa.getEstadoEmpresa()}" id="" name="txtEstadoEmpresa" class="form-control">
                         </div>
                         <div class="action-btns">
                             <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -98,8 +98,8 @@
                                 <td>${empresa.getDireccionEmpresa()}</td>
                                 <td>${empresa.getEstadoEmpresa()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-warning" href="Controlador?menu=Empresa&accion=Editar&codigoEmpresa=${empresa.getCodigoEmpresa()}">Editar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=Empresa&accion=Eliminar&codigoEmpresa=${empresa.getCodigoEmpresa()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>   
