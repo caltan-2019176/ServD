@@ -52,10 +52,7 @@
                 
                 <div class="card-body">
                     <form action="Controlador?menu=Empleado" method="POST">
-                <div class="form-group">
-                        <label class="colorLabel" for="dato">Código Empleado</label>
-                        <input type="text" id="codigoEmpleado" name="codigoEmpleado" class="form-control">
-                </div>
+               
                 <div class="form-group">
                         <label class="colorLabel" for="dato">Usuario</label>
                         <input type="text" id="usuario" name="usuario" class="form-control">

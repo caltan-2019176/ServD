@@ -52,10 +52,7 @@
             <div class="card col-sm-11.5 card-form">
         <div class="card-body">
             <form action="Controlador?menu=Proveedor" method="POST">
-                <div class="form-group">
-                    <label class="colorLabel" for="dato">CódigoProveedor</label>
-                    <input type="text" id="codigoProveedor" name="codigoProveedor" class="form-control">
-                </div>
+               
                 <div class="form-group">
                     <label class="colorLabel" for="dato">NombreProveedor</label>
                     <input type="text" id="nombreProveedor" name="nombreProveedor" class="form-control">

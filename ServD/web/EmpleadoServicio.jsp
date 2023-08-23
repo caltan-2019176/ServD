@@ -50,10 +50,7 @@
             <div class="card col-sm-11.5 card-form">
                 <div class="card-body">
                     <form action="Controlador?menu=EmpleadoServicio" method="POST">
-                        <div class="form-group">
-                            <label class="colorLabel" for="dato">Código Empleado_Servicio</label>
-                            <input type="text" id="" name="" class="form-control">
-                        </div>
+                       
                         <div class="form-group">
                             <label class="colorLabel" for="dato">Costo Servicio</label>
                             <input type="text" id="" name="" class="form-control">

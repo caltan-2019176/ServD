@@ -53,21 +53,18 @@
             <div class="card col-sm-11.5 card-form">
         <div class="card-body">
             <form action="Controlador?menu=TipoServicio" method="POST">
-                <div class="form-group">
-                    <label class="colorLabel" for="dato">codigoTipoServicio</label>
-                    <input type="text" id="codigoTipoServicio" name="codigoTipoServicio" class="form-control">
-                </div>
+                
                 <div class="form-group">
                     <label class="colorLabel" for="dato">tipoServicio</label>
-                    <input type="text" id="tipoServicio" name="tipoServicio" class="form-control">
+                    <input type="text" value="${tipoServicio.getTipoServicio()}" id="tipoServicio" name="txtTipoServicio" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">descripcion</label>
-                    <input type="text" id="descripcion" name="descripcion" class="form-control">
+                    <input type="text" value="${tipoServicio.getDescripcion()}" id="descripcion" name="txtDescripcion" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">precioTipoServicio</label>
-                    <input type="text" id="precioTipoServicio" name="preciotipoServicio" class="form-control">
+                    <input type="number" value="${tipoServicio.getPrecioTipoServicio()}" id="precioTipoServicio" name="txtPrecioTipoServicio" class="form-control">
                 </div>
                 <div class="action-btns">
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -94,8 +91,8 @@
                         <td>${tipoServicio.getDescripcion()}</td>
                         <td>${tipoServicio.getPrecioTipoServicio()}</td>
                         <td>
-                            <a class="btn btn-warning" href="">Editar</a>
-                            <a class="btn btn-danger" href="">Eliminar</a>
+                            <a class="btn btn-warning" href="Controlador?menu=TipoServicio&accion=Editar&codigoTipoServicio=${tipoServicio.getCodigoTipoServicio()}">Editar</a>
+                            <a class="btn btn-danger" href="Controlador?menu=TipoServicio&accion=Eliminar&codigoTipoServicio=${tipoServicio.getCodigoTipoServicio()}">Eliminar</a>
                         </td>
                     </tr>
                  </c:forEach>   

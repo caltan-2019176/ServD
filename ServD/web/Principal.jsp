@@ -20,7 +20,7 @@
                         
                     </style>
                     <a href="Controlador?menu=Principal">
-                        <img src="img/logo2.png" alt="ServD" width="120" height="55">
+                        <img src="img/logo2.png" href="HomePage.jsp" alt="ServD" width="120" height="55">
                     </a>
                     <li class="nav-item">
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Empleado&accion=Listar" target="myFrame">Empleado</a>
@@ -83,7 +83,7 @@
         </nav>
 
         <div class="m-4" style="height: 640px">
-            <iframe name="myFrame" style="height: 100%; width: 100%; border: none"></iframe>
+            <iframe name="myFrame" src="HomePage.jsp" style="height: 100%; width: 100%; border: none"></iframe>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
