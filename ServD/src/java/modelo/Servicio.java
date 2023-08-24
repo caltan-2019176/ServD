@@ -33,7 +33,6 @@ public class Servicio {
 
     public void setCodigoServicio(int codigoServicio) {
         this.codigoServicio = codigoServicio;
-        
     }
 
     public String getLugarServicio() {

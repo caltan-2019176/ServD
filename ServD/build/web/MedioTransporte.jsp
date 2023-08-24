@@ -54,21 +54,20 @@
         <div class="card-body">
             <form action="Controlador?menu=MedioTransporte" method="POST">
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">CódigoMedioTransporte</label>
-                    <input type="text" value="${medioTransporte.getCodigoTransporte()}" id="codigoTransporte" name="txtCodigoMedioTransporte" class="form-control">
-                   
+                    <label class="colorLabel" for="dato">CódigoTransporte</label>
+                    <input type="text" id="codigoTransporte" name="codigoTransporte" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Placa</label>
-                    <input type="text" value="${medioTransporte.getPlaca()}" id="placa" name="txtPlaca" class="form-control">
+                    <input type="text" id="placa" name="placa" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">TipoVehículo</label>
-                    <input type="text"  value="${medioTransporte.getTipoVehiculo()}" id="tipoVehiculo" name="txtTipoVehiculo" class="form-control">
+                    <input type="text" id="tipoVehiculo" name="tipoVehiculo" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Marca</label>
-                    <input type="text" value="${medioTransporte.getMarca()}" id="marca" name="txtMarca" class="form-control">
+                    <input type="text" id="marca" name="marca" class="form-control">
                 </div>
                 <div class="action-btns">
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -96,8 +95,8 @@
                         <td>${medioTransporte.getTipoVehiculo()}</td>
                         <td>${medioTransporte.getMarca()}</td>
                         <td>
-                            <a class="btn btn-warning" href="Controlador?menu=MedioTransporte&accion=Editar&codigoTransporte=${medioTransporte.getCodigoTransporte()}">Editar</a>
-                            <a class="btn btn-danger" href="Controlador?menu=MedioTransporte&accion=Eliminar&codigoTransporte=${medioTransporte.getCodigoTransporte()}">Eliminar</a>
+                            <a class="btn btn-warning" href="">Editar</a>
+                            <a class="btn btn-danger" href="">Eliminar</a>
                         </td>
                     </tr>
                  </c:forEach>   

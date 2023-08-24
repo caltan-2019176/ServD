@@ -57,19 +57,19 @@
             <form action="Controlador?menu=Equipo" method="POST">
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Código Equipo:</label>
-                    <input type="text" value="${equipo.getCodigoEquipo()}" name="txtCodigoEquipo" class="form-control">
+                    <input type="text" id="" name="" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Nombre Equipo:</label>
-                    <input type="text" value="${equipo.getNombreEquipo()}" name="txtNombreEquipo" class="form-control">
+                    <input type="text" id="" name="" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Descripción Equipo:</label>
-                    <input type="text" value="${equipo.getDescripcionEquipo()}" name="txtDescripcionEquipo" class="form-control">
+                    <input type="text" id="" name="" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Cantidad:</label>
-                    <input type="number" value="${equipo.getCantidad()}" name="txtCantidad" class="form-control">
+                    <input type="text" id="telefono" name="" class="form-control">
                 </div>
                 <div class="action-btns">
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -96,8 +96,8 @@
                         <td>${equipo.getDescripcionEquipo()}</td>
                         <td>${equipo.getCantidad()}</td>
                         <td>
-                            <a class="btn btn-warning" href="Controlador?menu=Equipo&accion=Editar&codigoEquipo=${equipo.getCodigoEquipo()}">Editar</a>
-                            <a class="btn btn-danger" href="Controlador?menu=Equipo&accion=Eliminar&codigoEquipo=${equipo.getCodigoEquipo()}">Eliminar</a>
+                            <a class="btn btn-warning" href="">Editar</a>
+                            <a class="btn btn-danger" href="">Eliminar</a>
                         </td>
                     </tr>
                  </c:forEach>   

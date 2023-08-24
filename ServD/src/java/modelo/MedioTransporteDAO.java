@@ -46,7 +46,7 @@ public class MedioTransporteDAO {
         return listaMedioTransporte; 
     }
     
-      /**
+    /**
      * Método para agregar a MedioTransporte
      * @param mt objeto MedioTransporte
      * @return int resp(solo retorna para utilizar el executeUpdate)
@@ -78,7 +78,6 @@ public class MedioTransporteDAO {
             ps = con.prepareStatement(sql); 
             rs = ps.executeQuery(); 
             while (rs.next()) {
-                mt.setCodigoTransporte(rs.getInt(1));
                 mt.setPlaca(rs.getString(2));
                 mt.setTipoVehiculo(rs.getString(3));
                 mt.setMarca(rs.getString(4));     

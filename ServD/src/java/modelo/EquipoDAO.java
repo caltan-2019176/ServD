@@ -78,7 +78,6 @@ public class EquipoDAO {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                eq.setCodigoEquipo(rs.getInt(1));
                 eq.setNombreEquipo(rs.getString(2));
                 eq.setDescripcionEquipo(rs.getString(3));
                 eq.setCantidad(rs.getInt(4));
