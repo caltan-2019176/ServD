@@ -9,12 +9,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script>  
-            var validate = function(e) {
-            var t = e.value;
-            e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 3)) : t;
-        }
-       </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
@@ -59,17 +53,18 @@
             <div class="card col-sm-11.5 card-form">
         <div class="card-body">
             <form action="Controlador?menu=TipoServicio" method="POST">
+                
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">Tipo servicio</label>
+                    <label class="colorLabel" for="dato">tipoServicio</label>
                     <input type="text" value="${tipoServicio.getTipoServicio()}" id="tipoServicio" name="txtTipoServicio" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">Descripción</label>
+                    <label class="colorLabel" for="dato">descripcion</label>
                     <input type="text" value="${tipoServicio.getDescripcion()}" id="descripcion" name="txtDescripcion" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">Precio tipo servicio</label>
-                    <input type="number" placeholder="Q0.00" step="0.01"  value="${tipoServicio.getPrecioTipoServicio()}" id="precioTipoServicio" name="txtPrecioTipoServicio" class="form-control">
+                    <label class="colorLabel" for="dato">precioTipoServicio</label>
+                    <input type="number" placeholder="Q0.00" step="0.01" value="${tipoServicio.getPrecioTipoServicio()}" id="precioTipoServicio" name="txtPrecioTipoServicio" class="form-control">
                 </div>
                 <div class="action-btns">
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -84,7 +79,7 @@
                 <tr>
                     <td ><strong>Código Tipo Servicio</strong></td>
                     <td><strong>Tipo Servicio</strong></td>
-                    <td><strong>Descripción</strong></td>
+                    <td><strong>Descripcion</strong></td>
                     <td><strong>Precio tipo Servicio</strong></td>                  
                 </tr>
             </thead>
@@ -100,8 +95,7 @@
                             <a class="btn btn-danger" href="Controlador?menu=TipoServicio&accion=Eliminar&codigoTipoServicio=${tipoServicio.getCodigoTipoServicio()}">Eliminar</a>
                         </td>
                     </tr>
-                 </c:forEach>  
-                    
+                 </c:forEach>   
             </tbody>
         </table>
     </div>
