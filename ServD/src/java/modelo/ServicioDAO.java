@@ -62,14 +62,14 @@ public class ServicioDAO {
     }
 
     public int actualizar(Servicio servi) {
-        String sql = "Update Servicio set lugarServicio = ?, numeroServicio = ?, horaServicio = ? fechaServicio = ? where codigoServicio = ?";
+        String sql = "Update Servicio set lugarServicio = ?, numeroServicio = ?, horaServicio = ?, fechaServicio = ? where codigoServicio = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, servi.getLugarServicio());
             ps.setString(2, servi.getNumeroServicio());
             ps.setString(3, servi.getHoraServicio());
-            ps.setDate(4, (Date) servi.getFechaServicio());
+            ps.setDate(4, new java.sql.Date(servi.getFechaServicio().getTime()));
             ps.setInt(5, servi.getCodigoServicio());
             ps.executeUpdate();
         } catch (Exception e) {
@@ -79,8 +79,28 @@ public class ServicioDAO {
 
     }
 
+    public Servicio listarCodigoServicio(int id) {
+        Servicio ser = new Servicio();
+        String sql = "Select * from Servicio where codigoServicio = " + id;
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                ser.setLugarServicio(rs.getString(2));
+                ser.setNumeroServicio(rs.getString(3));
+                ser.setHoraServicio(rs.getString(4));
+                ser.setFechaServicio(rs.getDate(5));
+                ser.setCodigoTipoServicio(rs.getInt(6));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ser;
+    }
+
     public void eliminar(int id) {
-        String sql = "delete from Servicio where codigoEmpleado = " + id;
+        String sql = "delete from Servicio where codigoServicio = " + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

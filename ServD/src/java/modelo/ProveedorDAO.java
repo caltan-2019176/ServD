@@ -32,7 +32,8 @@ public class ProveedorDAO {
                 pr.setCodigoProveedor(rs.getInt(1));
                 pr.setNombreProveedor(rs.getString(2));
                 pr.setDireccionProveedor(rs.getString(3));
-                pr.setTelefonoProveedor(rs.getString(4));              
+                pr.setTelefonoProveedor(rs.getString(4));     
+                listaProveedor.add(pr);
             }
  
         } catch (Exception e) {

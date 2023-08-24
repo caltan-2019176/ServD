@@ -41,7 +41,7 @@ public class TipoServicioDAO {
     }
     
     // Metodo Listar
-    public List Listar(){
+    public List listar(){
         String sql = "Select * from TipoServicio";
         List<TipoServicio> listaTipoServicio = new ArrayList<>();
         try{
@@ -66,7 +66,7 @@ public class TipoServicioDAO {
     
     // Metodo Agregar
     public int agregar(TipoServicio emp){
-        String sql ="Insert into Empleado (codigoTipoServicio, tipoServicio, descripcion, precioTipoServicio) values (?,?,?)" ;
+        String sql ="Insert into TipoServicio ( tipoServicio, descripcion, precioTipoServicio) values (?,?,?)" ;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -74,7 +74,7 @@ public class TipoServicioDAO {
             ps.setString(2, emp.getDescripcion());
             ps.setDouble(3, emp.getPrecioTipoServicio());
             ps.executeUpdate();
-        
+            
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -86,7 +86,7 @@ public class TipoServicioDAO {
     // Buscar
     public TipoServicio listarCodigoTipoServicio(int id){
     TipoServicio ts = new TipoServicio();
-    String sql ="Select * from tipoServicio where codigoTipoServicio = "+id;
+    String sql ="Select * from TipoServicio where codigoTipoServicio = "+id;
     try{
         con = cn.Conexion();
         ps = con.prepareStatement(sql);
@@ -107,9 +107,9 @@ public class TipoServicioDAO {
     }
     
     // Metodo actualizar
-   public int actualizar(TipoServicio ts){
-        String sql = "update TipoServicio set tipoServicio = ?, descripcion = ?, precioTipoServicio = ?"
-                + "where codigoTipoServicio = ?";
+   public int editar(TipoServicio ts){
+        String sql = "update TipoServicio set tipoServicio = ?, descripcion = ?, precioTipoServicio = ? where codigoTipoServicio = ?";
+                
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

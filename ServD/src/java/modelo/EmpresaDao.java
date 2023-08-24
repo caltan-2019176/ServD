@@ -6,11 +6,17 @@
 package modelo;
 
 import config.Conexion;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 /**
  * clase del modelo DAO de "Empresa"
@@ -38,6 +44,7 @@ public class EmpresaDao {
                 emp.setTelefonoEmpresa(rs.getString(3));
                 emp.setDireccionEmpresa(rs.getString(4));
                 emp.setEstadoEmpresa(rs.getString(5));
+                listaEmpresa.add(emp);
             }
         }catch (Exception e) {
             e.printStackTrace();
@@ -63,7 +70,7 @@ public class EmpresaDao {
     }
     
     //buscar datos
-    public Empresa listarEmpresa(int id){
+    public Empresa listarCodigoEmpresa(int id){
         Empresa emp = new Empresa(); 
         String sql = "select * from Empresa where codigoEmpresa = "+id;
         try {
@@ -71,6 +78,7 @@ public class EmpresaDao {
             ps = con.prepareStatement(sql); 
             rs = ps.executeQuery(); 
             while (rs.next()) {
+                emp.setCodigoEmpresa(rs.getInt(1));
                 emp.setNombreEmpresa(rs.getString(2));
                 emp.setTelefonoEmpresa(rs.getString(3));
                 emp.setDireccionEmpresa(rs.getString(4));
@@ -84,7 +92,7 @@ public class EmpresaDao {
     
     //editar
     public int editarEmpresa(Empresa emp){
-        String sql = "Update MedioTransporte set nombreEmpresa = ?, telefonoEmpresa = ?, direccionEmpresa = ?, estadoEmpresa = ? where codigoEmpresa = ?"; 
+        String sql = "Update Empresa set nombreEmpresa = ?, telefonoEmpresa = ?, direccionEmpresa = ?, estadoEmpresa = ? where codigoEmpresa = ?"; 
         try {
             con = cn.Conexion(); 
             ps = con.prepareStatement(sql); 
@@ -92,6 +100,7 @@ public class EmpresaDao {
             ps.setString(2, emp.getTelefonoEmpresa());
             ps.setString(3, emp.getDireccionEmpresa());
             ps.setString(4, emp.getEstadoEmpresa());
+            ps.setInt(5, emp.getCodigoEmpresa());
             ps.executeUpdate(); 
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,8 +115,9 @@ public class EmpresaDao {
             con = cn.Conexion(); 
             ps = con.prepareStatement(sql); 
             ps.executeUpdate(); 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            
         }    
-    }
+    }  
+    
 }
