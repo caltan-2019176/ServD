@@ -53,10 +53,7 @@
                 
                 <div class="card-body">
                     <form action="Controlador?menu=TipoEmpleado" method="POST">
-                <div class="form-group">
-                        <label class="colorLabel" for="dato">Código Tipo Empleado</label>
-                        <input type="text" value="${tipoEmpleado.getCodigoTipoEmpleado()}" name="txtCodigoTipoEmpleado" class="form-control">
-                </div>
+                
                 <div class="form-group">
                         <label class="colorLabel" for="dato">Descripcion Tipo Empleado</label>
                         <input type="text" value="${tipoEmpleado.getDescripcionTipoEmpleado()}" name="txtDescripcionTipoEmpleado" class="form-control">
@@ -67,7 +64,7 @@
                 </div>
                 <div class="form-group">
                         <label class="colorLabel" for="dato">Sueldo</label>
-                        <input type="text" value="${tipoEmpleado.getSueldo()}" name="txtSueldo" class="form-control">
+                        <input type="number" placeholder="Q0.00" step="0.01" value="${tipoEmpleado.getSueldo()}" name="txtSueldo" class="form-control">
                  </div>       
                 <div class="action-btns">
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -96,7 +93,7 @@
                                 <td>${tipoEmpleado.getCodigoTipoEmpleado()}</td>
                                 <td>${tipoEmpleado.getDescripcionTipoEmpleado()}</td>
                                 <td>${tipoEmpleado.getCategoria()}</td>
-                                <td>${tipoEmpleado.getSueldo()}</td>
+                                <td>Q${tipoEmpleado.getSueldo()}</td>
                                 <td>
 <a class="btn btn-warning" href="Controlador?menu=TipoEmpleado&accion=Editar&codigoTipoEmpleado=${tipoEmpleado.getCodigoTipoEmpleado()}">Editar</a>
 <a class="btn btn-danger" href="Controlador?menu=TipoEmpleado&accion=Eliminar&codigoTipoEmpleado=${tipoEmpleado.getCodigoTipoEmpleado()}">Eliminar</a>
