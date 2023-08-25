@@ -55,15 +55,11 @@
                 <div class="card col-sm-11.5 card-form">
                     <div class="card-body">
                         <form action="Controlador?menu=Compra" method="POST">
-
-                            <div class="form-group">
-                                <label class="colorLabel" for="dato">Código compra</label>
-                                <input type="text" value="${compra.getCodigoCompra()}" name="txtCodigoCompra" class="form-control">
-                            </div>
+                            
 
                             <div class="form-group">
                                 <label class="colorLabel" for="dato">Costo compra</label>
-                                <input type="text" value="${compra.getCostoCompra()}" name="txtCostoCompra" class="form-control">
+                                <input type="number" placeholder="Q.0.00" step="0.01" value="${compra.getCostoCompra()}" name="txtCostoCompra" class="form-control">
                             </div>
 
                             <div class="form-group">
@@ -78,10 +74,10 @@
 
                             <div class="form-group">
                                 <label class="colorLabel" for="dato">Codigo Empresa</label>
-                                <select name="cmbCodigoEmpresa" value="" class="form-control">
-                                <option disabled selected value="">Seleccione una opción</option>
+                                <select name="cmbCodigoEmpresa" class="form-control">
+                                    <option disabled selected value="">Seleccione una opción</option>
                                     <c:forEach var="empresa" items="${empresas}">
-                                        <option>${empresa.getCodigoEmpresa()}</option>
+                                        <option value="${empresa.getCodigoEmpresa()}">${empresa.getCodigoEmpresa()} - ${empresa.getNombreEmpresa()}</option>
                                     </c:forEach>  
                                 </select>
                             </div>
@@ -110,7 +106,7 @@
                             <c:forEach var="compra" items="${compras}">
                                 <tr>
                                     <td>${compra.getCodigoCompra()}</td>
-                                    <td>${compra.getCostoCompra()}</td>
+                                    <td>Q${compra.getCostoCompra()}</td>
                                     <td>${compra.getDescripcionCompra()}</td>
                                     <td>${compra.getFechaCompra()}</td>
                                     <td>${compra.getCodigoEmpresa()}</td>

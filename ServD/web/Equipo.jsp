@@ -55,10 +55,7 @@
     <div class="card col-sm-11.5 card-form">
         <div class="card-body">
             <form action="Controlador?menu=Equipo" method="POST">
-                <div class="form-group">
-                    <label class="colorLabel" for="dato">Código Equipo:</label>
-                    <input type="text" value="${equipo.getCodigoEquipo()}" name="txtCodigoEquipo" class="form-control">
-                </div>
+                
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Nombre Equipo:</label>
                     <input type="text" value="${equipo.getNombreEquipo()}" name="txtNombreEquipo" class="form-control">

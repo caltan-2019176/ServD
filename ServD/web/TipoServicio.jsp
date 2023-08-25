@@ -53,10 +53,7 @@
             <div class="card col-sm-11.5 card-form">
         <div class="card-body">
             <form action="Controlador?menu=TipoServicio" method="POST">
-                <div class="form-group">
-                    <label class="colorLabel" for="dato">codigoTipoServicio</label>
-                    <input type="number" value="${tipoServicio.getCodigoTipoServicio()}" id="codigoTipoServicio" name="txtCodigoTipoServicio" class="form-control">
-                </div>
+                
                 <div class="form-group">
                     <label class="colorLabel" for="dato">tipoServicio</label>
                     <input type="text" value="${tipoServicio.getTipoServicio()}" id="tipoServicio" name="txtTipoServicio" class="form-control">
@@ -67,7 +64,7 @@
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">precioTipoServicio</label>
-                    <input type="number" value="${tipoServicio.getPrecioTipoServicio()}" id="precioTipoServicio" name="txtPrecioTipoServicio" class="form-control">
+                    <input type="number" placeholder="Q0.00" step="0.01" value="${tipoServicio.getPrecioTipoServicio()}" id="precioTipoServicio" name="txtPrecioTipoServicio" class="form-control">
                 </div>
                 <div class="action-btns">
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -92,7 +89,7 @@
                         <td>${tipoServicio.getCodigoTipoServicio()}</td>
                         <td>${tipoServicio.getTipoServicio()}</td>
                         <td>${tipoServicio.getDescripcion()}</td>
-                        <td>${tipoServicio.getPrecioTipoServicio()}</td>
+                        <td>Q${tipoServicio.getPrecioTipoServicio()}</td>
                         <td>
                             <a class="btn btn-warning" href="Controlador?menu=TipoServicio&accion=Editar&codigoTipoServicio=${tipoServicio.getCodigoTipoServicio()}">Editar</a>
                             <a class="btn btn-danger" href="Controlador?menu=TipoServicio&accion=Eliminar&codigoTipoServicio=${tipoServicio.getCodigoTipoServicio()}">Eliminar</a>

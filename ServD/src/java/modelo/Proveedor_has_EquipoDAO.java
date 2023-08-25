@@ -44,14 +44,13 @@ public class Proveedor_has_EquipoDAO {
     // Método Agregar
     
     public int agregar(Proveedor_has_Equipo pro){
-        String sql = "insert into Proveedor_has_Equipo (codigoProveedor_has_Equipo, descripcionProveedor, codigoProveedor, codigoEquipo) values (?,?,?,?)";
+        String sql = "insert into Proveedor_has_Equipo (descripcionProveedor, codigoProveedor, codigoEquipo) values (?,?,?)";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, pro.getCodigoProveedor_has_Equipo());
-            ps.setString(2, pro.getDescripcionProveedor());
-            ps.setInt(3, pro.getCodigoProveedor());
-            ps.setInt(4, pro.getCodigoEquipo());
+            ps.setString(1, pro.getDescripcionProveedor());
+            ps.setInt(2, pro.getCodigoProveedor());
+            ps.setInt(3, pro.getCodigoEquipo());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
@@ -69,6 +68,7 @@ public class Proveedor_has_EquipoDAO {
             ps = con.prepareStatement(sql); 
             rs = ps.executeQuery();
             while (rs.next()){
+                phe.setCodigoProveedor_has_Equipo(rs.getInt(1));
                 phe.setDescripcionProveedor(rs.getString(2));
                 phe.setCodigoProveedor(rs.getInt(3));
                 phe.setCodigoEquipo(rs.getInt(4));
@@ -81,7 +81,7 @@ public class Proveedor_has_EquipoDAO {
     
     // Método Editar
     
-    public int editar(Proveedor_has_Equipo ex){
+    public int actualizar(Proveedor_has_Equipo ex){
         String sql = "Update Proveedor_has_Equipo set descripcionProveedor = ? where codigoProveedor_has_Equipo = ?";
         try{
             con = cn.Conexion(); 

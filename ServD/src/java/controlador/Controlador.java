@@ -31,6 +31,7 @@ import modelo.MedioTransporte;
 import modelo.MedioTransporteDAO;
 import modelo.Proveedor;
 import modelo.ProveedorDAO;
+import modelo.Proveedor_has_Equipo;
 import modelo.Proveedor_has_EquipoDAO;
 import modelo.Servicio;
 import modelo.ServicioDAO;
@@ -52,10 +53,12 @@ public class Controlador extends HttpServlet {
     int codMedioTransporte;
     Equipo equipo = new Equipo();
     EquipoDAO equipoDAO = new EquipoDAO();
+    Proveedor_has_Equipo proveedor_has_Equipo = new Proveedor_has_Equipo();
     Proveedor_has_EquipoDAO proveedor_has_EquipoDAO = new Proveedor_has_EquipoDAO();
-    Proveedor_has_EquipoDAO proveedor_has_EquipoDAO1 = new Proveedor_has_EquipoDAO();
+    int codProveedorEquipo;
     Servicio_has_Compra servicio_has_Compra = new Servicio_has_Compra();
     Servicio_has_CompraDAO servicio_has_CompraDAO = new Servicio_has_CompraDAO();
+    int codServicioCompra;
     Compra compra = new Compra();
     CompraDAO compraDAO = new CompraDAO();
     Servicio servicio = new Servicio();
@@ -80,7 +83,10 @@ public class Controlador extends HttpServlet {
     int codTipoEmpleado;
     int codTipoServicio;
     int codEmpresa;
-
+    int Equipo_codigoEmpleado;
+    int codEmpleado;
+    int codEmpleadoServicio;
+    int codProveedor;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -96,7 +102,12 @@ public class Controlador extends HttpServlet {
         String accion = request.getParameter("accion");
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
-        } else if (menu.equals("Equipo")) {
+            
+        } 
+         else if (menu.equals("HomePage")){
+            request.getRequestDispatcher("HomePage.jsp").forward(request,response);
+        } 
+        else if (menu.equals("Equipo")) {
             switch (accion) {
                 case "Listar":
                     List listaEquipo = equipoDAO.listar();
@@ -144,18 +155,48 @@ public class Controlador extends HttpServlet {
                 case "Listar":
                     List listaProveedorEquipo = proveedor_has_EquipoDAO.listar();
                     request.setAttribute("proveedorEquipos", listaProveedorEquipo);
+
+                    List listaProveedor = proveedorDao.listar();
+                    request.setAttribute("proveedores", listaProveedor);
+                    
+                    List listaEquipo = equipoDAO.listar();
+                    request.setAttribute("equipos", listaEquipo);
                     break;
                 case "Agregar":
-
+                    String Descripcion = request.getParameter("txtDescripcionProveedor");
+                    //String codProveedor = request.getParameter("txtCodigoProveedor");
+                    //String codEquipo = request.getParameter("txtCodigoEquipo");
+                    String disponibilidad = request.getParameter("cmbDisponible");
+                    String cmb = request.getParameter("cmbCodigoProveedor");
+                    proveedor_has_Equipo.setDescripcionProveedor(Descripcion);
+                    proveedor_has_Equipo.setCodigoProveedor(Integer.parseInt(cmb));
+                    //proveedor_has_Equipo.setCodigoProveedor(Integer.parseInt(codProveedor));
+                    proveedor_has_Equipo.setCodigoEquipo(Integer.parseInt(disponibilidad));
+                    //proveedor_has_Equipo.setCodigoEquipo(Integer.parseInt(codEquipo));
+                    proveedor_has_EquipoDAO.agregar(proveedor_has_Equipo);
+                    request.getRequestDispatcher("Controlador?menu=ProveedorEquipo&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-
+                    codProveedorEquipo = Integer.parseInt(request.getParameter("codigoProveedor_has_Equipo"));
+                    Proveedor_has_Equipo pe = proveedor_has_EquipoDAO.listaProveedor_has_Equipo(codProveedorEquipo);
+                    request.setAttribute("Proequipo", pe);
+                    request.getRequestDispatcher("Controlador?menu=ProveedorEquipo&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-
+                    String DescripcionPe = request.getParameter("txtDescripcionProveedor");
+                    String disponibilidadPe = request.getParameter("cmbDisponible");
+                    String cmbPe = request.getParameter("cmbCodigoProveedor");
+                    proveedor_has_Equipo.setDescripcionProveedor(DescripcionPe);
+                    //proveedor_has_Equipo.setCodigoProveedor(Integer.parseInt(cmbPe));
+                    //proveedor_has_Equipo.setCodigoEquipo(Integer.parseInt(disponibilidadPe));    
+                    proveedor_has_Equipo.setCodigoProveedor_has_Equipo(codProveedorEquipo);
+                    proveedor_has_EquipoDAO.actualizar(proveedor_has_Equipo);
+                    request.getRequestDispatcher("Controlador?menu=ProveedorEquipo&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-
+                    codProveedorEquipo = Integer.parseInt(request.getParameter("codigoProveedor_has_Equipo"));
+                    proveedor_has_EquipoDAO.eliminar(codProveedorEquipo);
+                    request.getRequestDispatcher("Controlador?menu=ProveedorEquipo&accion=Listar").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("ProveedorEquipo.jsp").forward(request, response);
@@ -164,18 +205,44 @@ public class Controlador extends HttpServlet {
                 case "Listar":
                     List listaServicioCompra = servicio_has_CompraDAO.listar();
                     request.setAttribute("servicioCompras", listaServicioCompra);
+                    
+                    List listaServicio = servicioDAO.listar();
+                    request.setAttribute("servicios", listaServicio);
+                    
+                    List listaCompras = compraDAO.listar();
+                    request.setAttribute("compras", listaCompras);
                     break;
                 case "Agregar":
-
+                    String Descripcion = request.getParameter("txtDescripcion");
+                    String codServicio = request.getParameter("cmbCodigoServicio");
+                    String codCompra = request.getParameter("cmbCodigoCompra");
+                    servicio_has_Compra.setDescripcionDetalle(Descripcion);
+                    servicio_has_Compra.setCodigoServicio(Integer.parseInt(codServicio));
+                    servicio_has_Compra.setCodigoCompra(Integer.parseInt(codCompra));
+                    servicio_has_CompraDAO.agregar(servicio_has_Compra);
+                    request.getRequestDispatcher("Controlador?menu=ServicioCompra&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-
+                    codServicioCompra = Integer.parseInt(request.getParameter("Servicio_codigoCompra"));
+                    Servicio_has_Compra sc = servicio_has_CompraDAO.listaServicio_has_Compra(codServicioCompra);
+                    request.setAttribute("Sercompra", sc);
+                    request.getRequestDispatcher("Controlador?menu=ServicioCompra&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-
+                    String DescripcionSc = request.getParameter("txtDescripcion");
+                    String codServicioSc = request.getParameter("cmbCodigoServicio");
+                    String codCompraSc = request.getParameter("cmbCodigoCompra");
+                    servicio_has_Compra.setDescripcionDetalle(DescripcionSc);
+                    servicio_has_Compra.setCodigoServicio(Integer.parseInt(codServicioSc));
+                    servicio_has_Compra.setCodigoCompra(Integer.parseInt(codCompraSc));
+                    servicio_has_Compra.setServicio_codigoCompra(codServicioCompra);
+                    servicio_has_CompraDAO.actualizar(servicio_has_Compra);
+                    request.getRequestDispatcher("Controlador?menu=ServicioCompra&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-
+                    codServicioCompra = Integer.parseInt(request.getParameter("Servicio_codigoCompra"));
+                    servicio_has_CompraDAO.eliminar(codServicioCompra);
+                    request.getRequestDispatcher("Controlador?menu=ServicioCompra&accion=Listar").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("ServicioCompra.jsp").forward(request, response);
@@ -242,6 +309,8 @@ public class Controlador extends HttpServlet {
                 case "Listar":
                     List listaServicio = servicioDAO.listar();
                     request.setAttribute("servicios", listaServicio);
+                    List listaTipoServicio = tipoServicioDAO.listar();
+                    request.setAttribute("tipoServicios", listaTipoServicio);
                     break;
                 case "Agregar":
                     SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
@@ -304,20 +373,47 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Servicio.jsp").forward(request, response);
-        } else if (menu.equals(
-                "EquipoEmpleado")) {
+            
+        } else if (menu.equals("EquipoEmpleado")) {
             switch (accion) {
                 case "Listar":
+                    List listaEmpleados = empleadoDAO.listar();
+                    request.setAttribute("empleados", listaEmpleados);
                     List listaEquipoEmpleado = equipo_has_EmpleadoDAO.listar();
                     request.setAttribute("equipoEmpleados", listaEquipoEmpleado);
+                    List listaEquipo = equipoDAO.listar();
+                    request.setAttribute("equipos", listaEquipo);
                     break;
                 case "Agregar":
+                    String cadEquipo = request.getParameter("cmbCodigoEquipo");
+                    String cadEmpleado = request.getParameter("cmbEmpleadoEquipo");
+                    String canEquipo = request.getParameter("txtCantidadEquipo"); 
+                    equipo_has_Empleado.setCodigoEquipo(Integer.parseInt(cadEquipo));
+                    System.out.println(cadEquipo);
+                    equipo_has_Empleado.setCodigoEmpleado(Integer.parseInt(cadEmpleado));
+                    System.out.println(cadEmpleado);
+                    equipo_has_Empleado.setCantidadEquipo(Integer.parseInt(canEquipo));
+                    System.out.println(canEquipo);
+                    equipo_has_EmpleadoDAO.agregar(equipo_has_Empleado);
+                    request.getRequestDispatcher("Controlador?menu=EquipoEmpleado&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
+                    Equipo_codigoEmpleado = Integer.parseInt(request.getParameter("Equipo_codigoEmpleado"));
+                    Equipo_has_Empleado emp = equipo_has_EmpleadoDAO.listarEquipoEmpleado(Equipo_codigoEmpleado);
+                    request.setAttribute("equipoEmpleado", emp);
+                    request.getRequestDispatcher("Controlador?menu=EquipoEmpleado&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
+                        String canEquipos = request.getParameter("txtCantidadEquipo");
+                        equipo_has_Empleado.setCantidadEquipo(Integer.parseInt(canEquipos));
+                        equipo_has_Empleado.setEquipo_codigoEmpleado(Equipo_codigoEmpleado);
+                        equipo_has_EmpleadoDAO.actualizar(equipo_has_Empleado);
+                        request.getRequestDispatcher("Controlador?menu=EquipoEmpleado&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
+                    Equipo_codigoEmpleado = Integer.parseInt(request.getParameter("Equipo_codigoEmpleado"));
+                    equipo_has_EmpleadoDAO.eliminar(Equipo_codigoEmpleado);
+                    request.getRequestDispatcher("Controlador?menu=EquipoEmpleado&accion=Listar").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("EquipoEmpleado.jsp").forward(request, response);
@@ -373,18 +469,65 @@ public class Controlador extends HttpServlet {
                 case "Listar":
                     List listaEmpleados = empleadoDAO.listar();
                     request.setAttribute("empleados", listaEmpleados);
+                    List listaTipos = tipoEmpleadoDAO.Listar();
+                    request.setAttribute("tipos", listaTipos);
+                    List listaTrasporte = medioTransporteDAO.listar();
+                    request.setAttribute("transportes", listaTrasporte);
+                    List listaEquipo = equipoDAO.listar();
+                    request.setAttribute("equipos", listaEquipo);
                     break;
                 case "Agregar":
-
+                    String usuario = request.getParameter("txtUsuario");
+                    String DPI = request.getParameter("txtDPIEmpleado");
+                    String nombres = request.getParameter("txtNombresEmpleado");
+                    String apellidos = request.getParameter("txtApellidosEmpleado");
+                    String telefono = request.getParameter("txtTelefonoContacto");
+                    String codTipo = request.getParameter("cmbCodigoTipoEmpleado");
+                    String codTransporte = request.getParameter("cmbCodigoMedioTransporte");
+                    String codEquipo = request.getParameter("cmbCodigoEquipo");
+                    empleado.setUsuario(usuario);
+                    empleado.setDPIEmpleado(DPI);
+                    empleado.setNombresEmpleado(nombres);
+                    empleado.setApellidosEmpleado(apellidos);
+                    empleado.setTelefonoContacto(telefono);
+                    empleado.setCodigoTipoEmpleado(Integer.parseInt(codTipo));
+                    empleado.setCodigoTransporte(Integer.parseInt(codTransporte));
+                    empleado.setCodigoEquipo(Integer.parseInt(codEquipo));
+                    empleadoDAO.agregar(empleado);
+                    request.getRequestDispatcher("Controlador?menu=Empleado&accion=Listar").forward(request, response);
+                    
                     break;
                 case "Editar":
-
+                    codEmpleado = Integer.parseInt(request.getParameter("codigoEmpleado"));
+                    Empleado e = empleadoDAO.listarCodigoEmpleado(codEmpleado);
+                    request.setAttribute("empleado", e);
+                    request.getRequestDispatcher("Controlador?menu=Empleado&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-
+                    String usuarioEmp = request.getParameter("txtUsuario");
+                    String DPIEmp = request.getParameter("txtDPIEmpleado");
+                    String nombresEmp = request.getParameter("txtNombresEmpleado");
+                    String apellidosEmp = request.getParameter("txtApellidosEmpleado");
+                    String telefonoEmp = request.getParameter("txtTelefonoContacto");
+                    String tipoEmp = request.getParameter("cmbCodigoTipoEmpleado");
+                    String transporteEmp = request.getParameter("cmbCodigoMedioTransporte");
+                    String equipoEmp = request.getParameter("cmbCodigoEquipo");
+                    empleado.setUsuario(usuarioEmp);
+                    empleado.setDPIEmpleado(DPIEmp);
+                    empleado.setNombresEmpleado(nombresEmp);
+                    empleado.setApellidosEmpleado(apellidosEmp);
+                    empleado.setTelefonoContacto(telefonoEmp);
+                    //empleado.setCodigoTipoEmpleado(Integer.parseInt(tipoEmp));
+                    //empleado.setCodigoTransporte(Integer.parseInt(transporteEmp));
+                    //empleado.setCodigoEquipo(Integer.parseInt(equipoEmp));
+                    empleado.setCodigoEmpleado(codEmpleado);
+                    empleadoDAO.actualizar(empleado);
+                    request.getRequestDispatcher("Controlador?menu=Empleado&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-
+                    codEmpleado = Integer.parseInt(request.getParameter("codigoEmpleado"));
+                    empleadoDAO.eliminar(codEmpleado);
+                    request.getRequestDispatcher("Controlador?menu=Empleado&accion=Listar").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("Empleado.jsp").forward(request, response);
@@ -438,16 +581,36 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("proveedores", listaProveedor);
                     break;
                 case "Agregar":
-
+                    String nombre = request.getParameter("txtNombreProveedor");
+                    String direccion = request.getParameter("txtDireccionProveedor");
+                    String telefono = request.getParameter("txtTelefonoProveedor");
+                    proveedor.setNombreProveedor(nombre);
+                    proveedor.setDireccionProveedor(direccion);
+                    proveedor.setTelefonoProveedor(telefono);
+                    proveedorDao.agregar(proveedor);
+                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
-
+                    codProveedor = Integer.parseInt(request.getParameter("codigoProveedor"));
+                    Proveedor p = proveedorDao.listarProveedor(codProveedor);
+                    request.setAttribute("proveedor", p);
+                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-
+                    String nombrePR = request.getParameter("txtNombreProveedor");
+                    String direccionPR = request.getParameter("txtDireccionProveedor");
+                    String telefonoPR = request.getParameter("txtTelefonoProveedor"); 
+                    proveedor.setNombreProveedor(nombrePR);
+                    proveedor.setDireccionProveedor(direccionPR);
+                    proveedor.setTelefonoProveedor(telefonoPR);
+                    proveedor.setCodigoProveedor(codProveedor);
+                    proveedorDao.editar(proveedor);
+                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
-
+                    codProveedor = Integer.parseInt(request.getParameter("codigoProveedor"));
+                    proveedorDao.eliminar(codProveedor);
+                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("Proveedor.jsp").forward(request, response);
@@ -479,16 +642,15 @@ public class Controlador extends HttpServlet {
                     System.out.println("yvcgfrtd");
                     break;
                 case "Actualizar":
-                    codEmpresa = Integer.parseInt(request.getParameter("txtCodigoEmpresa"));
                     String nombreEmp = request.getParameter("txtNombreEmpresa");
                     String telefonoEmp = request.getParameter("txtTelefonoEmpresa");
                     String direccionEmp = request.getParameter("txtDireccionEmpresa");
                     String estadoEmp = request.getParameter("txtEstadoEmpresa");
-                    empresa.setCodigoEmpresa(codEmpresa);
                     empresa.setNombreEmpresa(nombreEmp);
                     empresa.setTelefonoEmpresa(telefonoEmp);
                     empresa.setDireccionEmpresa(direccionEmp);
                     empresa.setEstadoEmpresa(estadoEmp);
+                    empresa.setCodigoEmpresa(codEmpresa);
                     empresaDao.editarEmpresa(empresa);
                     request.getRequestDispatcher("Controlador?menu=Empresa&accion=Listar").forward(request, response);
                     
@@ -500,24 +662,54 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Empresa.jsp").forward(request, response);
-        }else if (menu.equals(
-                "EmpleadoServicio")) {
+        
+        } else if (menu.equals("EmpleadoServicio")) {
             switch (accion) {
                 case "Listar":
                     List listaEmpleados_has_Servicios = empleados_has_serviciosDAO.listar();
                     request.setAttribute("empleadoServicios", listaEmpleados_has_Servicios);
+                    
+                    List listaEmpleado = empleadoDAO.listar();
+                    request.setAttribute("empleados", listaEmpleado);
+                    
+                    List listaServicio = servicioDAO.listar();
+                    request.setAttribute("servicios", listaServicio);
                     break;
                 case "Agregar":
-
+                    String costoServicio = request.getParameter("txtCostoServicio");
+                    int codigoEmpleado = Integer.parseInt(request.getParameter("cmbCodigoEmpleado"));
+                    int codigoServicio = Integer.parseInt(request.getParameter("cmbCodigoServicio"));
+                    try{
+                        empleados_has_servicios.setCostoServicio(Double.parseDouble(costoServicio));
+                        empleados_has_servicios.setCodigoEmpleado(codigoEmpleado);
+                        empleados_has_servicios.setCodigoServicio(codigoServicio);
+                        empleados_has_serviciosDAO.agregar(empleados_has_servicios);
+                        request.getRequestDispatcher("Controlador?menu=EmpleadoServicio&accion=Listar").forward(request, response);
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
                     break;
                 case "Editar":
-
+                    codEmpleadoServicio = Integer.parseInt(request.getParameter("codigoEmpleados_has_servicios"));
+                    Empleados_has_Servicios es = empleados_has_serviciosDAO.listarEmpleados_has_Servicios(codEmpleadoServicio);
+                    request.setAttribute("empleadoServ", es);
+                    request.getRequestDispatcher("Controlador?menu=EmpleadoServicio&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-
+                    String costoServicioD = request.getParameter("txtCostoServicio");
+                    try{
+                        empleados_has_servicios.setCostoServicio(Double.parseDouble(costoServicioD));
+                        empleados_has_servicios.setCodigoEmpleados_has_servicios(codEmpleadoServicio);
+                        empleados_has_serviciosDAO.editar(empleados_has_servicios);
+                        request.getRequestDispatcher("Controlador?menu=EmpleadoServicio&accion=Listar").forward(request, response);
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
                     break;
                 case "Eliminar":
-
+                    codEmpleadoServicio = Integer.parseInt(request.getParameter("codigoEmpleados_has_servicios"));
+                    empleados_has_serviciosDAO.eliminar(codEmpleadoServicio);
+                    request.getRequestDispatcher("Controlador?menu=EmpleadoServicio&accion=Listar").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("EmpleadoServicio.jsp").forward(request, response);
