@@ -74,9 +74,11 @@
                             </div>
                             <div class="form-group" >
                                 <label class="colorLabel" for="dato">Código Tipo Servicio</label>
-                                <select name="cmbCodigoTipoServicio" class="form-control"  >
-                                    <c:forEach var="servicio" items="${servicios}">
-                                        <option >${servicio.getCodigoTipoServicio()}</option>
+                                
+                                <select name="cmbCodigoTipoServicio" class="form-control"   >
+                                    <option disabled selected value="">Seleccione una opcion</option>
+                                    <c:forEach var="tipoServicio" items="${tipoServicios}">
+                                        <option >${tipoServicio.getCodigoTipoServicio()}</option>
                                     </c:forEach>
                                 </select>
                             </div>

@@ -53,11 +53,7 @@
     <div class="card col-sm-11.5 card-form">
         <div class="card-body">
             <form action="Controlador?menu=MedioTransporte" method="POST">
-                <div class="form-group">
-                    <label class="colorLabel" for="dato">CódigoMedioTransporte</label>
-                    <input type="text" value="${medioTransporte.getCodigoTransporte()}" id="codigoTransporte" name="txtCodigoMedioTransporte" class="form-control">
-                   
-                </div>
+                
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Placa</label>
                     <input type="text" value="${medioTransporte.getPlaca()}" id="placa" name="txtPlaca" class="form-control">
