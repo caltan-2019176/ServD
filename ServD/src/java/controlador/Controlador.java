@@ -230,11 +230,11 @@ public class Controlador extends HttpServlet {
                     break;
                 case "Actualizar":
                     String DescripcionSc = request.getParameter("txtDescripcion");
-                    String codServicioSc = request.getParameter("cmbCodigoServicio");
-                    String codCompraSc = request.getParameter("cmbCodigoCompra");
-                    servicio_has_Compra.setDescripcionDetalle(DescripcionSc);
-                    servicio_has_Compra.setCodigoServicio(Integer.parseInt(codServicioSc));
-                    servicio_has_Compra.setCodigoCompra(Integer.parseInt(codCompraSc));
+                   // String codServicioSc = request.getParameter("cmbCodigoServicio");
+                   // String codCompraSc = request.getParameter("cmbCodigoCompra");
+                     servicio_has_Compra.setDescripcionDetalle(DescripcionSc);
+                   // servicio_has_Compra.setCodigoServicio(Integer.parseInt(codServicioSc));
+                   // servicio_has_Compra.setCodigoCompra(Integer.parseInt(codCompraSc));
                     servicio_has_Compra.setServicio_codigoCompra(codServicioCompra);
                     servicio_has_CompraDAO.actualizar(servicio_has_Compra);
                     request.getRequestDispatcher("Controlador?menu=ServicioCompra&accion=Listar").forward(request, response);
@@ -245,7 +245,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=ServicioCompra&accion=Listar").forward(request, response);
                     break;
             }
-            request.getRequestDispatcher("ServicioCompra.jsp").forward(request, response);
+                request.getRequestDispatcher("ServicioCompra.jsp").forward(request, response);
         } else if (menu.equals("Compra")) {
             switch (accion) {
                 case "Listar":

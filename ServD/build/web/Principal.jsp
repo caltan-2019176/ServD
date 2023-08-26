@@ -70,7 +70,7 @@
                 </button>
                 <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton" style="transform: translateX(-95px)">
                     <a class="dropdown-item" href="#">
-                        <img src="img/EmpleadoProv.png" alt="60" width="60"/>
+                        <img src="img/programador1.jpg" alt="60" width="60"/>
                     </a>
                     <a class="dropdown-item" href="#">${usuario.getUsuario()}</a>
                     <a class="dropdown-item" href="#">${usuario.getUsuario()}@gmail.com</a>
