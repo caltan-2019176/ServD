@@ -70,7 +70,8 @@
                 </button>
                 <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton" style="transform: translateX(-95px)">
                     <a class="dropdown-item" href="#">
-                        <img src="img/programador1.jpg" alt="60" width="60"/>
+                      <%--   <img src="img/programador1.jpg" alt="60" width="60"/> --%>
+                        <img src="ControlerIMG?codigoEmpleado=${usuario.getCodigoEmpleado()}" width="50px" height="70px" alt="" width="55"/>
                     </a>
                     <a class="dropdown-item" href="#">${usuario.getUsuario()}</a>
                     <a class="dropdown-item" href="#">${usuario.getUsuario()}@gmail.com</a>

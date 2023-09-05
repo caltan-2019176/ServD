@@ -6,15 +6,18 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import modelo.Compra;
 import modelo.CompraDAO;
 import modelo.Empleado;
@@ -46,6 +49,7 @@ import modelo.TipoServicioDAO;
  *
  * @author colin
  */
+@MultipartConfig
 public class Controlador extends HttpServlet {
 
     MedioTransporte medioTransporte = new MedioTransporte();
@@ -96,6 +100,7 @@ public class Controlador extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
@@ -485,6 +490,9 @@ public class Controlador extends HttpServlet {
                     String codTipo = request.getParameter("cmbCodigoTipoEmpleado");
                     String codTransporte = request.getParameter("cmbCodigoMedioTransporte");
                     String codEquipo = request.getParameter("cmbCodigoEquipo");
+                    Part part = request.getPart("fileFoto"); 
+                    InputStream inputStream=part.getInputStream(); 
+                    
                     empleado.setUsuario(usuario);
                     empleado.setDPIEmpleado(DPI);
                     empleado.setNombresEmpleado(nombres);
@@ -493,6 +501,7 @@ public class Controlador extends HttpServlet {
                     empleado.setCodigoTipoEmpleado(Integer.parseInt(codTipo));
                     empleado.setCodigoTransporte(Integer.parseInt(codTransporte));
                     empleado.setCodigoEquipo(Integer.parseInt(codEquipo));
+                    empleado.setFoto(inputStream);
                     empleadoDAO.agregar(empleado);
                     request.getRequestDispatcher("Controlador?menu=Empleado&accion=Listar").forward(request, response);
                     
@@ -512,11 +521,14 @@ public class Controlador extends HttpServlet {
                     String tipoEmp = request.getParameter("cmbCodigoTipoEmpleado");
                     String transporteEmp = request.getParameter("cmbCodigoMedioTransporte");
                     String equipoEmp = request.getParameter("cmbCodigoEquipo");
+                    Part part1=request.getPart("fileFoto");
+                    InputStream inputStream1=part1.getInputStream();
                     empleado.setUsuario(usuarioEmp);
                     empleado.setDPIEmpleado(DPIEmp);
                     empleado.setNombresEmpleado(nombresEmp);
                     empleado.setApellidosEmpleado(apellidosEmp);
                     empleado.setTelefonoContacto(telefonoEmp);
+                    empleado.setFoto(inputStream1);
                     //empleado.setCodigoTipoEmpleado(Integer.parseInt(tipoEmp));
                     //empleado.setCodigoTransporte(Integer.parseInt(transporteEmp));
                     //empleado.setCodigoEquipo(Integer.parseInt(equipoEmp));
@@ -790,6 +802,7 @@ public class Controlador extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
 
     }
 

@@ -110,6 +110,7 @@ create table Empleado(
     codigoTipoEmpleado int not null,
     codigoTransporte int not null, 
     codigoEquipo int not null,
+    foto longblob,
     primary key PK_codigoEmpleado(codigoEmpleado),
     constraint FK_Empleado_TipoEmpleado foreign key(codigoTipoEmpleado)
 		references tipoEmpleado(codigoTipoEmpleado),
@@ -233,7 +234,7 @@ insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) va
 insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (4, 3, 1);
 insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (5, 4, 1);
 
-select *from Proveedor_has_Equipo;
+select *from Empleado;
 -- select * from Empresa
 
 
