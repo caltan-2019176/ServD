@@ -108,8 +108,8 @@
                                    style="
                                    display: inline-block;
                                    text-transform: uppercase;
-                                   color: white;
-                                   background: #69AB14;
+                                   color: black;
+                                   background: #f2f2f2;
                                    text-align: center;
                                    padding: 7px 17px;
                                    font-size: 12px;
