@@ -1,7 +1,7 @@
 <%-- 
     Document   : Empresa
     Created on : Aug 16, 2023, 5:52:02 PM
-    Author     : Carlos De la Cruz
+    Author     : carlo
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -50,7 +50,7 @@
             <div class="card col-sm-11.5 card-form">
                 <div class="card-body">
                     <form action="Controlador?menu=Empresa" method="POST">
-                        
+      
                         <div class="form-group">
                             <label class="colorLabel" for="dato">Nombre Empresa</label>
                             <input type="text" value="${empresa.getNombreEmpresa()}" id="" name="txtNombreEmpresa" class="form-control">
