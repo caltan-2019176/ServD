@@ -54,18 +54,27 @@
     <div class="card col-sm-11.5 card-form">
         <div class="card-body">
             <form action="Controlador?menu=ServicioCompra" method="POST">
-                
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Descripción Detalle:</label>
-                    <input type="text" id="" name="" class="form-control">
+                    <input type="text" value="${Sercompra.getDescripcionDetalle()}" name="txtDescripcion" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Código Servicio:</label>
-                    <input type="text" id="" name="" class="form-control">
+                    <select name="cmbCodigoServicio" class="comboBox">
+                        <option disabled selected value="">Seleccione una opción</option>
+                        <c:forEach var="servicio" items="${servicios}">
+                            <option>${servicio.getCodigoServicio()}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">Código Compra:</label>
-                    <input type="text" id="" name="" class="form-control">
+                    <select name="cmbCodigoCompra" class="comboBox">
+                        <option disabled selected value="">Seleccione una opción</option>
+                        <c:forEach var="compra" items="${compras}">
+                            <option>${compra.getCodigoCompra()}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div class="action-btns">
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -92,8 +101,8 @@
                         <td>${Sercompra.getCodigoServicio()}</td>
                         <td>${Sercompra.getCodigoCompra()}</td>
                         <td>
-                            <a class="btn btn-warning" href="">Editar</a>
-                            <a class="btn btn-danger" href="">Eliminar</a>
+                            <a class="btn btn-warning" href="Controlador?menu=ServicioCompra&accion=Editar&Servicio_codigoCompra=${Sercompra.getServicio_codigoCompra()}">Editar</a>
+                            <a class="btn btn-danger" href="Controlador?menu=ServicioCompra&accion=Eliminar&Servicio_codigoCompra=${Sercompra.getServicio_codigoCompra()}">Eliminar</a>
                         </td>
                     </tr>
                  </c:forEach>   

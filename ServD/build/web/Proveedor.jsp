@@ -52,18 +52,18 @@
             <div class="card col-sm-11.5 card-form">
         <div class="card-body">
             <form action="Controlador?menu=Proveedor" method="POST">
-               
                 <div class="form-group">
                     <label class="colorLabel" for="dato">NombreProveedor</label>
-                    <input type="text" id="nombreProveedor" name="nombreProveedor" class="form-control">
+                    <input type="text" value="${proveedor.getNombreProveedor()}" name="txtNombreProveedor" class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="colorLabel" for="dato">DireccióProveedor</label>
-                    <input type="text" id="direccionProveedor" name="direccionProveedor" class="form-control">
+                    <input type="text" value="${proveedor.getDireccionProveedor()}" name="txtDireccionProveedor" class="form-control">
                 </div>
+                
                 <div class="form-group">
                     <label class="colorLabel" for="dato">TeléfonoProveedor</label>
-                    <input type="text" id="telefonoProveedor" name="telefonoProveedor" class="form-control">
+                    <input type="number" value="${proveedor.getTelefonoProveedor()}" name="txtTelefonoProveedor" class="form-control" onkeypress="return validarNumeros(event)">
                 </div>
                 <div class="action-btns">
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -91,8 +91,8 @@
                         <td>${proveedor.getDireccionProveedor()}</td>
                         <td>${proveedor.getTelefonoProveedor()}</td>
                         <td>
-                            <a class="btn btn-warning" href="">Editar</a>
-                            <a class="btn btn-danger" href="">Eliminar</a>
+                            <a class="btn btn-warning" href="Controlador?menu=Proveedor&accion=Editar&codigoProveedor=${proveedor.getCodigoProveedor()}">Editar</a>
+                            <a class="btn btn-danger" href="Controlador?menu=Proveedor&accion=Eliminar&codigoProveedor=${proveedor.getCodigoProveedor()}">Eliminar</a>
                         </td>
                     </tr>
                  </c:forEach>   

@@ -51,7 +51,7 @@
             <div class="card col-sm-11.5 card-form">
                 
                 <div class="card-body">
-                    <form action="Controlador?menu=Empleado" method="POST">
+                    <form action="Controlador?menu=Empleado" method="POST" enctype="multipart/form-data">
                
                 <div class="form-group">
                         <label class="colorLabel" for="dato">Usuario</label>
@@ -101,10 +101,34 @@
                         </c:forEach>
                     </select>
                 </div>
+                <div class="form-group">
+                    <labe>Foto:</labe>
+                    <input type="file" value="${empleado.getFoto()}"name="fileFoto" style="display: none" id="uploadBtn">
+                            <label for="uploadBtn" id="lblUpload"
+                                   style="
+                                   display: inline-block;
+                                   text-transform: uppercase;
+                                   color: black;
+                                   background: #f2f2f2;
+                                   text-align: center;
+                                   padding: 7px 17px;
+                                   font-size: 12px;
+                                   letter-spacing: 1.5px;
+                                   cursor: pointer;
+                                   box-shadow: 5px 15px 25px rgba(0,0,0,0.35);
+                                   border-radius: 4px
+
+                                   ">
+                                Upload File
+                            </label>    
+                    
+                </div>
                 <div class="action-btns">
+                        <input type="hidden" name="codigoEmpleado" value="${empleado.getCodigoEmpleado()}">
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                 </div>
+                
             </form>
             </div>
         </div>
@@ -121,6 +145,7 @@
                             <td><strong>Tipo Empleado</strong></td>
                             <td><strong>Transporte</strong></td>
                             <td><strong>Equipo</strong></td>
+                            <td><strong>IMG</strong></td>
                             <td><strong>Acciones</strong></td>
                         </tr>
                     </thead>
@@ -136,6 +161,7 @@
                                 <td>${empleado.getCodigoTipoEmpleado()}</td>
                                 <td>${empleado.getCodigoTransporte()}</td>
                                 <td>${empleado.getCodigoEquipo()}</td>
+                                <td><img src="ControlerIMG?codigoEmpleado=${empleado.getCodigoEmpleado()}" width="50px" height="70px"></td>
                                 <td>
                                     <a class="btn btn-warning" href="Controlador?menu=Empleado&accion=Editar&codigoEmpleado=${empleado.getCodigoEmpleado()}" >Editar</a>
                                     <a class="btn btn-danger" href="Controlador?menu=Empleado&accion=Eliminar&codigoEmpleado=${empleado.getCodigoEmpleado()}">Eliminar</a>

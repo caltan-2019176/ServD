@@ -50,18 +50,27 @@
             <div class="card col-sm-11.5 card-form">
                 <div class="card-body">
                     <form action="Controlador?menu=EmpleadoServicio" method="POST">
-                       
                         <div class="form-group">
                             <label class="colorLabel" for="dato">Costo Servicio</label>
-                            <input type="text" id="" name="" class="form-control">
+                            <input type="number" placeholder="Q0.00" step="0.01" id="" value="${empleadoServ.getCostoServicio()}" name="txtCostoServicio" class="form-control">
                         </div>
                         <div class="form-group">
                             <label class="colorLabel" for="dato">Código Empleado</label>
-                            <input type="text" id="" name="" class="form-control">
+                            <select name="cmbCodigoEmpleado" class="form-control">
+                                <option disabled selected value="">Seleccione una opción</option>
+                                <c:forEach var="empleadoSerV" items="${empleados}">
+                                    <option>${empleadoSerV.getCodigoEmpleado()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label class="colorLabel" for="dato">Código Servicio</label>
-                            <input type="text" id="" name="" class="form-control">
+                            <select name="cmbCodigoServicio" class="form-control">
+                                <option disabled selected value="">Seleccione una opción</option>
+                                <c:forEach var="servicioSerV" items="${servicios}">
+                                    <option>${servicioSerV.getCodigoServicio()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div class="action-btns">
                             <input type="submit" name="accion" value="Agregar" class="btn btn-info">
@@ -84,12 +93,12 @@
                         <c:forEach var="empleadoServ" items="${empleadoServicios}">
                             <tr>
                                 <td>${empleadoServ.getCodigoEmpleados_has_servicios()}</td>
-                                <td>${empleadoServ.getCostoServicio()}</td>
+                                <td>Q${empleadoServ.getCostoServicio()}</td>
                                 <td>${empleadoServ.getCodigoEmpleado()}</td>
                                 <td>${empleadoServ.getCodigoServicio()}</td>
                                 <td>
-                                    <a class="btn btn-warning" href="">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
+                                    <a class="btn btn-warning" href="Controlador?menu=EmpleadoServicio&accion=Editar&codigoEmpleados_has_servicios=${empleadoServ.getCodigoEmpleados_has_servicios()}">Editar</a>
+                                    <a class="btn btn-danger" href="Controlador?menu=EmpleadoServicio&accion=Eliminar&codigoEmpleados_has_servicios=${empleadoServ.getCodigoEmpleados_has_servicios()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>
