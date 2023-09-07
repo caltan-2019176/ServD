@@ -156,7 +156,7 @@ public class EmpleadoDAO {
     
     //Método que actualiza los datos de Empleado
     public int actualizar(Empleado emp){
-        String sql = "update Empleado set usuario = ?, DPIEmpleado = ?, nombresEmpleado = ?, apellidosEmpleado = ?, telefonoContacto = ?, foto = ? where codigoEmpleado = ? ";
+        String sql = "update Empleado set usuario = ?, DPIEmpleado = ?, nombresEmpleado = ?, apellidosEmpleado = ?, telefonoContacto = ?  where codigoEmpleado = ? ";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -165,8 +165,8 @@ public class EmpleadoDAO {
             ps.setString(3, emp.getNombresEmpleado());
             ps.setString(4, emp.getApellidosEmpleado());
             ps.setString(5, emp.getTelefonoContacto());
-            ps.setBlob(6, emp.getFoto());
-            ps.setInt(7, emp.getCodigoEmpleado());
+            //ps.setBlob(6, emp.getFoto());
+            ps.setInt(6, emp.getCodigoEmpleado());
             ps.executeUpdate();
         } catch (Exception e){
             e.printStackTrace();

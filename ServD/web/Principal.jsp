@@ -19,7 +19,7 @@
                     <style>
                         
                     </style>
-                    <a href="Controlador?menu=Principal">
+                    <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=HomePage" target="myFrame">
                         <img src="img/logo2.png" href="HomePage.jsp" alt="ServD" width="120" height="55">
                     </a>
                     <li class="nav-item">
