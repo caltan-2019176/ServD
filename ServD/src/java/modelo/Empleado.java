@@ -1,5 +1,7 @@
 package modelo;
 
+import java.io.InputStream;
+
 /**
  *Modelo Empleado
  * @author Ricardo Adrián Colindres Franco - 2019169
@@ -14,18 +16,15 @@ public class Empleado {
     private int codigoTipoEmpleado;
     private int codigoTransporte;
     private int codigoEquipo;
+    private InputStream foto; 
 
     /*
     * Constructor vacío
     */
     public Empleado() {
     }
-    
-    /*
-    *Constructor con argumentos
-    *
-    */
-    public Empleado(int codigoEmpleado, String usuario, String DPIEmpleado, String nombresEmpleado, String apellidosEmpleado, String telefonoContacto, int codigoTipoEmpleado, int codigoTransporte, int codigoEquipo) {
+
+    public Empleado(int codigoEmpleado, String usuario, String DPIEmpleado, String nombresEmpleado, String apellidosEmpleado, String telefonoContacto, int codigoTipoEmpleado, int codigoTransporte, int codigoEquipo, InputStream foto) {
         this.codigoEmpleado = codigoEmpleado;
         this.usuario = usuario;
         this.DPIEmpleado = DPIEmpleado;
@@ -35,11 +34,9 @@ public class Empleado {
         this.codigoTipoEmpleado = codigoTipoEmpleado;
         this.codigoTransporte = codigoTransporte;
         this.codigoEquipo = codigoEquipo;
+        this.foto = foto;
     }
-    
-    /*
-    *getters y setters
-    */
+
     public int getCodigoEmpleado() {
         return codigoEmpleado;
     }
@@ -111,6 +108,15 @@ public class Empleado {
     public void setCodigoEquipo(int codigoEquipo) {
         this.codigoEquipo = codigoEquipo;
     }
+
+    public InputStream getFoto() {
+        return foto;
+    }
+
+    public void setFoto(InputStream foto) {
+        this.foto = foto;
+    }
+    
     
     
     

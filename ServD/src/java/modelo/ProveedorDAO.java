@@ -79,7 +79,7 @@ public class ProveedorDAO {
     
     //Método para actualizar en Proveedor
     public int editar(Proveedor pr){
-        String sql = "Update Proveedor set nombreProveedor = ?, direccionProveedor = ?, telefonoProveedor = ?, where codigoProveedor = ?"; 
+        String sql = "Update Proveedor set nombreProveedor = ?, direccionProveedor = ?, telefonoProveedor = ? where codigoProveedor = ?"; 
         try {
             con = cn.Conexion(); 
             ps = con.prepareStatement(sql); 

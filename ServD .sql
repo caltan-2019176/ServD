@@ -142,6 +142,38 @@ create table Equipo_has_Empleado(
 	constraint FK_Equipo_has_Empleado_Empleado foreign key(codigoEmpleado)
 		references Empleado(codigoEmpleado)
 );
+
+Create table Venta
+(
+	codigoVenta int not null auto_increment,
+	codigoEmpresa int not null,
+	numeroSerie varchar(150),
+    fechaVenta date,
+    horaVenta time,
+    monto double,
+    estado varchar(1),
+    primary key PK_Venta(codigoVenta),
+    constraint FK_Venta_Empresa foreign key(codigoEmpresa)
+		references Empresa(codigoEmpresa)
+);
+
+
+
+create table detalleVenta
+(
+	codigoDetalleVenta int not null auto_increment,
+    codigoVenta int not null,
+    codigoServicio int not null,
+    precioVenta double,
+    primary key PK_DetalleVenta(codigoDetalleVenta),
+    constraint FK_Detalle_Venta foreign key(codigoVenta)
+		references Venta(codigoVenta),
+	constraint FK_Detalle_TipoServicio foreign key(codigoServicio)
+		references TipoServicio(codigoTipoServicio)
+);
+
+
+
 show tables;
 
 -- -------------------------------- Agregar Datos ---------------------------------------
@@ -201,3 +233,20 @@ insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServici
 insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (1, 1, 3);
 insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (2, 2, 5);
 
+select * from Empresa;
+
+Delimiter //
+	create procedure sp_AgregaVenta(in codigoEmpresa int, in numeroSerie varchar(150), in monto double,in estado varchar(1))
+    begin
+		insert into Venta(codigoEmpresa, numeroSerie, fechaVenta, horaVenta, monto, estado)
+			values(codigoEmpresa, numeroSerie, curdate(), curtime(), monto, estado);
+    end //
+Delimiter ;
+
+
+
+
+select * from Venta;
+
+    
+    select * from detalleVenta;

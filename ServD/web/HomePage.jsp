@@ -419,7 +419,7 @@
                     <h2 class="titulo-footer">¿Quieres Contactarte Con Nostros?</h2>
                     <h3 class="subtitulo-footer">Lo hice con formsubmit</h3>
                     <div class="footer">
-                        <form action="https://formsubmit.co/mapachitogamers@gmail.com" method="POST" />
+                        <form action="https://formsubmit.co/servdgt@gmail.com" method="POST" />
                             <input color="#32325a;" type="text" name="name" id="name" placeholder="Nombre">
                             <input type="email" name="email" id="email" placeholder="Email">
                             <textarea name="coments" id="coments" cols="30" rows="10" placeholder="Ingrese su mensaje..."></textarea>
@@ -439,7 +439,7 @@
                     </div>
                     <div class="content-foo">
                         <h4>Gmail</h4>
-                        <p>ServD@gmail.com</p>
+                        <p>servdgt@gmail.com</p>
                     </div>
                     <div class="content-foo">
                         <h4>Lugar</h4>

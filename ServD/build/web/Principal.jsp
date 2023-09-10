@@ -17,11 +17,14 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav align-items-center">
                     <style>
-                        
+
                     </style>
-                    <a href="Controlador?menu=Principal">
+                    <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=HomePage" target="myFrame">
                         <img src="img/logo2.png" href="HomePage.jsp" alt="ServD" width="120" height="55">
                     </a>
+                    <li class="nav-item">
+                        <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Venta&accion=default" target="myFrame">Ventas</a>
+                    </li>
                     <li class="nav-item">
                         <a style="border: none; color: #32325a; font-size: 16px;" class="btn btn-outline-light" href="Controlador?menu=Empleado&accion=Listar" target="myFrame">Empleado</a>
                     </li>
@@ -70,7 +73,8 @@
                 </button>
                 <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton" style="transform: translateX(-95px)">
                     <a class="dropdown-item" href="#">
-                        <img src="img/EmpleadoProv.png" alt="60" width="60"/>
+                        <%--   <img src="img/programador1.jpg" alt="60" width="60"/> --%>
+                        <img src="ControlerIMG?codigoEmpleado=${usuario.getCodigoEmpleado()}" width="50px" height="70px" alt="" width="55"/>
                     </a>
                     <a class="dropdown-item" href="#">${usuario.getUsuario()}</a>
                     <a class="dropdown-item" href="#">${usuario.getUsuario()}@gmail.com</a>

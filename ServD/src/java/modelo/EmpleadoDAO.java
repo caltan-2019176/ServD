@@ -1,11 +1,16 @@
 package modelo;
 
 import config.Conexion;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Modelo DAO de Empleado
@@ -66,6 +71,7 @@ public class EmpleadoDAO {
                 em.setCodigoTipoEmpleado(rs.getInt(7));
                 em.setCodigoTransporte(rs.getInt(8));
                 em.setCodigoEquipo(rs.getInt(9));
+                em.setFoto(rs.getBinaryStream(10));
                 listaEmpleado.add(em);
             }
         } catch (Exception e){
@@ -74,9 +80,35 @@ public class EmpleadoDAO {
         return listaEmpleado;
     }
     
+    public void listarImg(int codigoEmpleado, HttpServletResponse response){
+        String sql = "Select * from Empleado where codigoEmpleado="+ codigoEmpleado; 
+        InputStream inputStream=null;
+        OutputStream outputStream=null;
+        BufferedInputStream bufferedInputStream=null;
+        BufferedOutputStream bufferedOutputStream=null;
+        response.setContentType("img/*");        
+        try {
+            outputStream=response.getOutputStream();
+            con = cn.Conexion();
+            ps = con.prepareCall(sql);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                inputStream = rs.getBinaryStream(10); 
+            }
+            bufferedInputStream=new BufferedInputStream(inputStream);
+            bufferedOutputStream=new BufferedOutputStream(outputStream);
+            int i = 0; 
+            while ((i=bufferedInputStream.read())!= -1) {
+                bufferedOutputStream.write(i);
+            }           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     //Método que agrega datos a Empleado
     public int agregar(Empleado emp){
-        String sql = "Insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) values(?,?,?,?,?,?,?,?)";
+        String sql = "Insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo, foto) values(?,?,?,?,?,?,?,?,?)";
         try{
             con = cn.Conexion();
             ps = con.prepareCall(sql);
@@ -88,9 +120,11 @@ public class EmpleadoDAO {
             ps.setInt(6, emp.getCodigoTipoEmpleado());
             ps.setInt(7, emp.getCodigoTransporte());
             ps.setInt(8, emp.getCodigoEquipo());
-                
+            ps.setBlob(9, emp.getFoto());
+            ps.executeUpdate(); 
         } catch (Exception e){
             e.printStackTrace();
+            System.out.println("No se agrego el registro");
         }
         return resp;
     }
@@ -112,6 +146,7 @@ public class EmpleadoDAO {
                 emp.setCodigoTipoEmpleado(rs.getInt(7));
                 emp.setCodigoTransporte(rs.getInt(8));
                 emp.setCodigoEquipo(rs.getInt(9));
+                emp.setFoto(rs.getBinaryStream(10));
             }
         } catch (Exception e){
             e.printStackTrace();
@@ -121,7 +156,7 @@ public class EmpleadoDAO {
     
     //Método que actualiza los datos de Empleado
     public int actualizar(Empleado emp){
-        String sql = "update Empleado set usuario = ?, DPIEmpleado = ?, nombresEmpleado = ?, apellidosEmpleado = ?, telefonoContacto = ? ";
+        String sql = "update Empleado set usuario = ?, DPIEmpleado = ?, nombresEmpleado = ?, apellidosEmpleado = ?, telefonoContacto = ?, foto = ? where codigoEmpleado = ? ";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -130,10 +165,12 @@ public class EmpleadoDAO {
             ps.setString(3, emp.getNombresEmpleado());
             ps.setString(4, emp.getApellidosEmpleado());
             ps.setString(5, emp.getTelefonoContacto());
-            ps.setInt(6, emp.getCodigoEmpleado());
+            ps.setBlob(6, emp.getFoto());
+            ps.setInt(7, emp.getCodigoEmpleado());
             ps.executeUpdate();
         } catch (Exception e){
             e.printStackTrace();
+            System.out.println("No se agrego el registro");
         }
         return resp;
     }
