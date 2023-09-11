@@ -18,11 +18,27 @@
                 .parte1, .btn, .acciones{
                     display: none;
                 }
-                
+
 
 
             }
         </style>
+        <script>
+            function venta() {
+                Swal.fire({
+                    title: 'Acertaste!!!',
+                    text: 'la palabra adivinada era: ' + palSecreta,
+                    icon: 'success',
+                    background: 'rgb(255,255,255)',
+                    timer: 5000,
+                    timerProgressBar: true,
+                    backdrop: true,
+                    width: '30%',
+                    allowOutsideClick: false,
+                })
+            }
+
+        </script>
     </head>
     <body>
 
@@ -111,7 +127,7 @@
                                         <td>${list.getDescripcion()}</td>
                                         <td>${list.getPrecio()}</td>
                                         <td class="d-flex">
-                                            <a href="#" class="btn btn-danger" style="margin-left: 10px">Eliminar</a>
+                                            <a href="Controlador?menu=Venta&accion=Eliminar" class="btn btn-danger" style="margin-left: 10px">Eliminar</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -120,8 +136,8 @@
                     </div>
                     <div class="card-footer d-flex">
                         <div class="col-sm-6">
-                            <a href="Controlador?menu=Venta&accion=GenerarVenta" onclick="print()" class="btn btn-success">Generar Venta</a>
-                            <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
+                            <a href="Controlador?menu=Venta&accion=GenerarVenta" onclick="venta()" class="btn btn-success">Generar Venta</a>
+                            <a href="Controlador?menu=Venta&accion=Cancelar" type="submit" name="accion" value="Cancelar" class="btn btn-danger">Cancelar </a>
                         </div>
                         <div class="col-sm-4 ml-auto">
                             <input type="text" name="txtTotal" value="Q. ${totalPagar}0" class="form-control">
@@ -135,6 +151,23 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script >
 
-    </body>
+
+                                function venta() {
+                                                                    var millisecondsToWait = 110000;
+
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Do you want to continue',
+                                        icon: 'error',
+                                        confirmButtonText: 'Cool'
+                                    }, millisecondsToWait);
+                                    print());
+                                }
+        </script>
+
+    </body>        
+
 </html>

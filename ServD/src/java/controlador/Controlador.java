@@ -845,8 +845,22 @@ public class Controlador extends HttpServlet {
                         venta.setPrecio(lista.get(i).getPrecio());
                         ventaDao.guardarDetalleVentas(venta);
                     }
+                    lista.clear();
+                    item = 0;
                     break;
+
+                case "Cancelar":
+                    lista.clear();
+                    item = 0;
+                    request.setAttribute("numeroSerie", numeroSerie);
+                    request.setAttribute("empresa", empresa);
+
+                    break;
+                case "Eliminar":
                     
+
+                    break;
+
                 default:
                     numeroSerie = ventaDao.GenerarSerie();
                     if (numeroSerie == null) {
