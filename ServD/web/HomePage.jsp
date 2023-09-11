@@ -380,7 +380,7 @@
 
             <section class="miembros">
                 <div class="contenedor">
-                    <h2 class="sobre-nosotros">Personal de Trabajo</h2>
+                    <h2 class="sobre-nosotros">Patrocinadores</h2>
                     <h3 class="slogan">Conoce a nuestro equipo de trabajo</h3>
                     <div class="cards">
                         <div class="card">

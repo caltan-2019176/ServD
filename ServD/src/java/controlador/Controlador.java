@@ -528,7 +528,7 @@ public class Controlador extends HttpServlet {
                     empleado.setNombresEmpleado(nombresEmp);
                     empleado.setApellidosEmpleado(apellidosEmp);
                     empleado.setTelefonoContacto(telefonoEmp);
-                    empleado.setFoto(inputStream1);
+                    //empleado.setFoto(inputStream1);
                     //empleado.setCodigoTipoEmpleado(Integer.parseInt(tipoEmp));
                     //empleado.setCodigoTransporte(Integer.parseInt(transporteEmp));
                     //empleado.setCodigoEquipo(Integer.parseInt(equipoEmp));
