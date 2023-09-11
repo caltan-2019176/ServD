@@ -4,6 +4,8 @@ import config.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  *
@@ -36,6 +38,8 @@ public class VentaDAO {
         return numeroSerie;
     }
 
+           
+
     public String numeroSerie(int dato) {
         this.dato = dato + 1;
         if ((this.dato >= 10000000) && (this.dato <= 100000000)) {
@@ -56,13 +60,15 @@ public class VentaDAO {
         if ((this.dato >= 100) && (this.dato <= 1000)) {
             numero = "00000" + this.dato;
         }
+
         if ((this.dato >= 10) && (this.dato <= 100)) {
             numero = "000000" + this.dato;
         }
         if (this.dato < 10) {
-            numero = "00000000" + this.dato;
+            numero = "0000000" + this.dato;
         }
         return numero;
+
     }
 
     public String idVenta() {
@@ -92,14 +98,14 @@ public class VentaDAO {
             ps.setString(4, venta.getEstado());
             ps.executeUpdate();
             System.out.println("asdf");
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         return r;
     }
-    
-    public int guardarDetalleVentas(Venta venta){
+
+    public int guardarDetalleVentas(Venta venta) {
         String sql = "insert into detalleVenta(codigoVenta, codigoServicio, precioVenta)values(?, ?, ?)";
         try {
             con = cn.Conexion();

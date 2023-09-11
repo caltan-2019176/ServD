@@ -20,26 +20,24 @@ import javax.swing.JOptionPane;
 
 /**
  * clase del modelo DAO de "Empresa"
- *
  * @author carlo
  */
 public class EmpresaDao {
-
     Conexion cn = new Conexion();
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
     int resp;
-
+    
     //crea una lista de los elementos de empresa de Empresas de DB
-    public List listar() {
+    public List listar(){
         String sql = "select * from Empresa";
         List<Empresa> listaEmpresa = new ArrayList<>();
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-            while (rs.next()) {
+            while (rs.next()) {                
                 Empresa emp = new Empresa();
                 emp.setCodigoEmpresa(rs.getInt(1));
                 emp.setNombreEmpresa(rs.getString(2));
@@ -48,13 +46,13 @@ public class EmpresaDao {
                 emp.setEstadoEmpresa(rs.getString(5));
                 listaEmpresa.add(emp);
             }
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
         }
         return listaEmpresa;
     }
-
-    public Empresa buscar(int nombre) {
+    
+        public Empresa buscar(int nombre) {
         Empresa emp = new Empresa();
         String sql = "select * from Empresa where codigoEmpresa = "+nombre;
         try {
@@ -74,13 +72,13 @@ public class EmpresaDao {
         }
         return emp;
     }
-
+    
     //agrega datos a la lista de la DB
-    public int agregar(Empresa emp) {
+    public int agregar(Empresa emp){
         String sql = "insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values(?,?,?,?)";
         try {
-            con = cn.Conexion();
-            ps = con.prepareStatement(sql);
+            con = cn.Conexion(); 
+            ps = con.prepareStatement(sql); 
             ps.setString(1, emp.getNombreEmpresa());
             ps.setString(2, emp.getTelefonoEmpresa());
             ps.setString(3, emp.getDireccionEmpresa());
@@ -88,59 +86,59 @@ public class EmpresaDao {
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        return resp;
+        } 
+        return resp; 
     }
-
+    
     //buscar datos
-    public Empresa listarCodigoEmpresa(int id) {
-        Empresa emp = new Empresa();
-        String sql = "select * from Empresa where codigoEmpresa = " + id;
+    public Empresa listarCodigoEmpresa(int id){
+        Empresa emp = new Empresa(); 
+        String sql = "select * from Empresa where codigoEmpresa = "+id;
         try {
-            con = cn.Conexion();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
+            con = cn.Conexion(); 
+            ps = con.prepareStatement(sql); 
+            rs = ps.executeQuery(); 
             while (rs.next()) {
                 emp.setCodigoEmpresa(rs.getInt(1));
                 emp.setNombreEmpresa(rs.getString(2));
                 emp.setTelefonoEmpresa(rs.getString(3));
                 emp.setDireccionEmpresa(rs.getString(4));
-                emp.setEstadoEmpresa(rs.getString(5));
+                emp.setEstadoEmpresa(rs.getString(5));   
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return emp;
+        return emp;       
     }
-
+    
     //editar
-    public int editarEmpresa(Empresa emp) {
-        String sql = "Update Empresa set nombreEmpresa = ?, telefonoEmpresa = ?, direccionEmpresa = ?, estadoEmpresa = ? where codigoEmpresa = ?";
+    public int editarEmpresa(Empresa emp){
+        String sql = "Update Empresa set nombreEmpresa = ?, telefonoEmpresa = ?, direccionEmpresa = ?, estadoEmpresa = ? where codigoEmpresa = ?"; 
         try {
-            con = cn.Conexion();
-            ps = con.prepareStatement(sql);
+            con = cn.Conexion(); 
+            ps = con.prepareStatement(sql); 
             ps.setString(1, emp.getNombreEmpresa());
             ps.setString(2, emp.getTelefonoEmpresa());
             ps.setString(3, emp.getDireccionEmpresa());
             ps.setString(4, emp.getEstadoEmpresa());
             ps.setInt(5, emp.getCodigoEmpresa());
-            ps.executeUpdate();
+            ps.executeUpdate(); 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return resp;
+        return resp; 
     }
-
+    
     //borrar
-    public void eliminarEmpresa(int id) {
-        String sql = "delete from Empresa where codigoEmpresa = " + id;
+    public void eliminarEmpresa(int id){
+        String sql = "delete from Empresa where codigoEmpresa = "+id; 
         try {
-            con = cn.Conexion();
-            ps = con.prepareStatement(sql);
-            ps.executeUpdate();
+            con = cn.Conexion(); 
+            ps = con.prepareStatement(sql); 
+            ps.executeUpdate(); 
         } catch (SQLException e) {
-
-        }
-    }
-
+            
+        }    
+    }  
+    
 }

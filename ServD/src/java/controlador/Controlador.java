@@ -84,17 +84,6 @@ public class Controlador extends HttpServlet {
     Empleados_has_ServiciosDAO empleados_has_serviciosDAO = new Empleados_has_ServiciosDAO();
     TipoServicio tipoServicio = new TipoServicio();
     TipoServicioDAO tipoServicioDAO = new TipoServicioDAO();
-    Venta venta = new Venta();
-    VentaDAO ventaDao = new VentaDAO();
-    List<Venta> lista = new ArrayList<>();
-    int item = 0;
-    int codigoTipoServicio;
-    String descripcion;
-    String numeroSerie;
-    double precio;
-    double subTotal;
-    double totalPagar;
-
     int codCompra;
     int codServicio;
     int codEquipo;
@@ -105,7 +94,17 @@ public class Controlador extends HttpServlet {
     int codEmpleado;
     int codEmpleadoServicio;
     int codProveedor;
-    int codigoEmpresa;
+
+    Venta venta = new Venta();
+    VentaDAO ventaDao = new VentaDAO();
+    List<Venta> lista = new ArrayList<>();
+    int item = 0;
+    int codigoTipoServicio;
+    String descripcion;
+    String numeroSerie;
+    double precio;
+    double subTotal;
+    double totalPagar;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -836,7 +835,6 @@ public class Controlador extends HttpServlet {
                     venta.setEstado("1");
                     ventaDao.guardarVenta(venta);
                     request.setAttribute("numeroSerie", numeroSerie);
-
                     for (int i = 0; i < lista.size(); i++) {
                         venta = new Venta();
                         venta.setCodigoVenta(Integer.parseInt(ventaDao.idVenta()));
@@ -847,6 +845,8 @@ public class Controlador extends HttpServlet {
                     }
                     lista.clear();
                     item = 0;
+                    request.getRequestDispatcher("Venta.jsp").forward(request, response);
+
                     break;
 
                 case "Cancelar":
@@ -854,10 +854,6 @@ public class Controlador extends HttpServlet {
                     item = 0;
                     request.setAttribute("numeroSerie", numeroSerie);
                     request.setAttribute("empresa", empresa);
-
-                    break;
-                case "Eliminar":
-                    
 
                     break;
 
@@ -871,8 +867,8 @@ public class Controlador extends HttpServlet {
                         numeroSerie = ventaDao.numeroSerie(incrementar);
                         request.setAttribute("numeroSerie", numeroSerie);
                     }
-                    break;
             }
+
             request.getRequestDispatcher("Venta.jsp").forward(request, response);
 
         }

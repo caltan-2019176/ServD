@@ -54,7 +54,7 @@
             <div >
                 <div class="card col-sm-11.5 card-form">
                     <div class="card-body">
-                        <form  action="Controlador?menu=Servicio"  method="POST">
+                        <form acti action="Controlador?menu=Servicio"  method="POST">
 
                             <div class="form-group">
                                 <label class="colorLabel" for="dato">Lugar Servicio</label>
