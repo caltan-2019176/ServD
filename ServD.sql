@@ -143,6 +143,7 @@ create table Equipo_has_Empleado(
 	constraint FK_Equipo_has_Empleado_Empleado foreign key(codigoEmpleado)
 		references Empleado(codigoEmpleado)
 );
+<<<<<<< HEAD
 
 Create table Venta
 (
@@ -172,6 +173,8 @@ create table detalleVenta
 	constraint FK_Detalle_TipoServicio foreign key(codigoServicio)
 		references TipoServicio(codigoTipoServicio)
 );
+=======
+>>>>>>> cbb7ff35a17bcb667530f120b29dfefa2d560e18
 show tables;
 
 -- -------------------------------- Agregar Datos ---------------------------------------
@@ -286,6 +289,7 @@ insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) va
 select *from Empleado;
 -- select * from Empresa
 
+<<<<<<< HEAD
 
 Delimiter //
 	create procedure sp_AgregaVenta(in codigoEmpresa int, in numeroSerie varchar(150), in monto double,in estado varchar(1))
@@ -299,3 +303,5 @@ Delimiter ;
 select * from Venta;
 
 select * from detalleVenta;
+=======
+>>>>>>> cbb7ff35a17bcb667530f120b29dfefa2d560e18
