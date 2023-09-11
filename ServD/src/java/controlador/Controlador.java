@@ -11,6 +11,7 @@ import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -44,6 +45,8 @@ import modelo.TipoEmpleado;
 import modelo.TipoEmpleadoDAO;
 import modelo.TipoServicio;
 import modelo.TipoServicioDAO;
+import modelo.Venta;
+import modelo.VentaDAO;
 
 /**
  *
@@ -91,6 +94,18 @@ public class Controlador extends HttpServlet {
     int codEmpleado;
     int codEmpleadoServicio;
     int codProveedor;
+
+    Venta venta = new Venta();
+    VentaDAO ventaDao = new VentaDAO();
+    List<Venta> lista = new ArrayList<>();
+    int item = 0;
+    int codigoTipoServicio;
+    String descripcion;
+    String numeroSerie;
+    double precio;
+    double subTotal;
+    double totalPagar;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -100,19 +115,16 @@ public class Controlador extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
-            
-        } 
-         else if (menu.equals("HomePage")){
-            request.getRequestDispatcher("HomePage.jsp").forward(request,response);
-        } 
-        else if (menu.equals("Equipo")) {
+
+        } else if (menu.equals("HomePage")) {
+            request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+        } else if (menu.equals("Equipo")) {
             switch (accion) {
                 case "Listar":
                     List listaEquipo = equipoDAO.listar();
@@ -163,7 +175,7 @@ public class Controlador extends HttpServlet {
 
                     List listaProveedor = proveedorDao.listar();
                     request.setAttribute("proveedores", listaProveedor);
-                    
+
                     List listaEquipo = equipoDAO.listar();
                     request.setAttribute("equipos", listaEquipo);
                     break;
@@ -210,10 +222,10 @@ public class Controlador extends HttpServlet {
                 case "Listar":
                     List listaServicioCompra = servicio_has_CompraDAO.listar();
                     request.setAttribute("servicioCompras", listaServicioCompra);
-                    
+
                     List listaServicio = servicioDAO.listar();
                     request.setAttribute("servicios", listaServicio);
-                    
+
                     List listaCompras = compraDAO.listar();
                     request.setAttribute("compras", listaCompras);
                     break;
@@ -235,11 +247,11 @@ public class Controlador extends HttpServlet {
                     break;
                 case "Actualizar":
                     String DescripcionSc = request.getParameter("txtDescripcion");
-                   // String codServicioSc = request.getParameter("cmbCodigoServicio");
-                   // String codCompraSc = request.getParameter("cmbCodigoCompra");
-                     servicio_has_Compra.setDescripcionDetalle(DescripcionSc);
-                   // servicio_has_Compra.setCodigoServicio(Integer.parseInt(codServicioSc));
-                   // servicio_has_Compra.setCodigoCompra(Integer.parseInt(codCompraSc));
+                    // String codServicioSc = request.getParameter("cmbCodigoServicio");
+                    // String codCompraSc = request.getParameter("cmbCodigoCompra");
+                    servicio_has_Compra.setDescripcionDetalle(DescripcionSc);
+                    // servicio_has_Compra.setCodigoServicio(Integer.parseInt(codServicioSc));
+                    // servicio_has_Compra.setCodigoCompra(Integer.parseInt(codCompraSc));
                     servicio_has_Compra.setServicio_codigoCompra(codServicioCompra);
                     servicio_has_CompraDAO.actualizar(servicio_has_Compra);
                     request.getRequestDispatcher("Controlador?menu=ServicioCompra&accion=Listar").forward(request, response);
@@ -250,7 +262,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=ServicioCompra&accion=Listar").forward(request, response);
                     break;
             }
-                request.getRequestDispatcher("ServicioCompra.jsp").forward(request, response);
+            request.getRequestDispatcher("ServicioCompra.jsp").forward(request, response);
         } else if (menu.equals("Compra")) {
             switch (accion) {
                 case "Listar":
@@ -378,7 +390,7 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Servicio.jsp").forward(request, response);
-            
+
         } else if (menu.equals("EquipoEmpleado")) {
             switch (accion) {
                 case "Listar":
@@ -392,7 +404,7 @@ public class Controlador extends HttpServlet {
                 case "Agregar":
                     String cadEquipo = request.getParameter("cmbCodigoEquipo");
                     String cadEmpleado = request.getParameter("cmbEmpleadoEquipo");
-                    String canEquipo = request.getParameter("txtCantidadEquipo"); 
+                    String canEquipo = request.getParameter("txtCantidadEquipo");
                     equipo_has_Empleado.setCodigoEquipo(Integer.parseInt(cadEquipo));
                     System.out.println(cadEquipo);
                     equipo_has_Empleado.setCodigoEmpleado(Integer.parseInt(cadEmpleado));
@@ -409,11 +421,11 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=EquipoEmpleado&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                        String canEquipos = request.getParameter("txtCantidadEquipo");
-                        equipo_has_Empleado.setCantidadEquipo(Integer.parseInt(canEquipos));
-                        equipo_has_Empleado.setEquipo_codigoEmpleado(Equipo_codigoEmpleado);
-                        equipo_has_EmpleadoDAO.actualizar(equipo_has_Empleado);
-                        request.getRequestDispatcher("Controlador?menu=EquipoEmpleado&accion=Listar").forward(request, response);
+                    String canEquipos = request.getParameter("txtCantidadEquipo");
+                    equipo_has_Empleado.setCantidadEquipo(Integer.parseInt(canEquipos));
+                    equipo_has_Empleado.setEquipo_codigoEmpleado(Equipo_codigoEmpleado);
+                    equipo_has_EmpleadoDAO.actualizar(equipo_has_Empleado);
+                    request.getRequestDispatcher("Controlador?menu=EquipoEmpleado&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
                     Equipo_codigoEmpleado = Integer.parseInt(request.getParameter("Equipo_codigoEmpleado"));
@@ -490,9 +502,9 @@ public class Controlador extends HttpServlet {
                     String codTipo = request.getParameter("cmbCodigoTipoEmpleado");
                     String codTransporte = request.getParameter("cmbCodigoMedioTransporte");
                     String codEquipo = request.getParameter("cmbCodigoEquipo");
-                    Part part = request.getPart("fileFoto"); 
-                    InputStream inputStream=part.getInputStream(); 
-                    
+                    Part part = request.getPart("fileFoto");
+                    InputStream inputStream = part.getInputStream();
+
                     empleado.setUsuario(usuario);
                     empleado.setDPIEmpleado(DPI);
                     empleado.setNombresEmpleado(nombres);
@@ -504,7 +516,7 @@ public class Controlador extends HttpServlet {
                     empleado.setFoto(inputStream);
                     empleadoDAO.agregar(empleado);
                     request.getRequestDispatcher("Controlador?menu=Empleado&accion=Listar").forward(request, response);
-                    
+
                     break;
                 case "Editar":
                     codEmpleado = Integer.parseInt(request.getParameter("codigoEmpleado"));
@@ -521,14 +533,14 @@ public class Controlador extends HttpServlet {
                     String tipoEmp = request.getParameter("cmbCodigoTipoEmpleado");
                     String transporteEmp = request.getParameter("cmbCodigoMedioTransporte");
                     String equipoEmp = request.getParameter("cmbCodigoEquipo");
-                    Part part1=request.getPart("fileFoto");
-                    InputStream inputStream1=part1.getInputStream();
+                    Part part1 = request.getPart("fileFoto");
+                    InputStream inputStream1 = part1.getInputStream();
                     empleado.setUsuario(usuarioEmp);
                     empleado.setDPIEmpleado(DPIEmp);
                     empleado.setNombresEmpleado(nombresEmp);
                     empleado.setApellidosEmpleado(apellidosEmp);
                     empleado.setTelefonoContacto(telefonoEmp);
-                    //empleado.setFoto(inputStream1);
+                    empleado.setFoto(inputStream1);
                     //empleado.setCodigoTipoEmpleado(Integer.parseInt(tipoEmp));
                     //empleado.setCodigoTransporte(Integer.parseInt(transporteEmp));
                     //empleado.setCodigoEquipo(Integer.parseInt(equipoEmp));
@@ -611,7 +623,7 @@ public class Controlador extends HttpServlet {
                 case "Actualizar":
                     String nombrePR = request.getParameter("txtNombreProveedor");
                     String direccionPR = request.getParameter("txtDireccionProveedor");
-                    String telefonoPR = request.getParameter("txtTelefonoProveedor"); 
+                    String telefonoPR = request.getParameter("txtTelefonoProveedor");
                     proveedor.setNombreProveedor(nombrePR);
                     proveedor.setDireccionProveedor(direccionPR);
                     proveedor.setTelefonoProveedor(telefonoPR);
@@ -633,12 +645,12 @@ public class Controlador extends HttpServlet {
                     List listaEmpresa = empresaDao.listar();
                     request.setAttribute("empresas", listaEmpresa);
                     break;
-                case "Agregar":            
+                case "Agregar":
                     String nombre = request.getParameter("txtNombreEmpresa");
                     String telefono = request.getParameter("txtTelefonoEmpresa");
                     String direccion = request.getParameter("txtDireccionEmpresa");
                     String estado = request.getParameter("txtEstadoEmpresa");
-                    
+
                     empresa.setNombreEmpresa(nombre);
                     empresa.setTelefonoEmpresa(telefono);
                     empresa.setDireccionEmpresa(direccion);
@@ -665,7 +677,7 @@ public class Controlador extends HttpServlet {
                     empresa.setCodigoEmpresa(codEmpresa);
                     empresaDao.editarEmpresa(empresa);
                     request.getRequestDispatcher("Controlador?menu=Empresa&accion=Listar").forward(request, response);
-                    
+
                     break;
                 case "Eliminar":
                     codEmpresa = Integer.parseInt(request.getParameter("codigoEmpresa"));
@@ -674,16 +686,16 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Empresa.jsp").forward(request, response);
-        
+
         } else if (menu.equals("EmpleadoServicio")) {
             switch (accion) {
                 case "Listar":
                     List listaEmpleados_has_Servicios = empleados_has_serviciosDAO.listar();
                     request.setAttribute("empleadoServicios", listaEmpleados_has_Servicios);
-                    
+
                     List listaEmpleado = empleadoDAO.listar();
                     request.setAttribute("empleados", listaEmpleado);
-                    
+
                     List listaServicio = servicioDAO.listar();
                     request.setAttribute("servicios", listaServicio);
                     break;
@@ -691,13 +703,13 @@ public class Controlador extends HttpServlet {
                     String costoServicio = request.getParameter("txtCostoServicio");
                     int codigoEmpleado = Integer.parseInt(request.getParameter("cmbCodigoEmpleado"));
                     int codigoServicio = Integer.parseInt(request.getParameter("cmbCodigoServicio"));
-                    try{
+                    try {
                         empleados_has_servicios.setCostoServicio(Double.parseDouble(costoServicio));
                         empleados_has_servicios.setCodigoEmpleado(codigoEmpleado);
                         empleados_has_servicios.setCodigoServicio(codigoServicio);
                         empleados_has_serviciosDAO.agregar(empleados_has_servicios);
                         request.getRequestDispatcher("Controlador?menu=EmpleadoServicio&accion=Listar").forward(request, response);
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
@@ -709,12 +721,12 @@ public class Controlador extends HttpServlet {
                     break;
                 case "Actualizar":
                     String costoServicioD = request.getParameter("txtCostoServicio");
-                    try{
+                    try {
                         empleados_has_servicios.setCostoServicio(Double.parseDouble(costoServicioD));
                         empleados_has_servicios.setCodigoEmpleados_has_servicios(codEmpleadoServicio);
                         empleados_has_serviciosDAO.editar(empleados_has_servicios);
                         request.getRequestDispatcher("Controlador?menu=EmpleadoServicio&accion=Listar").forward(request, response);
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
@@ -772,6 +784,93 @@ public class Controlador extends HttpServlet {
             }
             request.getRequestDispatcher("TipoServicio.jsp").forward(request, response);
 
+        } else if (menu.equals("Venta")) {
+            switch (accion) {
+                case "Buscar":
+                    int nombre = Integer.parseInt(request.getParameter("txtEmpresa"));
+                    empresa.setCodigoEmpresa(nombre);
+                    empresa = empresaDao.buscar(nombre);
+                    request.setAttribute("empresa", empresa);
+                    request.setAttribute("numeroSerie", numeroSerie);
+
+                    break;
+                case "BuscarServicio":
+                    int id = Integer.parseInt(request.getParameter("txtCodigoServicio"));
+                    tipoServicio = tipoServicioDAO.listarId(id);
+                    request.setAttribute("tipoServicio", tipoServicio);
+                    request.setAttribute("lista", lista);
+                    request.setAttribute("empresa", empresa);
+                    request.setAttribute("totalPagar", totalPagar);
+                    request.setAttribute("numeroSerie", numeroSerie);
+
+                    break;
+                case "Agregar":
+                    venta = new Venta();
+                    totalPagar = 0.0;
+                    item = item + 1;
+                    codigoTipoServicio = tipoServicio.getCodigoTipoServicio();
+                    descripcion = request.getParameter("txtNombreServicio");
+                    precio = Double.parseDouble(request.getParameter("txtPrecio"));
+                    venta = new Venta();
+                    venta.setItem(item);
+                    venta.setCodigoTipoServicio(codigoTipoServicio);
+                    venta.setDescripcion(descripcion);
+                    venta.setPrecio(precio);
+                    lista.add(venta);
+                    for (int i = 0; i < lista.size(); i++) {
+                        totalPagar = totalPagar + lista.get(i).getPrecio();
+                    }
+                    request.setAttribute("totalPagar", totalPagar);
+                    request.setAttribute("empresa", empresa);
+                    request.setAttribute("numeroSerie", numeroSerie);
+
+                    request.setAttribute("lista", lista);
+                    break;
+
+                case "GenerarVenta":
+                    venta = new Venta();
+                    venta.setCodigoEmpresa(empresa.getCodigoEmpresa());
+                    venta.setNumeroSerie(numeroSerie);
+                    venta.setPrecio(totalPagar);
+                    venta.setEstado("1");
+                    ventaDao.guardarVenta(venta);
+                    request.setAttribute("numeroSerie", numeroSerie);
+                    for (int i = 0; i < lista.size(); i++) {
+                        venta = new Venta();
+                        venta.setCodigoVenta(Integer.parseInt(ventaDao.idVenta()));
+                        venta.setCodigoEmpresa(lista.get(i).getCodigoEmpresa());
+                        venta.setCodigoTipoServicio(lista.get(i).getCodigoTipoServicio());
+                        venta.setPrecio(lista.get(i).getPrecio());
+                        ventaDao.guardarDetalleVentas(venta);
+                    }
+                    lista.clear();
+                    item = 0;
+                    request.getRequestDispatcher("Venta.jsp").forward(request, response);
+
+                    break;
+
+                case "Cancelar":
+                    lista.clear();
+                    item = 0;
+                    request.setAttribute("numeroSerie", numeroSerie);
+                    request.setAttribute("empresa", empresa);
+
+                    break;
+
+                default:
+                    numeroSerie = ventaDao.GenerarSerie();
+                    if (numeroSerie == null) {
+                        numeroSerie = "00000001";
+                        request.setAttribute("numeroSerie", numeroSerie);
+                    } else {
+                        int incrementar = Integer.parseInt(numeroSerie);
+                        numeroSerie = ventaDao.numeroSerie(incrementar);
+                        request.setAttribute("numeroSerie", numeroSerie);
+                    }
+            }
+
+            request.getRequestDispatcher("Venta.jsp").forward(request, response);
+
         }
     }
 
@@ -802,7 +901,6 @@ public class Controlador extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
 
     }
 

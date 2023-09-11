@@ -52,6 +52,27 @@ public class EmpresaDao {
         return listaEmpresa;
     }
     
+        public Empresa buscar(int nombre) {
+        Empresa emp = new Empresa();
+        String sql = "select * from Empresa where codigoEmpresa = "+nombre;
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                emp.setCodigoEmpresa(rs.getInt(1));
+                emp.setNombreEmpresa(rs.getString(2));
+                emp.setTelefonoEmpresa(rs.getString(3));
+                emp.setDireccionEmpresa(rs.getString(4));
+                emp.setEstadoEmpresa(rs.getString(5));
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return emp;
+    }
+    
     //agrega datos a la lista de la DB
     public int agregar(Empresa emp){
         String sql = "insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values(?,?,?,?)";
