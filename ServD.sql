@@ -110,6 +110,7 @@ create table Empleado(
     codigoTipoEmpleado int not null,
     codigoTransporte int not null, 
     codigoEquipo int not null,
+    foto longblob,
     primary key PK_codigoEmpleado(codigoEmpleado),
     constraint FK_Empleado_TipoEmpleado foreign key(codigoTipoEmpleado)
 		references tipoEmpleado(codigoTipoEmpleado),
@@ -142,6 +143,35 @@ create table Equipo_has_Empleado(
 	constraint FK_Equipo_has_Empleado_Empleado foreign key(codigoEmpleado)
 		references Empleado(codigoEmpleado)
 );
+
+Create table Venta
+(
+	codigoVenta int not null auto_increment,
+	codigoEmpresa int not null,
+	numeroSerie varchar(150),
+    fechaVenta date,
+    horaVenta time,
+    monto double,
+    estado varchar(1),
+    primary key PK_Venta(codigoVenta),
+    constraint FK_Venta_Empresa foreign key(codigoEmpresa)
+		references Empresa(codigoEmpresa)
+);
+
+
+
+create table detalleVenta
+(
+	codigoDetalleVenta int not null auto_increment,
+    codigoVenta int not null,
+    codigoServicio int not null,
+    precioVenta double,
+    primary key PK_DetalleVenta(codigoDetalleVenta),
+    constraint FK_Detalle_Venta foreign key(codigoVenta)
+		references Venta(codigoVenta),
+	constraint FK_Detalle_TipoServicio foreign key(codigoServicio)
+		references TipoServicio(codigoTipoServicio)
+);
 show tables;
 
 -- -------------------------------- Agregar Datos ---------------------------------------
@@ -166,7 +196,11 @@ insert into Proveedor_has_Equipo(descripcionProveedor, codigoProveedor, codigoEq
 
 -- --Tipo Servicio-- --
 insert into tipoServicio(tipoServicio, descripcion, precioTipoServicio) values ('Reparacion', 'Reparacion de algun electrodomestico o Computadora', 350);
+insert into tipoServicio(tipoServicio, descripcion, precioTipoServicio) values ('Mantenimiento', 'mantenimiento de hardware', 250);
 insert into tipoServicio(tipoServicio, descripcion, precioTipoServicio) values ('Limpieza', 'Limpieza de algun electrodomestico o Computadora', 250);
+insert into tipoServicio(tipoServicio, descripcion, precioTipoServicio) values ('Programacion', 'Programación de software', 500);
+insert into tipoServicio(tipoServicio, descripcion, precioTipoServicio) values ('Técnico', 'servicio técnico', 400);
+insert into tipoServicio(tipoServicio, descripcion, precioTipoServicio) values ('Reparación', 'reparación de electrodomesticos', 350);
 -- --Servicio-- --
 insert into Servicio(lugarServicio, numeroServicio, horaServicio, fechaServicio, codigoTipoServicio)
 	values('kinal', '1234567', '15:00:00', '2023-04-04', 1);
@@ -181,15 +215,15 @@ insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpr
 insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('Fedex', '24112100', 'Atanasio Tzu', '1');
 insert into Empresa(nombreEmpresa, telefonoEmpresa, direccionEmpresa, estadoEmpresa) values('DHL', '67190276', 'Carretera al Pacifico', '1');
 -- --Compra-- --
-insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(600, 'Compra de diferentes herramientas', 
+insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(600, 'Servicio de mantenimiento', 
 	'2023-09-02', 2);
-insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(650, 'Compra de diferentes utensilios de plastico', 
+insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(650, 'Servicio de limpieza', 
 	'2023-10-04', 1);
-insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(2000, 'Compra de electronicos', 
+insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(2000, 'Servicio de programacion', 
 	'2023-10-04', 2);
-insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(200, 'Compra ropa usada', 
+insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(200, 'Servicio de técnico', 
 	'2023-10-04', 1);
-insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(80, 'Compra de unos bombillos led rgb', 
+insert into Compra(costoCompra, descripcionCompra, fechaCompra, codigoEmpresa) values(80, 'Servicio de reparación', 
 	'2023-10-04', 2);
     
 -- --Servicio_has_Compra-- --
@@ -202,21 +236,33 @@ insert into Servicio_has_Compra(descripcionDetalle, codigoServicio, codigoCompra
 -- --Tipo Empleado-- --
 insert into TipoEmpleado(descripcionTipoEmpleado, categoria, sueldo) values ('Programador', 'Programador', 7750.65);
 insert into TipoEmpleado(descripcionTipoEmpleado, categoria, sueldo) values ('Conductor', 'Conductor', 3750.65);
-insert into TipoEmpleado(descripcionTipoEmpleado, categoria, sueldo) values ('Personal de almacen', 'Personal de almacen', 1750.65);
-insert into TipoEmpleado(descripcionTipoEmpleado, categoria, sueldo) values ('Logística', 'Logística', 9750.65);
-insert into TipoEmpleado(descripcionTipoEmpleado, categoria, sueldo) values ('Atención al cliente', 'Atención al cliente', 750.65);
-
 -- --Empleado-- --
 insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) values
 	('parmas', '123', 'Pedro', 'Armas', '12345678', 1,1,1);
 insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
 	values ('caltan', '123', 'Carlos', 'Altan', '87654321', 2,2,2);
 insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
-	values ('as', '111', 'Juan', 'Boteo', '3366552', 2,2,2);
+	values ('dabad', '111', 'Sebastian', 'Abad', '3366552', 2,2,2);
 insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
-	values ('ad', '222', 'Sebatian', 'Abad', '4455886', 2,2,2);
+	values ('dako', '222', 'David', 'Balcarcel', '11580566', 2,2,2);
 insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
-	values ('ar', '333', 'Daniel', 'Cortez', '1112255', 2,2,2);
+	values ('armas', '455', 'Carlos', 'Armas', '11220300', 2,2,2);
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
+	values ('pbermudez', '450545', 'Pablo', 'Bermudez', '11225712', 2,2,2);
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
+	values ('boteo', '4054065', 'Juan', 'Boteo', '11225560', 2,2,2);
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
+	values ('carlitos', '05452', 'Carlos', 'Cabrera', '11525500', 2,2,2);
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
+	values ('omarcito', '45054', 'Omar', 'Castillo', '11552800', 2,2,2);
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
+	values ('richi', '77885', 'Ricardo', 'Colindres', '22556500', 2,2,2);
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
+	values ('coy', '332523', 'Edwin', 'Coy', '11290600', 2,2,2);
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
+	values ('delacruz', '31233', 'Carlos', 'De la Cruz', '11225540', 2,2,2);
+insert into Empleado(usuario, DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoContacto, codigoTipoEmpleado, codigoTransporte, codigoEquipo) 
+	values ('rodrigo', '54205', 'Rodrigo', 'Diaz', '11224240', 2,2,2);
 -- --Empleados_has_Servicios-- --
 insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (350, 1, 1);
 insert into Empleados_has_Servicios(costoServicio, codigoEmpleado, codigoServicio) values (250, 2, 2);
@@ -237,5 +283,19 @@ insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) va
 insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (4, 3, 1);
 insert into Equipo_has_Empleado(codigoEquipo, codigoEmpleado, cantidadEquipo) values (5, 4, 1);
 
-select *from Proveedor_has_Equipo;
+select *from Empleado;
+-- select * from Empresa
 
+
+Delimiter //
+	create procedure sp_AgregaVenta(in codigoEmpresa int, in numeroSerie varchar(150), in monto double,in estado varchar(1))
+    begin
+		insert into Venta(codigoEmpresa, numeroSerie, fechaVenta, horaVenta, monto, estado)
+			values(codigoEmpresa, numeroSerie, curdate(), curtime(), monto, estado);
+    end //
+Delimiter ;
+
+
+select * from Venta;
+
+select * from detalleVenta;

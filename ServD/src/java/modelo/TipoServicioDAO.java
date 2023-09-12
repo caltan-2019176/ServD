@@ -39,6 +39,24 @@ public class TipoServicioDAO {
         return tipoServicio;// Retorna Tipo de servicio encontrado
         
     }
+        public TipoServicio listarId(int id) {
+        TipoServicio tsv = new TipoServicio();
+        String sql = "select * from TipoServicio where codigoTipoServicio =" + id;
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+                tsv.setCodigoTipoServicio(rs.getInt(1));
+                tsv.setTipoServicio(rs.getString(2));
+                tsv.setDescripcion(rs.getString(3));
+                tsv.setPrecioTipoServicio(rs.getDouble(4));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tsv;
+    }
     
     // Metodo Listar
     public List listar(){
