@@ -380,22 +380,22 @@
 
             <section class="miembros">
                 <div class="contenedor">
-                    <h2 class="sobre-nosotros">Patrocinadores</h2>
+                    <h2 class="sobre-nosotros">Nuestro equipo</h2>
                     <h3 class="slogan">Conoce a nuestro equipo de trabajo</h3>
                     <div class="cards">
                         <div class="card">
                             <img src="./img/programar.jpg" alt="">
-                            <h4>Programadores</h4>
+                            <h4>Equipo </h4>
                             <p>Los mejores programadores fullstack</p>
                         </div>
                         <div class="card">
                             <img src="./img/tecnico.jpg" alt="">
-                            <h4>Tecnicos</h4>
+                            <h4>Equipo de trabajo</h4>
                             <p>Tecnicos certificados Industrial</p>
                         </div>
                         <div class="card">
                             <img src="./img/conserje.jpg" alt="">
-                            <h4>Conserjes</h4>
+                            <h4>Servicios</h4>
                             <p>Impulsando valores y el trabajo bien hecho</p>
                         </div>
                     </div>
