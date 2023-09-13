@@ -53,16 +53,16 @@
         <div class="card-body">
             <form action="Controlador?menu=Proveedor" method="POST">
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">NombreProveedor</label>
+                    <label class="colorLabel" for="dato">Nombre Proveedor</label>
                     <input type="text" value="${proveedor.getNombreProveedor()}" name="txtNombreProveedor" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">DireccióProveedor</label>
+                    <label class="colorLabel" for="dato">Dirección Proveedor</label>
                     <input type="text" value="${proveedor.getDireccionProveedor()}" name="txtDireccionProveedor" class="form-control">
                 </div>
                 
                 <div class="form-group">
-                    <label class="colorLabel" for="dato">TeléfonoProveedor</label>
+                    <label class="colorLabel" for="dato">Teléfono Proveedor</label>
                     <input type="number" value="${proveedor.getTelefonoProveedor()}" name="txtTelefonoProveedor" class="form-control" onkeypress="return validarNumeros(event)">
                 </div>
                 <div class="action-btns">
